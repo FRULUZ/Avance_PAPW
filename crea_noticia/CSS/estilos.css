@@ -33,17 +33,9 @@
     position: relative;
 }
 
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSES
-* ==========================================
-*
-*/
+
 body {
     min-height: 100vh;
     background-color: #757f9a;
     background-image: linear-gradient(147deg, #757f9a 0%, #d7dde8 100%);
 }
-
-/*
