@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Registro</title>
+    <title>Noticia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,27 +19,58 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
+
+    <!-- Esto esta aquí porque creo que mi CSS y HTML no se estan relacionando -->
     <style>
-        body 
+            #upload 
+            {
+                opacity: 0;
+            }
+
+            #upload-label 
+            {
+                position: absolute;
+                top: 50%;
+                left: 1rem;
+                transform: translateY(-50%);
+            }
+
+            .image-area 
+            {
+                border: 2px dashed rgba(255, 255, 255, 0.7);
+                padding: 1rem;
+                position: relative;
+            }
+
+            .image-area::before 
+            {
+                content: 'Uploaded image result';
+                color: #fff;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 0.8rem;
+                z-index: 1;
+            }
+
+            body 
             {
                 min-height: 100vh;
                 background-color: #feb54b;
                 font-family: 'Source Sans Pro', sans-serif;
             }
-        h1
-        {
-            color: #002f59;
-            font-family: 'Source Sans Pro';
-        }
-        h5
-        {
-            color: #002f59;
-            font-family: 'Source Sans Pro';
-        }
+
+            .Menu
+            {
+            font-family: 'Source Sans Pro', sans-serif;
+            }
     </style>
+
 
   </head>
 
@@ -82,39 +113,25 @@
       </div>
    </nav>
 
+
    <div class="container-md">
-    <h1 class="center">Bienvenido</h1>
-    <h5 class="center"> Es hora de iniciar tu registro</h5>
+    <h1 style="color: #002f59;">Noticia del día</h1>
+    <h5 style="color: #002f59;">Escrita por alguien</h5>
+    <h6 style="color: #002f59;">dia 00 del 00 de 00</h6>
    </div>
 
-   <div class="container">
+   <div class="container-sm">
+       <img src="Insert_image_here.png" alt="Insert Image Here" class="mx-auto d-block" style="width:50%">
+   </div>
 
-    <div class="container py-3">
-
-        <form>
-
-            <div class="form-group">
-                <label for="ingresaApodo">Nickname</label>
-                <input type="text" class="form-control" id="ingresaApodo" placeholder="Apodo a tu gusto (●ˇ∀ˇ●)">
-            </div>
-
-            <div class="form-group">
-              <label for="ingresaCorreo">Correo</label>
-              <input type="text" class="form-control" id="ingresaApodo" placeholder="De preferencia en uso (●'◡'●)">
-            </div>
-
-            <div class="form-group">
-              <label for="ingresaContraseña">Contraseña</label>
-              <input type="text" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～">
-            </div>
-            
-            <div class="form-group">
-                <a class="btn btn-info" href="#" role="button">Registrar</a>
-            </div>
-
-        </form> 
-    </div>
-
+   <div class="container-sm">
+       <pre class="text-center">
+           Aquí se escribira la noticia. Aquí se escribira la noticia. Aquí se escribira la noticia.
+           Aquí se escribira la noticia. Aquí se escribira la noticia. Aquí se escribira la noticia.
+           Aquí se escribira la noticia. Aquí se escribira la noticia. Aquí se escribira la noticia.
+           Aquí se escribira la noticia. Aquí se escribira la noticia. Aquí se escribira la noticia.
+           Aquí se escribira la noticia. Aquí se escribira la noticia. Aquí se escribira la noticia.
+       </pre>
    </div>
 
 
