@@ -5,7 +5,8 @@
 }
 
 body{
-    font-family: arial;
+    font-family: "Source Sans Pro", sans-serif;
+    min-height: 100vh;
     background: rgb(0, 47, 89);
 }
 
@@ -65,3 +66,52 @@ body{
 .form-login a:hover{
     text-decoration: underline;
 }
+
+
+/*PARTE DE LA ANIMACION DE LETRAS*/
+
+h1 {
+
+    font-size: 100px;
+
+}
+
+
+
+html {
+	height: 100%;
+	/* max-height: 600px; */
+	width: 700px; /*Tamaño general*/
+	background-color: hsla(200,40%,30%,.4);
+	background-image:		
+		url(''), /*primer capa*/
+		url('https://cdn.pixabay.com/photo/2016/08/17/22/22/pow-1601674_960_720.png'), /*segunda capa*/
+		url('https://i.redd.it/a7cm878ps5t41.png'), /*tercer capa*/
+		url('https://previews.123rf.com/images/vectora/vectora1504/vectora150400035/38422872-punteado-pop-art-background-pop-art-pattern-antecedentes-simb%C3%B3licos-del-arte-de-los-a%C3%B1os-sesenta-.jpg'), /*este es el fondo*/
+		url(''); 
+	background-repeat: repeat-x;
+	background-position: 
+		0 20%,
+		0 100%,
+		0 100%,
+		0 100%,
+		0 0;
+	background-size: 
+		2500px,
+		800px,
+		500px,
+		1000px,
+		400px 260px;
+	animation: 50s para infinite linear;
+	}
+
+@keyframes para {
+	100% {
+		background-position: 
+			-5000px 20%,
+			-800px 95%,
+			500px 50%,
+			1000px 100%,
+			800px 0;
+		}
+	}

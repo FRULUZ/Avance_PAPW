@@ -1,3 +1,11 @@
+
+
+// Rating Initialization
+$(document).ready(function() {
+    $('#rateMe2').mdbRate();
+  });
+
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -26,3 +34,11 @@ function showFileName( event ) {
   var fileName = input.files[0].name;
   infoArea.textContent = 'File name: ' + fileName;
 }
+
+
+
+
+
+
+
+
