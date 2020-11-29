@@ -26,7 +26,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/CSS" href="/CSS/estilito.css">
+    <link rel="stylesheet" type="text/CSS" href="CSS/estilito.css">
     
   </head>
 

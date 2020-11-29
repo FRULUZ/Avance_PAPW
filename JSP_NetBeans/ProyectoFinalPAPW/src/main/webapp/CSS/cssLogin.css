@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 28, 2020, 2:49:45 PM
+    Author     : EDGAR
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Source Sans Pro", sans-serif;
+    min-height: 100vh;
+    background: rgb(0, 47, 89);
+}
+
+.form-login{
+    width: 400px;
+    height: 340px;
+    background: #4e4e4e ;
+    margin: auto;
+    margin-top: 180px;
+    box-shadow: 7px 13px 37px rgb(24, 24, 24);
+    padding: 20px 30px;
+    border-top: 4px solid #e7c713;
+    color: white;
+}
+
+.form-login h5 {
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+}
+
+.controls{
+    width: 100%;
+    border: 1px solid rgb(0, 47, 89);
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: #252323 ;
+    font-size:14px;
+    font-weight: bold;
+}
+
+.buttons{
+    width: 100%;
+    height: 40px;
+    background: rgb(231, 74, 55);;
+    border: none;
+    color: white;
+    margin-bottom: 16px;
+
+}
+
+.form-login p{
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.form-login a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-login a:hover{
+    text-decoration: underline;
+}
+
+
+/*PARTE DE LA ANIMACION DE LETRAS*/
+
+h1 {
+
+    font-size: 100px;
+
+}
+
+
+
+html {
+	height: 100%;
+	/* max-height: 600px; */
+	width: 700px; /*Tamaño general*/
+	background-color: hsla(200,40%,30%,.4);
+	background-image:		
+		url(''), /*primer capa*/
+		url('https://cdn.pixabay.com/photo/2016/08/17/22/22/pow-1601674_960_720.png'), /*segunda capa*/
+		url('https://i.redd.it/a7cm878ps5t41.png'), /*tercer capa*/
+		url('https://previews.123rf.com/images/vectora/vectora1504/vectora150400035/38422872-punteado-pop-art-background-pop-art-pattern-antecedentes-simb%C3%B3licos-del-arte-de-los-a%C3%B1os-sesenta-.jpg'), /*este es el fondo*/
+		url(''); 
+	background-repeat: repeat-x;
+	background-position: 
+		0 20%,
+		0 100%,
+		0 100%,
+		0 100%,
+		0 0;
+	background-size: 
+		2500px,
+		800px,
+		500px,
+		1000px,
+		400px 260px;
+	animation: 50s para infinite linear;
+	}
+
+@keyframes para {
+	100% {
+		background-position: 
+			-5000px 20%,
+			-800px 95%,
+			500px 50%,
+			1000px 100%,
+			800px 0;
+		}
+	}

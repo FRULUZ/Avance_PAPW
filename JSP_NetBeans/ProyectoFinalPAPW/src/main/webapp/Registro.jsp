@@ -28,7 +28,7 @@
         crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/CSS/apariencia.css">
+    <link rel="stylesheet" type="text/css" href="CSS/apariencia.css">
 
 
 
@@ -80,12 +80,6 @@
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Comics
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">DC</a>
-                      <a class="dropdown-item" href="#">Marvel</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Image</a>
-                  </div>
               </li>
               <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Animation</a>
@@ -106,10 +100,6 @@
    <div class="container">
 
     <div class="container py-3">
-
-
-
-
 
 
         <div class="container">
@@ -163,24 +153,33 @@
         <form class="col-12" action="SignInController" method="POST">
 
             <div class="form-group">
-                <label for="ingresaApodo">Nickname</label>
-                <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Apodo a tu gusto (●ˇ∀ˇ●)">
+                <label for="ingresa un Nombre de Uusuario">Username</label>
+                <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)">
             </div>
 
+            <div class="form-group">
+              <label for="ingresa una contraseña">Password</label>
+              <input type="password" name="password" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～">
+            </div>
+            
+            
+             <%-- 
             <div class="form-group">
               <label for="ingresaCorreo">Correo</label>
               <input type="text" class="form-control" id="ingresaApodo" placeholder="De preferencia en uso (●'◡'●)">
             </div>
-
-            <div class="form-group">
-              <label for="ingresaContraseña">Contraseña</label>
-              <input type="password" name="password" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～">
+            
+            --%>
+            
+            <div class="form-group" >
+                
+                <input class="btn btn-primary" type="submit" value="Submit">
+                
+                <%-- <a class="btn btn-info" href="#" role="button">Registrar</a>--%>
+                
             </div>
             
-            <div class="form-group">
-                <a class="btn btn-info" href="#" role="button">Registrar</a>
-            </div>
-
+              <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar</a>
         </form> 
     </div>
 

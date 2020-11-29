@@ -43,7 +43,7 @@
         
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
 
 
 </head>
@@ -143,12 +143,6 @@
         <h5 style="color: #002f59;">Escrita por alguien</h5>
         <h6 style="color: #002f59;">dia 00 del 00 de 00</h6>
     </div>
-
-    <div class="container-sm">
-        <img src="Insert_image_here.png" alt="Insert Image Here" class="mx-auto d-block" style="width:50%">
-    </div>
-
-
 
 
                 <div class="profile-content">

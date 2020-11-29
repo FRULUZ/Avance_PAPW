@@ -5,9 +5,8 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.UserDAO;
-import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "SignInController", urlPatterns = {"/SignInController"})
-public class SignInController extends HttpServlet {
+@WebServlet(name = "LogOffController", urlPatterns = {"/LogOffController"})
+public class LogOffController extends HttpServlet {
 
- 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -33,20 +31,9 @@ public class SignInController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user = new User(username, password); 
         
-        if(UserDAO.signInUser(user) == 1){
-        
-              response.sendRedirect("SignInSuccess.jsp");
-            
-        }else{
-      
-              response.sendRedirect("SignInFail.jsp");
-        }
-        
-         /*response.sendRedirect("Registro.jsp"); */
+        request.getSession().invalidate();
+        response.sendRedirect("index.jsp");
     }
 
     /**

@@ -24,7 +24,8 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="/CSS/estilos.css">
+    <link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+    
 
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
@@ -35,7 +36,7 @@
 
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Geek zone</a>
+        <a class="navbar-brand" href="index.jsp">Geek zone</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,17 +46,21 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Users/EDGAR/Desktop/PAPW_avance/Ventanas/Avance_PAPW/noticia/HTML">Noticias <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="VerNoticia.jsp">Noticias <span class="sr-only">(current)</span></a>
 
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Redactar noticia<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="CreaNoticia.jsp">Redactar noticia<span class="sr-only">(current)</span></a>
                 </li>
 
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Editor <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="Editor.jsp">Editor <span class="sr-only">(current)</span></a>
+                </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="Login.jsp">Log In <span class="sr-only">(current)</span></a>
                 </li>
 
 

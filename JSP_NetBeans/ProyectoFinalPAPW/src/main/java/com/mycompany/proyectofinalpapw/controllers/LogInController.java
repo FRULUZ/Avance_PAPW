@@ -8,20 +8,22 @@ package com.mycompany.proyectofinalpapw.controllers;
 import com.mycompany.proyectofinalpapw.dao.UserDAO;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author EDGAR
  */
-@WebServlet(name = "SignInController", urlPatterns = {"/SignInController"})
-public class SignInController extends HttpServlet {
+@WebServlet(name = "LogInController", urlPatterns = {"/LogInController"})
+public class LogInController extends HttpServlet {
 
- 
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -33,20 +35,23 @@ public class SignInController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
+         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = new User(username, password); 
+        User user = new User(username, password);
+        User logIn = UserDAO.LogInUser(user);
         
-        if(UserDAO.signInUser(user) == 1){
+        if(logIn == null){
         
-              response.sendRedirect("SignInSuccess.jsp");
+            response.sendRedirect("SignInFail.jsp");
             
         }else{
-      
-              response.sendRedirect("SignInFail.jsp");
+          
+          HttpSession session = request.getSession();
+          session.setAttribute("id", logIn.getId());
+          session.setAttribute("username", logIn.getUsername());
+          response.sendRedirect("SignInSuccess.jsp");
+          
         }
-        
-         /*response.sendRedirect("Registro.jsp"); */
     }
 
     /**
