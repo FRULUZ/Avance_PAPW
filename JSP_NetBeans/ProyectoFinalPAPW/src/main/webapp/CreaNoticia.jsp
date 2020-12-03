@@ -4,7 +4,12 @@
     Author     : EDGAR
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+List<Category> categories = (List<Category>)request.getAttribute("Categories");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,43 +41,17 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Geek zone</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Noticias <span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Redactar noticia<span class="sr-only">(current)</span></a>
-                </li>
-
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Editor <span class="sr-only">(current)</span></a>
-                </li>
-
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
-        </div>
-    </nav>
-
+    
+    
+        <jsp:include page="NavBar.jsp"/>
+    
     <p>
         <br>
     
     </p>
-
+    
+    
+    
   <header class="text-white text-center">
     <h1 class="display-4">CREAR UNA NOTICIA</h1>
     <p class="lead mb-0">Redacta una nueva noticia:</p>
@@ -106,55 +85,49 @@
 
 
 
-<div class="textin">
-    <h1>Redacta una nueva noticia: </h1>
-</div>
-
-
     <div class="container">
-
-
-        <div class="container py-5">
-            <form>
+        
+               <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController">
+                
+                <h1>Redacta una nueva noticia: </h1>
+                
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Título de la noticia</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Título">
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Categoría</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>Videojuegos</option>
-                        <option>Manga</option>
-                        <option>Anime</option>
-                        <option>Cartoons</option>
-                        <option>Comics</option>
-                        <option>Expos/Eventos</option>
-                    </select>
+                
+                  <div class="form-group">
+                 <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3"></textarea>
+                  </div>
+             
+                
+                 <div class="form-group">
+                    <label for="category">Categorías</label>
+                    <input type="text" class="form-control" id="category" name="category">
+                
+                    
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Redacta la noticia</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                    </select>
-                </div>
+                        
+                         <div class="form-group">
+                        <label for="image">Imagen</label>
+                        <input type="file" class="form-control" name="image" id="image">
+                        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                    </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Autor de la noticia</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Autor">
-                </div>
-  
+                
+                
+                <div class="botoncin">
+                    <button class="btn btn-primary" type="submit">Subir noticia</button>
+                </div>    
+                  
+               
+                    
             </form> 
 
         
         
-    </div>
-
-
-<div class="botoncin">
-
-    <button class="btn btn-primary" type="submit">Subir noticia</button>
-
-</div>    
-    
+    </div>    
 
 
 <p>
@@ -166,18 +139,8 @@
 
     <div class="footer-limiter">
 
-        <div class="footer-right">
-
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
-
-        </div>
 
         <div class="footer-left">
-
-            <p class="footer-links">Visita nuestras redes sociales</p>
 
             <p>Bitsonte studios © 2020</p>
         </div>
