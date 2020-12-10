@@ -4,16 +4,19 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-List<Category> categories = (List<Category>)request.getAttribute("Categories");
+List<Category> categories = CategoryDAO.getCategories();
+request.setAttribute("Categories", categories);
 %>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.jsp">Geek zone</a>
+      
+        <a class="navbar-brand" href="MainPageController">Geek zone</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,7 +27,8 @@ List<Category> categories = (List<Category>)request.getAttribute("Categories");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 
-           
+                
+               
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"> Categorías </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">   
@@ -33,14 +37,14 @@ List<Category> categories = (List<Category>)request.getAttribute("Categories");
                  <%
                 if(categories != null){
                 for(Category category : categories){
-                
                 %>
+                
                 
                   <a class="dropdown-item" href="#"><%=category.getName()%></a>
                 
                 
                 <%
-                   }
+                  }
                   }
                 %>
                         
@@ -56,7 +60,7 @@ List<Category> categories = (List<Category>)request.getAttribute("Categories");
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="CreaNoticia.jsp">Redactar noticia<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
                 </li>
 
 

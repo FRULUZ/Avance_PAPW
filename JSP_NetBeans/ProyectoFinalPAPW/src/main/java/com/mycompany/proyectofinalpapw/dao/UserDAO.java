@@ -10,6 +10,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -22,9 +24,11 @@ public class UserDAO {
 
 public static int signInUser(User user){
     
+    Connection con =  null;
+    
        try{
         
-        Connection con = DbConnection.getConnection();
+        con = DbConnection.getConnection();
         CallableStatement statement = con.prepareCall("call signIn(?,?)");
         
         statement.setString(1, user.getUsername());
@@ -35,6 +39,15 @@ public static int signInUser(User user){
     }catch(SQLException ex){
      
         System.out.print(ex.getMessage());
+    }finally{
+       
+           if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
     }
 
      return 0;
@@ -74,6 +87,35 @@ public static User LogInUser(User user){
 
 }
 
+
+    public static User getUser(int idUser) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("call getUser(?)");
+            statement.setInt(1, idUser);
+
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt(1);
+                String username = result.getString("username");
+                return new User(id, username);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+
+   
 
 }
 

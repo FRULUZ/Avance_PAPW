@@ -48,6 +48,9 @@ public class SignInController extends HttpServlet {
         
          /*response.sendRedirect("Registro.jsp"); */
     }
+    
+    
+    
 
     /**
      * Returns a short description of the servlet.

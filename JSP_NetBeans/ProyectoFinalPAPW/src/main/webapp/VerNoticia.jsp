@@ -4,11 +4,32 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.CommentaryDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Commentary"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<%
+        String idNews = request.getParameter("id");
+    
+        List<Commentary> commentaries = CommentaryDAO.getCommentariesByNews(Integer.parseInt(idNews, 10));
+        request.setAttribute("Commentaries", commentaries);
+        
+         
+        News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
+        request.setAttribute("New", element);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    
     <title>Noticia</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -52,52 +73,19 @@
 
 <body>
 
+    
+       <jsp:include page="NavBar.jsp"/>
 
+    <p>
+        <br>
+
+    </p>
+    
+    
 
     <div class="container">
         <span id="rateMe4" class="feedback"></span>
     </div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <a class="navbar-brand" href="#">GeekSquad</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Games <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Movies</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Comics
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">DC</a>
-                        <a class="dropdown-item" href="#">Marvel</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Image</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Animation</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-
-
 
 
 <!-- AREA DE LA FOTO Y NOMBRE DEL USUARIO -->
@@ -136,37 +124,38 @@
 
 <!-- FIN DE DATOS DEL USUARIO -->
 
-    <div class="container-md">
-        <br><br>
+<div class="container-md">
+    <br><br>
 
-        <h1 style="color: #002f59;">Noticia del día</h1>
-        <h5 style="color: #002f59;">Escrita por alguien</h5>
-        <h6 style="color: #002f59;">dia 00 del 00 de 00</h6>
-    </div>
+    <h1 style="color: #002f59;"><%= element.getTitle()%></h1>
 
+</div>
 
-                <div class="profile-content">
-                   Aquí va la noticia
-                </div>
+     <small class="col-12 text-muted">Categoría: <%= element.getCategory().getName()%></small>
+    
+    <img src="<%= element.getPathImage()%>" class="img-thumbnail" alt="...">
+    
 
-
-
-        <!----EN ESTA PARTE VA LA SECCION PARA CALIFICAR CON ESTRELLAS LA NOTICIA--->
-        <br><br>
-        <h1>Califica esta noticia</h1>
-        <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio"
-                name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2"
-                id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
-                for="1">☆</label>
-
-        </div>
-
-        <a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="false">No me gusta</a>
-        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Me gusta</a>
+<div class="profile-content"> <%= element.getDescription()%> </div>
 
 
-    </div>
+
+<!----EN ESTA PARTE VA LA SECCION PARA CALIFICAR CON ESTRELLAS LA NOTICIA--->
+<br><br>
+<h1>Califica esta noticia</h1>
+<div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio"
+  name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2"
+ id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
+ for="1">☆</label>
+
+</div>
+
+<a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="false">No me gusta</a>
+<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Me gusta</a>
+
+
+</div>
 
 
     <!----EN ESTA PARTE VA LA SECCION DE LA BARRA DE PROGRESO DE LAS ESTRELLAS---->
@@ -245,9 +234,18 @@
                     <div class="panel panel-info">
 
                         <div class="panel-body">
-                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"></textarea>
+                            
+                            <form method="POST" action="CommentaryController" >
+                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
                             <br>
-                            <button type="button" class="btn btn-info pull-right">Postear</button>
+                            <input type="submit" class="btn btn-success" value="Postear comentario">
+                            <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                            </form>
+                            
+                            
+                            
+                            
+                            
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">
@@ -258,50 +256,35 @@
 
                                     <div class="media-body">
                                         <span class="text-muted pull-right">
-                                         <button type="button" class="btn btn-danger" onclick="myFunction()">Reportar</button>
+                                         <button type="button" class="btn btn-danger" onclick="">Eliminar</button>
                                  
-                                         <script>
-                                         function myFunction() {
-                                           var txt;
-                                           var r = confirm("Desea reportar este comentario?");
-                                           if (r == true) {
-                                             txt = "You pressed OK!";
-                                           } else {
-                                             txt = "You pressed Cancel!";
-                                           }
-                                           document.getElementsByClassName("btn> btn-danger").innerHTML = txt;
-                                         }
-                                         </script>
-
-
-
-
-
-                                            <small class="text-muted">Hace 5 minutos</small>
-                                        </span>
-
-
-                                        <strong class="text-success">Usuario anonimo</strong>
-                                        <p>
-                                            Aquí va el comentario
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="media">
+                                                     <%
+                        for (Commentary commentary : commentaries) {
+                    %>
+                
+                    
+                    <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
+                                        
+                                         <li class="media">
                                     <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                        <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
                                     </a>
                                     <div class="media-body">
                                         <span class="text-muted pull-right">
                                             <small class="text-muted">30 min ago</small>
                                         </span>
-                                        <strong class="text-success">Nombre del usuario</strong>
+                                        <strong class="text-success"><%= commentary.getUser().getUsername() %></strong>
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing elit.
+                                            <%= commentary.getContent() %>
                                         </p>
                                     </div>
                                 </li>
+  
+                                 <%
+                        }
+                    %>
+
+                                
                                 <li class="media">
                                     <a href="#" class="pull-left">
                                         <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">

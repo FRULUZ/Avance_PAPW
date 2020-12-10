@@ -4,12 +4,16 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
-List<Category> categories = (List<Category>)request.getAttribute("Categories");
+List<Category> categories = CategoryDAO.getCategories();
+request.setAttribute("Categories", categories);
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +47,9 @@ List<Category> categories = (List<Category>)request.getAttribute("Categories");
 
     
     
-        <jsp:include page="NavBar.jsp"/>
+    <jsp:include page="NavBar.jsp"/> 
     
+        
     <p>
         <br>
     
@@ -101,13 +106,21 @@ List<Category> categories = (List<Category>)request.getAttribute("Categories");
                 <textarea class="form-control" id="descripcion"  name="descripcion" rows="3"></textarea>
                   </div>
              
-                
-                 <div class="form-group">
-                    <label for="category">Categorías</label>
-                    <input type="text" class="form-control" id="category" name="category">
-                
-                    
+  
+                <div class="form-group">
+                    <label for="category">Categorias</label>
+                    <select class="form-control" name="category" id="category">
+                        <option value="-1">Seleccione una Categoria</option>
+                        <%
+                            for (Category category : categories) {
+                        %>
+                        <option value="<%= category.getId()%>"><%= category.getName()%></option>
+                        <%
+                            }
+                        %>
+                    </select>
                 </div>
+
                         
                          <div class="form-group">
                         <label for="image">Imagen</label>

@@ -112,5 +112,46 @@ public class NewsDAO {
        return news; 
     }
     
+   
+        public static News getNew(int idNews) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL getNew(?);";
+            CallableStatement statement = con.prepareCall(sql);
+            
+            statement.setInt(1, idNews);
+            
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                int id = result.getInt(1);
+                String title = result.getString(2);
+                String description = result.getString(3);
+                String pathImage = result.getString(4);
+                int idCategory = result.getInt(5);
+                Category category = CategoryDAO.getCategory(idCategory);
+                return new News(id, title, description, pathImage, category);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return null;
+    }
+
+    
+    
+    
+    
+    
+    
     
 }

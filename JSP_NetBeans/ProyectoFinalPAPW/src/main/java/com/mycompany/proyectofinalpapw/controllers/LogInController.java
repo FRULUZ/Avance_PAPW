@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyectofinalpapw.controllers;
-
 import com.mycompany.proyectofinalpapw.dao.UserDAO;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;

@@ -5,13 +5,15 @@
 --%>
 
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page import="java.util.List"%>
-<%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    List<News> news = (List<News>) request.getAttribute("News");
+    
+        List<News> news = NewsDAO.getNews();
+        request.setAttribute("News", news);
 %>
 
 
@@ -53,6 +55,24 @@
         <br>
 
     </p>
+    
+  
+    <div class="jirei-post-list">
+        
+        
+        if ( is_user_logged_in() ) {
+        $current_user = wp_get_current_user();
+        if ( ($current_user instanceof WP_User) ) {
+        echo get_avatar( $current_user->ID, 64 );
+        echo ' </br>¡Hola ' . esc_html( $current_user->display_name . '!');
+        }
+        }
+        
+        
+    </div>
+    
+    
+    
     
 
     <div class="carusin">
@@ -107,72 +127,49 @@
     </p>
 
 
-    <div class="container">
+    
+    
+    
+    
+    
+        
+    <div class="row">
+                <h2 class="col-12">Noticias</h2>
 
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/538/167/large/jacen-chio-1.jpg?1600896024"
-                        class="d-block w-100" alt="...">
+                <%
+                    for (News element : news) {
+                %>
+                <div class="card mb-3 col-12 news-card" >
+                    <a href="ShowNewsController?id=<%= element.getId() %>">
+                        <div class="row no-gutters"
+                            <div class="col-md-4">
+                                <img src="<%= element.getPathImage()%>" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= element.getTitle()%></h5>
+                                    <p class="card-text"><%= element.getDescription()%></p>
+                                    <p class="card-text"><small class="text-muted"><%= element.getCategory().getName()%></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/538/179/large/jacen-chio-3.jpg?1600896060"
-                        class="d-block w-100" alt="...">
-                </div>
+                <%
+                    }
+                %>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
 
-        <div id="mainnews">
-
-            <div class="row">
-
-                <div class="card col">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/352/717/large/sabina-finx-diorama1.jpg?1600343913"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la noticia</h5>
-                        <p class="card-text">Aquí debería ir el subtítulo de la noticia</p>
-                        <a href="#" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-
-
-                <div class="card col">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/352/717/large/sabina-finx-diorama1.jpg?1600343913"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la noticia</h5>
-                        <p class="card-text">Aquí debería ir el subtítulo de la noticia</p>
-                        <a href="#" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-
-
-                <div class="card col">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/352/717/large/sabina-finx-diorama1.jpg?1600343913"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Título de la noticia</h5>
-                        <p class="card-text">Aquí debería ir el subtítulo de la noticia</p>
-                        <a href="#" class="btn btn-primary">Leer más</a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</body>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 <p>

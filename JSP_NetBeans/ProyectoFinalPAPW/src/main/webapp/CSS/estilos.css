@@ -17,6 +17,13 @@ background-image: url(https://i.pinimg.com/originals/36/eb/a6/36eba6308f711872ce
 }
 
 
+.news-card a {
+    text-decoration: none;
+    color: #111;
+}
+
+
+
 .Menu{
 
     font-family: 'Source Sans Pro', sans-serif;

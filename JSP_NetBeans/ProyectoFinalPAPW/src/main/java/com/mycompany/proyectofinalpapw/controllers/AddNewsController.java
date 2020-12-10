@@ -84,24 +84,18 @@ public class AddNewsController extends HttpServlet {
         News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
         NewsDAO.insertNews(newNews);
         
+        
+        
+        
         List<Category> categories = CategoryDAO.getCategories();
         List<News> news = NewsDAO.getNews();
+        
+        
         request.setAttribute("Categories", categories);
         request.setAttribute("News", news);
-        
         request.getRequestDispatcher("index.jsp").forward(request, response);
-
-       
+        
+        
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

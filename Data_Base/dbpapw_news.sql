@@ -16,30 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `news`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `news`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(45) DEFAULT NULL,
-  `Password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUser`),
-  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `news` (
+  `idnews` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(60) DEFAULT NULL,
+  `description` text,
+  `pathImage` varchar(60) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idnews`),
+  UNIQUE KEY `idnews_UNIQUE` (`idnews`),
+  KEY `fk_news_category_idx` (`category`),
+  CONSTRAINT `fk_news_category` FOREIGN KEY (`category`) REFERENCES `category` (`idcategory`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `news`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra'),(2,'Eddy','123'),(5,'mari','456'),(7,'yadira','nose'),(8,'diosito','aiuda');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `news` WRITE;
+/*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (7,'es','un','Assets/images/image1606819641718.jpg',1),(8,'Lo logre senor','lo pude solucionar','Assets/images/image1607573053006.jpg',3),(9,'El directa ya no pasa','no ha pasado!!!','Assets/images/image1607582749508.png',2),(10,'segunda','nose','Assets/images//image1607582939302.png',1),(11,'tercera','nose','Assets//images//image1607583021725.ext',1);
+/*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -16,30 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(45) DEFAULT NULL,
-  `Password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUser`),
-  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `category` (
+  `idcategory` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcategory`),
+  UNIQUE KEY `idcategory_UNIQUE` (`idcategory`),
+  KEY `fk_parent_category_idx` (`parent`),
+  CONSTRAINT `fk_parent_category` FOREIGN KEY (`parent`) REFERENCES `category` (`idcategory`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra'),(2,'Eddy','123'),(5,'mari','456'),(7,'yadira','nose'),(8,'diosito','aiuda');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'COMICS',3,NULL),(2,'VIDEOJUEGOS',1,NULL),(3,'ANIME',2,NULL);
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-10  3:06:51
+-- Dump completed on 2020-12-10  3:06:50

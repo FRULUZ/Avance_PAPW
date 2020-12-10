@@ -16,30 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `commentary`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `commentary`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(45) DEFAULT NULL,
-  `Password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idUser`),
-  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`)
+CREATE TABLE `commentary` (
+  `idcommentary` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text,
+  `idNews` int(11) DEFAULT NULL,
+  `idUser` int(11) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idcommentary`),
+  UNIQUE KEY `idcommentary_UNIQUE` (`idcommentary`),
+  KEY `fk_user_commentary_idx` (`idUser`),
+  KEY `fk_news_commentary_idx` (`idNews`),
+  CONSTRAINT `fk_news_commentary` FOREIGN KEY (`idNews`) REFERENCES `news` (`idnews`),
+  CONSTRAINT `fk_user_commentary` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `commentary`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra'),(2,'Eddy','123'),(5,'mari','456'),(7,'yadira','nose'),(8,'diosito','aiuda');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `commentary` WRITE;
+/*!40000 ALTER TABLE `commentary` DISABLE KEYS */;
+INSERT INTO `commentary` VALUES (1,'Primer comentario',11,1,0),(2,'Primer comentario',11,1,0),(3,'Primer comentario',11,1,0),(4,'Primer comentario',11,1,0),(7,'Primer comentario',11,1,0),(8,'Primer comentario',11,1,0),(9,'Primer comentario',11,1,0);
+/*!40000 ALTER TABLE `commentary` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
