@@ -32,6 +32,13 @@
 
   <body>
       
+          <jsp:include page="NavBar.jsp"/>
+
+    <p>
+        <br>
+
+    </p>
+      
 
    <div class="container-md">
     <h1 class="titulito">Bienvenido editor</h1>
@@ -40,6 +47,10 @@
    
 
     <div class="container-md">
+        
+        
+   
+        
 
         <form>
 

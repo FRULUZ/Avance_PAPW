@@ -48,7 +48,8 @@ public class LogInController extends HttpServlet {
           HttpSession session = request.getSession();
           session.setAttribute("id", logIn.getId());
           session.setAttribute("username", logIn.getUsername());
-          response.sendRedirect("SignInSuccess.jsp");
+          
+          response.sendRedirect("VerUsuario.jsp");
           
         }
     }

@@ -8,13 +8,17 @@ and open the template in the editor.
     Author     : EDGAR
 */
 
-body{
-    
-    font-family: 'Source Sans Pro', sans-serif;
-    background-color: rgb(0,47, 89);
-background-image: url(https://i.pinimg.com/originals/36/eb/a6/36eba6308f711872ce0b7f353c7f6728.jpg);
+    body 
+            {
+                min-height: 100vh;
+                background-color: #feb54b;
+                font-family: 'Source Sans Pro', sans-serif;
+            }
 
-}
+
+ h1.text-center{ 
+        color: black; 
+      } 
 
 
 .news-card a {

@@ -59,84 +59,24 @@
   <body>
     
 
+   <jsp:include page="NavBar.jsp"/>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-      <a class="navbar-brand" href="#">GeekSquad</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
+    <p>
+        <br>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">Games <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Movies</a>
-              </li>
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Comics
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Animation</a>
-              </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-          </form>
-      </div>
-   </nav>
+    </p>
+    
+  
 
    <div class="container-md">
     <h1 class="center">Bienvenido</h1>
-    <h5 class="center"> Es hora de iniciar tu registro</h5>
+    <h5 class="center"> Es hora de iniciar tú registro</h5>
    </div>
 
    <div class="container">
 
     <div class="container py-3">
 
-
-        <div class="container">
-
-            <p>Poner imagenes</p>
-
-            <!-- bootstrap-imageupload. -->
-            <div class="imageupload panel panel-default">
-                <div class="panel-heading clearfix">
-                    <h3 class="panel-title pull-left">Select Image file</h3>
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default active">File</button>
-                        <button type="button" class="btn btn-default">URL</button>
-                    </div>
-                </div>
-                <div class="file-tab panel-body">
-                    <label class="btn btn-primary btn-file">
-                        <span>Browse</span>
-                        <!-- The file is stored here. -->
-                        <input type="file" name="image-file">
-                    </label>
-                    <button type="button" class="btn btn-danger">Delete image</button>
-                </div>
-                <div class="url-tab panel-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control hasclear" placeholder="Image URL">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default">Submit</button>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-default">Remove</button>
-                    <!-- The URL is stored here. -->
-                    <input type="hidden" name="image-url">
-                </div>
-            </div>
-
-        </div>
 
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -163,46 +103,27 @@
             </div>
             
             
-             <%-- 
+              
             <div class="form-group">
               <label for="ingresaCorreo">Correo</label>
-              <input type="text" class="form-control" id="ingresaApodo" placeholder="De preferencia en uso (●'◡'●)">
+              <input type="text"   name="correo" class="form-control" id="ingresaCorreo" placeholder="De preferencia en uso (●'◡'●)">
             </div>
             
-            --%>
+            
             
             <div class="form-group" >
                 
-                <input class="btn btn-primary" type="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" value="Crear usuario">
                 
                 <%-- <a class="btn btn-info" href="#" role="button">Registrar</a>--%>
                 
             </div>
             
-              <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar</a>
+              <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar cuenta</a>
         </form> 
     </div>
 
    </div>
-
-
-
-
-
-
-
-
-
-
-   <form action="/examples/actions/confirmation.php" method="post">
-    <p>
-        <input type="file" name="photo" onchange="previewFile(this);" required>
-    </p>
-    <img id="previewImg" src="/examples/images/transparent.png" alt="Placeholder">
-    <p>
-        <input type="submit" value="Submit">            
-    </p>        
-</form>
 
 
   </body>

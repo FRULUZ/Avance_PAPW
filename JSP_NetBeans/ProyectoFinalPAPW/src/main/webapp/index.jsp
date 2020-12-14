@@ -10,6 +10,9 @@
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
+
+
 <%
     
         List<News> news = NewsDAO.getNews();
@@ -57,22 +60,6 @@
     </p>
     
   
-    <div class="jirei-post-list">
-        
-        
-        if ( is_user_logged_in() ) {
-        $current_user = wp_get_current_user();
-        if ( ($current_user instanceof WP_User) ) {
-        echo get_avatar( $current_user->ID, 64 );
-        echo ' </br>¡Hola ' . esc_html( $current_user->display_name . '!');
-        }
-        }
-        
-        
-    </div>
-    
-    
-    
     
 
     <div class="carusin">
@@ -84,7 +71,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/538/167/large/jacen-chio-1.jpg?1600896024"
+                    <img src="assets/images/pag7.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia destacada de la semana</h5>
@@ -92,7 +79,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/538/167/large/jacen-chio-1.jpg?1600896024"
+                    <img src="assets/images/pag7.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia #2 destacada de la semana</h5>
@@ -100,7 +87,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://cdnb.artstation.com/p/assets/images/images/030/538/167/large/jacen-chio-1.jpg?1600896024"
+                    <img src="assets/images/pag7.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia #3 destacada de la semana</h5>
@@ -126,24 +113,40 @@
         <br>
     </p>
 
+    <div class="container">
+  <!-- Content here -->
 
+    <h1 class="text-center">Noticias</h1>
     
     
+     <p>
+        <br>
+        <br>
+    </p>
     
     
+    <img src="assets/images/pag12.jpg" class="img-fluid" alt="Noticia">
     
-        
+    
+       <p>
+        <br>
+        <br>
+    </p>
+    
     <div class="row">
-                <h2 class="col-12">Noticias</h2>
 
+      
+                
                 <%
                     for (News element : news) {
                 %>
+                
+                
                 <div class="card mb-3 col-12 news-card" >
                     <a href="ShowNewsController?id=<%= element.getId() %>">
                         <div class="row no-gutters"
                             <div class="col-md-4">
-                                <img src="<%= element.getPathImage()%>" class="card-img" alt="...">
+                                <img src="assets/images/pag3.jpg" class="card-img" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -154,23 +157,15 @@
                             </div>
                         </div>
                     </a>
-                </div>
-                <%
+                                
+                                  <%
                     }
                 %>
-            </div>
-        </div>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
+           
+                                
+                </div>
+              
+    </div>
 
 <p>
     <br>
@@ -182,15 +177,6 @@
 
 
     <div class="footer-limiter">
-
-
-        <div class="footer-right">
-    
-
-            <a href="https://github.com/FRULUZ/Avance_PAPW"><i class="fa fa-github"></i></a>
-        
-        </div>
-
 
 
         <div class="footer-left">

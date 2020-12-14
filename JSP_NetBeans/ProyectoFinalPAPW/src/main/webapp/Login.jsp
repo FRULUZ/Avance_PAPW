@@ -31,14 +31,25 @@
 
 <body>
       <!----Título--->
+          
+      <div class="container" align="center" >
 
-      <div class="container">
+      <p>
+        <br> <br>
+        <br> <br>
+        <br> <br>
+        <br> <br>
+      </p>
 
       <h1>GeekSquad</h1>
       <h2>Informate de lo nuevo del mundo geek!</h2>
         <!----FORM PARA INGRESAR A LA PAGINA--->
-        
-     
+
+
+    <p>
+        <br>
+        <br>
+    </p>
         
          <form class="col-12" action="LogInController" method="POST">
 
@@ -46,12 +57,19 @@
                 <label for="ingresa un Nombre de Uusuario">Username</label>
                 <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Usuario">
             </div>
+             
+               <p>
+                <br>
+            </p>
 
             <div class="form-group">
               <label for="ingresa una contraseña">Password</label>
               <input type="password" name="password" class="form-control" id="ingresaContraseña" placeholder="Contraseña">
             </div>
             
+               <p>
+                <br>
+            </p>
             
             <div class="form-group" >
                 
@@ -60,45 +78,21 @@
                 <%-- <a class="btn btn-info" href="#" role="button">Registrar</a>--%>
                 
             </div>
+                
+                   <p>
+                <br>
+            </p>
+                
+                
+                
+                <div class="form-group">
+                 <a href="Registro.jsp" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Crear una cuenta</a>
+                </div>
+                
             
         </form> 
         
-   
-        <%-- 
-   
-
-        
-        <section class="form-login" action="LogInController" method="POST">
-           
-            
-             <!----FORM PARA INGRESAR A LA PAGINA--->
-            
-            <h5>Ingresar cuenta</h5>
-            
-            <input class="form-group" type="text" name="username"  value="" placeholder="Usuario">
-            <input class="form-group" type="password" name="password" value="" placeholder="Contraseña">
-            
-            <!--- <input class="buttons" type="submit"  name="" value="Ingresar" href="index.jsp"> ---->
-            
-             <!--- <a href="index.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar</a>--->
-             
-             
-             <input class="btn btn-primary" type="submit" value="Submit">
-             
-            
-            <p><a href="Registro.jsp">Crear una cuenta</a></p>
-            
-            
-        </section>
   
-                
-                
-                
-                
-                
-          --%>
-                
-                
                 
                 
                 

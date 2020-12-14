@@ -12,8 +12,11 @@ package com.mycompany.proyectofinalpapw.models;
 public class User {
     
     private int id;
+    private int tipo_user;
     private String username; 
     private String password;
+    
+    
     
     
     public User(){

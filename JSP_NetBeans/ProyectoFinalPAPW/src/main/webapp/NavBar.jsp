@@ -52,12 +52,7 @@ request.setAttribute("Categories", categories);
                     </div>
                 </div>
 
-               
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="VerNoticia.jsp">Noticias <span class="sr-only">(current)</span></a>
-
-                </li>
+             
 
                 <li class="nav-item">
                     <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
@@ -72,11 +67,18 @@ request.setAttribute("Categories", categories);
                     <a class="nav-link" href="Login.jsp">Log In <span class="sr-only">(current)</span></a>
                 </li>
 
-
+                <li class="nav-item">
+                    <a class="nav-link" href="VerUsuario.jsp">Ver perfil<span class="sr-only">(current)</span></a>
+                </li>
+                
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> Benvenid@: <%= session.getAttribute("username")%></a>
+                </li>
+        
+            
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
+         
         </div>
     </nav>

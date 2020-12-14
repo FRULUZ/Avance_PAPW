@@ -37,7 +37,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
         
-        <link rel="stylesheet" type="text/css" href="/CSS/estilos.css">
+        <link rel="stylesheet" type="text/css" href="/CSS/logoff_style.css">
 
 </head>
 
@@ -45,43 +45,12 @@
 
     <!----EN ESTA PARTE VA EL NAVBAR--->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <a class="navbar-brand" href="#">GeekSquad</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+ <jsp:include page="NavBar.jsp"/>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Games <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Movies</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Comics
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">DC</a>
-                        <a class="dropdown-item" href="#">Marvel</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Image</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Animation</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar noticia</button>
-            </form>
-        </div>
-    </nav>
+    <p>
+        <br>
+
+    </p>
 
 
 
@@ -99,28 +68,21 @@
             <h3 class="fieldset-title">Perfil del usuario</h3>
             <form class="form-horizontal">
                 <fieldset class="fieldset">
+            
                     
-                    <div class="form-group avatar">
-                        <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                            <img class="img-rounded img-responsive" src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                                alt="">
-                        </figure>
-                        <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                            <input type="file" class="file-uploader pull-left">
-                            <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre de usuario</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" value="Rebecca">
+                             <input class="form-control" type="text" placeholder=<%= session.getAttribute("username")%> readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Correo</label>
+                        
+                        
+                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Id</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" value="Rebecca">
+                           <input class="form-control" type="text" placeholder=<%= session.getAttribute("id")%> readonly>
                         </div>
                     </div>
 
@@ -130,14 +92,30 @@
                             <input type="text" class="form-control" value="Solo ver no actualizar" readonly>
                         </div>
                     </div>
-      
+                    
+                    <div>
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Noticias que me gustan
+                        </button>
+
+                        <class class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Noticia me gusta 1</a>
+                            <a class="dropdown-item" href="#">Noticia me gusta 2</a>
+                            <a class="dropdown-item" href="#">Noticia me gusta 3</a>
+
+                        </class>
+
+                    </div> 
+
+                         
                 </fieldset>
              
                 <hr>
                 <div class="form-group">
                     <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                         <input class="btn btn-primary" type="submit" value="Modificar datos">
-                        <button type="button" class="btn btn-danger">Eliminar cuenta</button>
+                         <input class="btn btn-primary" type="submit" value="Eliminar cuenta">
+                         <a class="btn btn-primary" href="Logoff.jsp" role="button">Salir</a>
                     </div>
                 </div>
             </form>
@@ -146,34 +124,6 @@
     </section>
     </div>
     </div>
-
-
-
-
-      <div class="container">
-        <h2>Notificación</h2>
-    
-        <div class="alert alert-info">
-          <strong>Info!</strong> Su noticia no fue publicada por falta de texto solo para creadores.
-        </div>
-        </div>
-
-
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Noticias que me gustan
-            </button>
-            <class class="dropdown-menu">
-              <a class="dropdown-item" href="#">Noticia me gusta 1</a>
-              <a class="dropdown-item" href="#">Noticia me gusta 2</a>
-              <a class="dropdown-item" href="#">Noticia me gusta 3</a>
-    
-          </class>
-
-
-      </div>
-      
 
 
 

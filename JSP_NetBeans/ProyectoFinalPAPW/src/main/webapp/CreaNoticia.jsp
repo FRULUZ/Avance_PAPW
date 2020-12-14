@@ -58,9 +58,8 @@ request.setAttribute("Categories", categories);
     
     
   <header class="text-white text-center">
-    <h1 class="display-4">CREAR UNA NOTICIA</h1>
-    <p class="lead mb-0">Redacta una nueva noticia:</p>
-    <img src="https://res.cloudinary.com/mhmd/image/upload/v1564991372/image_pxlho1.svg" alt="" width="150" class="mb-4">
+    <h1 class="display-4">REDACTA UNA NOTICIA</h1>
+
 </header>
 
 <p>
@@ -68,25 +67,6 @@ request.setAttribute("Categories", categories);
 
 </p>
 
-<div class="row py-4">
-    <div class="col-lg-6 mx-auto">
-
-        <!-- Upload image input-->
-        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-            <label id="upload-label" for="upload" class="font-weight-light text-muted">Cargar una imágen</label>
-            <div class="input-group-append">
-                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Elije un archivo</small></label>
-            </div>
-        </div>
-
-        <!-- Uploaded image area-->
-        <p class="font-italic text-white text-center">La(s) imágenes cargadas se mostrarán en la caja de abajo: </p>
-        <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-
-    </div>
-</div>
-</div>
 
 
 
@@ -94,7 +74,6 @@ request.setAttribute("Categories", categories);
         
                <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController">
                 
-                <h1>Redacta una nueva noticia: </h1>
                 
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Título de la noticia</label>

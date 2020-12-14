@@ -158,69 +158,6 @@
 </div>
 
 
-    <!----EN ESTA PARTE VA LA SECCION DE LA BARRA DE PROGRESO DE LAS ESTRELLAS---->
-
-    <div class="container mt-5">
-        <div class="card">
-            <div class="row no-gutters">
-                <div class="col-md-4 border-right">
-                    <div class="ratings text-center p-4 py-5"> <span class="badge bg-success">4.1 <i
-                                class="fa fa-star-o"></i></span> <span class="d-block about-rating">MUY BUENA CALIFICACION</span>
-                        <span class="d-block total-ratings">183 votos</span> </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="rating-progress-bars p-3 mt-2">
-                        <div class="d-flex align-items-center"> <span class="stars"> <span>5 <i
-                                        class="fa fa-star text-success"></i></span> </span>
-                            <div class="col px-2">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div> <span class="percent"> <span>80%</span> </span>
-                        </div>
-                        <div class="d-flex align-items-center"> <span class="stars"> <span>4 <i
-                                        class="fa fa-star text-custom"></i></span> </span>
-                            <div class="col px-2">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-custom" role="progressbar" style="width: 65%;"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div> <span class="percent"> <span>65%</span> </span>
-                        </div>
-                        <div class="d-flex align-items-center"> <span class="stars"> <span>3 <i
-                                        class="fa fa-star text-primary"></i></span> </span>
-                            <div class="col px-2">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%;"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div> <span class="percent"> <span>55%</span> </span>
-                        </div>
-                        <div class="d-flex align-items-center"> <span class="stars"> <span>2 <i
-                                        class="fa fa-star text-warning"></i></span> </span>
-                            <div class="col px-2">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div> <span class="percent"> <span>35%</span> </span>
-                        </div>
-                        <div class="d-flex align-items-center"> <span class="stars"> <span>1 <i
-                                        class="fa fa-star text-danger"></i></span> </span>
-                            <div class="col px-2">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 65%;"
-                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div> <span class="percent"> <span>65%</span> </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!----EN ESTA PARTE VA LA SECCION DE COMENTARIOS---->
 
     <div class="container">
@@ -240,10 +177,9 @@
                             <br>
                             <input type="submit" class="btn btn-success" value="Postear comentario">
                             <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                            
                             </form>
-                            
-                            
-                            
+                           
                             
                             
                             <div class="clearfix"></div>
@@ -251,19 +187,14 @@
                             <ul class="media-list">
                                 <li class="media">
 
-                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
-                                        class="img img-rounded img-fluid" />
-
-                                    <div class="media-body">
-                                        <span class="text-muted pull-right">
-                                         <button type="button" class="btn btn-danger" onclick="">Eliminar</button>
+                                 
+                                   
                                  
                                                      <%
                         for (Commentary commentary : commentaries) {
                     %>
                 
-                    
-                    <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
+               
                                         
                                          <li class="media">
                                     <a href="#" class="pull-left">
@@ -276,7 +207,11 @@
                                         <strong class="text-success"><%= commentary.getUser().getUsername() %></strong>
                                         <p>
                                             <%= commentary.getContent() %>
+                                            
                                         </p>
+                                        
+                                             
+                    <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
                                     </div>
                                 </li>
   
