@@ -12,7 +12,6 @@ import com.mycompany.proyectofinalpapw.models.News;
 import com.mycompany.proyectofinalpapw.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -68,6 +67,7 @@ public class AddNewsController extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("descripcion");
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
+        
         Part file = request.getPart("image");
 
         String path = request.getServletContext().getRealPath("");

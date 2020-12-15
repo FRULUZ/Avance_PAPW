@@ -7,18 +7,23 @@ package com.mycompany.proyectofinalpapw.controllers;
 
 import com.mycompany.proyectofinalpapw.dao.UserDAO;
 import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.utils.FileUtils;
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author EDGAR
  */
 @WebServlet(name = "SignInController", urlPatterns = {"/SignInController"})
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 25)
 public class SignInController extends HttpServlet {
 
  
@@ -33,9 +38,31 @@ public class SignInController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = new User(username, password); 
+        int tipo = Integer.parseInt(request.getParameter("tipo"), 10);
+        String correo = request.getParameter("correo");    
+        String red = request.getParameter("red");
+        
+        
+        
+        
+        Part file = request.getPart("image");
+
+        String path = request.getServletContext().getRealPath("");
+        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        
+        String contentType = file.getContentType();
+        String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
+        file.write(fullPath);
+       
+        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
         
         if(UserDAO.signInUser(user) == 1){
         

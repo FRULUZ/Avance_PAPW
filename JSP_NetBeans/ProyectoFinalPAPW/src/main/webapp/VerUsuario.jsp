@@ -70,6 +70,8 @@
                 <fieldset class="fieldset">
             
                     
+                    <img src=<%= session.getAttribute("image")%> class="img-thumbnail" alt="...">
+                    
                     <div class="form-group">
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre de usuario</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
@@ -89,7 +91,7 @@
                     <div class="form-group">
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" value="Solo ver no actualizar" readonly>
+                            <input type="text" class="form-control" value=<%= session.getAttribute("tipo")%> readonly>
                         </div>
                     </div>
                     

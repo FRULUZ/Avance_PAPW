@@ -146,7 +146,7 @@
                     <a href="ShowNewsController?id=<%= element.getId() %>">
                         <div class="row no-gutters"
                             <div class="col-md-4">
-                                <img src="assets/images/pag3.jpg" class="card-img" alt="...">
+                                <img src= <%= element.getPathImage()%> class="card-img" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

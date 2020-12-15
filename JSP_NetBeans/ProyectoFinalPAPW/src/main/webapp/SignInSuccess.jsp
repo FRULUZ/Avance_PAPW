@@ -33,6 +33,11 @@
 <body>
     
     
+    
+    <%--Al crear usuario no me pone el usuario actual, hasta hacer login--%>
+    <%--me agrega un boton de cerrar session, debo poner uno para mandar al login--%>
+    
+    
       <jsp:include page="NavBar.jsp"/>
     
     <div class="container">

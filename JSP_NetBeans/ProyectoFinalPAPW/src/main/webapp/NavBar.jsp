@@ -62,22 +62,49 @@ request.setAttribute("Categories", categories);
                 <li class="nav-item">
                     <a class="nav-link" href="Editor.jsp">Editor <span class="sr-only">(current)</span></a>
                 </li>
+               
                 
-                  <li class="nav-item">
-                    <a class="nav-link" href="Login.jsp">Log In <span class="sr-only">(current)</span></a>
-                </li>
+                
+                  <%
+                      
+                 if(session.getAttribute("username") !=null){
 
-                <li class="nav-item">
-                    <a class="nav-link" href="VerUsuario.jsp">Ver perfil<span class="sr-only">(current)</span></a>
-                </li>
+                %>
                 
                 
+            
                 
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"> Benvenid@: <%= session.getAttribute("username")%></a>
                 </li>
         
             
+                <nav class="navbar navbar-light bg-light">
+                    <a class="navbar-brand" href="#">
+                        <img src= <%= session.getAttribute("image")%> width="30" height="30" alt="">
+                    </a>
+                </nav>
+                    
+                    
+                <li class="nav-item">
+                    <a class="nav-link" href="VerUsuario.jsp">Ver perfil<span class="sr-only">(current)</span></a>
+                </li>
+                    
+                    
+                 <%
+                  }else{
+                  
+                %>    
+                
+                 <li class="nav-item">
+                    <a class="nav-link" href="Login.jsp">Log In <span class="sr-only">(current)</span></a>
+                </li>
+                
+                   <%
+                       }
+                  
+                %>   
+                
             </ul>
          
         </div>

@@ -91,32 +91,10 @@
 <!-- AREA DE LA FOTO Y NOMBRE DEL USUARIO -->
 
 <div class="container">
-    <div class="row profile">
-        <div class="col-md-3">
-            <div class="profile-sidebar">
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid" />
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                      Nombre del usuario
-                    </div>
-                    <div class="profile-usertitle-job">
-                        Usuario cómun/editor/creador
-                    </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Ver perfil</button>
-                </div>
-            </div>
-        </div>
-</div>
+   
+   
+    
+    
 <br>
 <br>
 

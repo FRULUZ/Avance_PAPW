@@ -4,8 +4,12 @@
     Author     : EDGAR
 --%>
 
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+
 <html lang="en">
   <head>
     <title>Registro</title>
@@ -31,25 +35,6 @@
     <link rel="stylesheet" type="text/css" href="CSS/apariencia.css">
 
 
-
-    <meta charset="utf-8">
-<title>jQuery Preview an Image Before it is Uploaded</title>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    function previewFile(input){
-        var file = $("input[type=file]").get(0).files[0];
- 
-        if(file){
-            var reader = new FileReader();
- 
-            reader.onload = function(){
-                $("#previewImg").attr("src", reader.result);
-            }
- 
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
 
     
   </head>
@@ -90,7 +75,16 @@
 
 
 
-        <form class="col-12" action="SignInController" method="POST">
+        <form class="col-12"  method="POST" enctype="multipart/form-data" action="SignInController">
+            
+    </div>
+
+
+    <div class="form-group">
+        <label for="image">Imagen del perfil</label>
+        <input type="file" class="form-control" name="image" id="image">
+        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+    </div>
 
             <div class="form-group">
                 <label for="ingresa un Nombre de Uusuario">Username</label>
@@ -103,20 +97,41 @@
             </div>
             
             
-              
             <div class="form-group">
-              <label for="ingresaCorreo">Correo</label>
+              <label for="ingresa un Correo">Correo</label>
               <input type="text"   name="correo" class="form-control" id="ingresaCorreo" placeholder="De preferencia en uso (●'◡'●)">
             </div>
             
             
+             <div class="form-group">
+              <label for="ingresa una Red Social">Red social</label>
+              <input type="text"   name="red" class="form-control" id="ingresaCorreo" placeholder="Ingresa nombre de la cuenta">
+            </div>
+            
+            
+                <label for="image">Tipo de usuario a registrar: </label>
+            
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio1" value= 1>
+                <label class="form-check-label" for="inlineRadio1">Usuario cómun</label>
+            </div>
+            
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio2" value= 2>
+                <label class="form-check-label" for="inlineRadio2">Editor</label>
+            </div>
+            
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio3" value= 3>
+                <label class="form-check-label" for="inlineRadio3">Creador de contenido</label>
+            </div>
+            
+
             
             <div class="form-group" >
                 
                 <input class="btn btn-primary" type="submit" value="Crear usuario">
-                
-                <%-- <a class="btn btn-info" href="#" role="button">Registrar</a>--%>
-                
+   
             </div>
             
               <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar cuenta</a>

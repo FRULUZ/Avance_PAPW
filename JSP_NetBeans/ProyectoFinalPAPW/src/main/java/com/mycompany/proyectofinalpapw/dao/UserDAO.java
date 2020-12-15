@@ -29,11 +29,15 @@ public static int signInUser(User user){
        try{
         
         con = DbConnection.getConnection();
-        CallableStatement statement = con.prepareCall("call signIn(?,?)");
-        
+        CallableStatement statement = con.prepareCall("call signIn(?,?,?,?,?,?)");
+    
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getPassword());
-                
+        statement.setInt(3, user.getTipo_user());
+        statement.setString(4, user.getCorreo());
+        statement.setString(5, user.getPath_user());
+        statement.setString(6, user.getRed());
+        
         return statement.executeUpdate();
         
     }catch(SQLException ex){
@@ -66,7 +70,7 @@ public static User LogInUser(User user){
         
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getPassword());
-                
+        
        ResultSet result = statement.executeQuery();
        
        while(result.next()){
@@ -97,9 +101,13 @@ public static User LogInUser(User user){
 
             ResultSet result = statement.executeQuery();
             while (result.next()) {
+                
+                
                 int id = result.getInt(1);
                 String username = result.getString("username");
                 return new User(id, username);
+                
+                
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

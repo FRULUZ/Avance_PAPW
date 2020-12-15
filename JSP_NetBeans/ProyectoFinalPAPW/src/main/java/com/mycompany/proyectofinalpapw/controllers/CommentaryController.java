@@ -37,7 +37,7 @@ public class CommentaryController extends HttpServlet {
          String content = request.getParameter("commentary");
          String idNews = request.getParameter("idNews");
          
-         CommentaryDAO.insertCommentary(new Commentary(content,Integer.parseInt(idNews),new User(1),0));
+        CommentaryDAO.insertCommentary(new Commentary(content,Integer.parseInt(idNews),new User(1),0));
         request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
          
          

@@ -7,7 +7,6 @@ package com.mycompany.proyectofinalpapw.controllers;
 import com.mycompany.proyectofinalpapw.dao.UserDAO;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,10 +32,14 @@ public class LogInController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         String username = request.getParameter("username");
+        throws ServletException, IOException {
+        
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = new User(username, password);
+        String imagen = request.getParameter("image");
+        
+        User user = new User(username, password, imagen);
+        
         User logIn = UserDAO.LogInUser(user);
         
         if(logIn == null){
@@ -48,6 +51,7 @@ public class LogInController extends HttpServlet {
           HttpSession session = request.getSession();
           session.setAttribute("id", logIn.getId());
           session.setAttribute("username", logIn.getUsername());
+          session.setAttribute("image", logIn.getPath_user());
           
           response.sendRedirect("VerUsuario.jsp");
           
