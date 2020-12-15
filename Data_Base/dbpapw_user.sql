@@ -26,10 +26,14 @@ CREATE TABLE `user` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(45) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
+  `Tipo_user` int(11) DEFAULT NULL,
+  `Correo` varchar(60) DEFAULT NULL,
+  `image` varchar(60) DEFAULT NULL,
+  `Redes` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +42,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra'),(2,'Eddy','123'),(5,'mari','456'),(7,'yadira','nose'),(8,'diosito','aiuda');
+INSERT INTO `user` VALUES (1,'lalo','contra',NULL,NULL,NULL,NULL),(2,'Eddy','123',NULL,NULL,NULL,NULL),(7,'yadira','nose',1,NULL,NULL,NULL),(10,'revison','789',NULL,NULL,NULL,NULL),(13,'Edgarin','nose9',2,'edo_hotmail.com','assets/images/image1607982303374.jpg','edoberto99'),(14,'yadirin','nose10',1,'eli_hotmail.com','assets/images/image1607986032007.png','eliza');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-10  3:06:51
+-- Dump completed on 2020-12-15 14:18:14
