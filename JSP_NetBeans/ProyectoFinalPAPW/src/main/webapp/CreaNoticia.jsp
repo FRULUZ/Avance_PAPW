@@ -72,24 +72,31 @@ request.setAttribute("Categories", categories);
 
     <div class="container">
         
-               <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController">
+               <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController" name="Form1" onsubmit="return emptyValidation()" required>
                 
                 
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Título de la noticia</label>
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 
                   <div class="form-group">
-                 <label for="descripcion">Descripción</label>
-                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3"></textarea>
+                 <label for="descripcion">Nota de la noticia</label>
+                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required></textarea>
                   </div>
-             
+                   
+                   
+              
+                   <div class="form-group">
+                       <label for="exampleFormControlInput1">Descripción corta</label>
+                       <input type="text" class="form-control" id="title" name="corta" required>
+                   </div>
+
   
                 <div class="form-group">
-                    <label for="category">Categorias</label>
-                    <select class="form-control" name="category" id="category">
-                        <option value="-1">Seleccione una Categoria</option>
+                    <label for="category">Categorías</label>
+                    <select class="form-control" name="category" id="category" required>
+                        <option value="-1">Seleccione una categoría</option>
                         <%
                             for (Category category : categories) {
                         %>
@@ -101,13 +108,25 @@ request.setAttribute("Categories", categories);
                 </div>
 
                         
-                         <div class="form-group">
+                    <div class="form-group">
                         <label for="image">Imagen</label>
-                        <input type="file" class="form-control" name="image" id="image">
+                        <input type="file" class="form-control" name="image" id="image" required>
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
 
-                
+              
+                        <div class="form-group">
+                        <label for="image">Imagen 2</label>
+                        <input type="file" class="form-control" name="image2" id="image" required>
+                        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="image">Imagen 3</label>
+                        <input type="file" class="form-control" name="image3" id="image" required>
+                        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                    </div>
                 
                 <div class="botoncin">
                     <button class="btn btn-primary" type="submit">Subir noticia</button>

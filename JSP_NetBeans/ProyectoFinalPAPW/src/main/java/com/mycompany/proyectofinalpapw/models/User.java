@@ -69,6 +69,15 @@ public class User {
         this.path_user = path;
     }
 
+    public User(int id, String username, int tipo_user, String path_user) {
+        this.id = id;
+        this.username = username;
+        this.tipo_user = tipo_user;
+        this.path_user = path_user;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

@@ -30,7 +30,13 @@
 
 <head>
     
+    
+    
+    
     <title>Noticia</title>
+    
+    
+    
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -65,8 +71,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="CSS/style.css">
-
-
+   
+    
+    
 </head>
 
 
@@ -110,11 +117,20 @@
 </div>
 
      <small class="col-12 text-muted">Categoría: <%= element.getCategory().getName()%></small>
+
+  
+     <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="Assets/videos/trailer1.mp4" ></iframe>
+</div>
+     
     
     <img src="<%= element.getPathImage()%>" class="img-thumbnail" alt="...">
     
 
 <div class="profile-content"> <%= element.getDescription()%> </div>
+
+
+
 
 
 
@@ -168,7 +184,7 @@
                                  
                                    
                                  
-                                                     <%
+                     <%
                         for (Commentary commentary : commentaries) {
                     %>
                 

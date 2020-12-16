@@ -105,6 +105,9 @@ public static User LogInUser(User user){
                 
                 int id = result.getInt(1);
                 String username = result.getString("username");
+                int tipo = result.getInt(3);
+                String path = result.getString("image");
+                
                 return new User(id, username);
                 
                 

@@ -75,54 +75,62 @@
 
 
 
-        <form class="col-12"  method="POST" enctype="multipart/form-data" action="SignInController">
+    <form class="col-12"  method="POST" enctype="multipart/form-data" action="SignInController"  name="Form1" onsubmit="return emptyValidation()" required>
             
     </div>
 
 
     <div class="form-group">
         <label for="image">Imagen del perfil</label>
-        <input type="file" class="form-control" name="image" id="image">
+        <input type="file" class="form-control" name="image" id="image" required>
         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
     </div>
 
             <div class="form-group">
                 <label for="ingresa un Nombre de Uusuario">Username</label>
-                <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)">
+                <input type="text"  name="username"  class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)" required>
             </div>
-
+       
             <div class="form-group">
               <label for="ingresa una contraseña">Password</label>
-              <input type="password" name="password" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～">
+              <input type="password" name="password" maxlength="8" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～" required>
             </div>
-            
+       
             
             <div class="form-group">
-              <label for="ingresa un Correo">Correo</label>
-              <input type="text"   name="correo" class="form-control" id="ingresaCorreo" placeholder="De preferencia en uso (●'◡'●)">
-            </div>
-            
+                
+         
+                
+                <div>
+                <label for="emailAddress">Correo</label><br>
+                <input id="emailAddress" type="email" size="64" maxLength="64" required
+                       placeholder="De preferencia en uso (●'◡'●)" name="correo">
+                </div>
+
+                
+                
+             </div>
             
              <div class="form-group">
               <label for="ingresa una Red Social">Red social</label>
-              <input type="text"   name="red" class="form-control" id="ingresaCorreo" placeholder="Ingresa nombre de la cuenta">
+              <input type="text"   name="red" class="form-control" id="ingresaCorreo" placeholder="Ingresa nombre de la cuenta" required>
             </div>
             
             
                 <label for="image">Tipo de usuario a registrar: </label>
             
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio1" value= 1>
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio1" value= 1 required>
                 <label class="form-check-label" for="inlineRadio1">Usuario cómun</label>
             </div>
             
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio2" value= 2>
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio2" value= 2 required>
                 <label class="form-check-label" for="inlineRadio2">Editor</label>
             </div>
             
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio3" value= 3>
+                <input class="form-check-input" type="radio" name="tipo" id="inlineRadio3" value= 3 required>
                 <label class="form-check-label" for="inlineRadio3">Creador de contenido</label>
             </div>
             
@@ -136,6 +144,12 @@
             
               <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar cuenta</a>
         </form> 
+        
+        
+   
+   
+        
+        
     </div>
 
    </div>

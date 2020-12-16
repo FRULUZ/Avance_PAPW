@@ -10,7 +10,7 @@ package com.mycompany.proyectofinalpapw.utils;
  * @author EDGAR
  */
 public class FileUtils {
-    public static String RUTE_USER_IMAGE = "assets/images";
+    public static String RUTE_USER_IMAGE = "Assets/images";
     
     public static String GetExtension(String contentType) {
         switch (contentType) {

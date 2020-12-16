@@ -26,9 +26,13 @@
 <html>
 
 <head>
+    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME</title>
+    
+ 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -71,7 +75,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/images/pag7.jpg"
+                    <img src="Assets/images/image1.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia destacada de la semana</h5>
@@ -79,7 +83,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/pag7.jpg"
+                    <img src="Assets/images/image1.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia #2 destacada de la semana</h5>
@@ -87,7 +91,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/pag7.jpg"
+                    <img src="Assets/images/image1.jpg"
                         class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Noticia #3 destacada de la semana</h5>
@@ -125,7 +129,7 @@
     </p>
     
     
-    <img src="assets/images/pag12.jpg" class="img-fluid" alt="Noticia">
+    <img src="Assets/images/image2.jpg" class="img-fluid" alt="Noticia">
     
     
        <p>
@@ -146,7 +150,7 @@
                     <a href="ShowNewsController?id=<%= element.getId() %>">
                         <div class="row no-gutters"
                             <div class="col-md-4">
-                                <img src= <%= element.getPathImage()%> class="card-img" alt="...">
+                                <img width="30px" src= <%= element.getPathImage()%> class="card-img" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
