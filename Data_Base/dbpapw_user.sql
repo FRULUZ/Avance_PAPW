@@ -32,8 +32,9 @@ CREATE TABLE `user` (
   `Redes` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
-  UNIQUE KEY `UserName_UNIQUE` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `UserName_UNIQUE` (`UserName`),
+  UNIQUE KEY `Correo_UNIQUE` (`Correo`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra',NULL,NULL,NULL,NULL),(2,'Eddy','123',NULL,NULL,NULL,NULL),(7,'yadira','nose',1,NULL,NULL,NULL),(10,'revison','789',NULL,NULL,NULL,NULL),(13,'Edgarin','nose9',2,'edo_hotmail.com','assets/images/image1607982303374.jpg','edoberto99'),(14,'yadirin','nose10',1,'eli_hotmail.com','assets/images/image1607986032007.png','eliza');
+INSERT INTO `user` VALUES (1,'lalo','contra',NULL,NULL,NULL,NULL),(25,'Vane','lol',3,'vane_@hotmail.com','Assets/images/image1608247932398.jpg','vanesaaa99'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan'),(28,'eli','Ep123456',2,'eli_@hotmail.com','Assets/images/image1608536904201.png','yadira3'),(30,'pruebin2','EAop123457',2,'edo_@hotmail.com2','Assets/images/image1608538740288.jpg','edobertop');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-15 14:18:14
+-- Dump completed on 2020-12-21  2:48:02

@@ -75,10 +75,17 @@ public static User LogInUser(User user){
        
        while(result.next()){
            
+   
            int id = result.getInt(1);
-           String username = result.getString("UserName");
-           return new User(id, username);
+           String username = result.getString(2);
+           int tipo = result.getInt(3);
+           String path = result.getString(4);
+           return new User(id, username, tipo, path);
+       
+       
        }
+       
+       
        
      
         
@@ -104,11 +111,10 @@ public static User LogInUser(User user){
                 
                 
                 int id = result.getInt(1);
-                String username = result.getString("username");
+                String username = result.getString(2);
                 int tipo = result.getInt(3);
-                String path = result.getString("image");
-                
-                return new User(id, username);
+                String path = result.getString(4);
+                return new User(id, username, tipo, path);
                 
                 
             }

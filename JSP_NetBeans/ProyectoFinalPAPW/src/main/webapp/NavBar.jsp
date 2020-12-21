@@ -80,7 +80,7 @@ request.setAttribute("Categories", categories);
         
             
                 <nav class="navbar navbar-light bg-light">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand">
                         <img src= <%= session.getAttribute("image")%> width="30" height="30" alt="">
                     </a>
                 </nav>

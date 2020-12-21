@@ -94,9 +94,6 @@
         <span id="rateMe4" class="feedback"></span>
     </div>
 
-
-<!-- AREA DE LA FOTO Y NOMBRE DEL USUARIO -->
-
 <div class="container">
    
    
@@ -115,17 +112,52 @@
     <h1 style="color: #002f59;"><%= element.getTitle()%></h1>
 
 </div>
+    
 
      <small class="col-12 text-muted">Categoría: <%= element.getCategory().getName()%></small>
 
   
-     <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="Assets/videos/trailer1.mp4" ></iframe>
+<!-- FOTOS Y VIDEO DE LA NOTICIA -->
+
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src=<%= element.getPathImage()%> class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src=<%= element.getPathImage2()%> class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src=<%= element.getPathImage3()%> class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
+        
+<br>
+<br>
+
+        
+        
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src=<%= element.getVideo() %> allowfullscreen></iframe>
+</div>
+
+<br>
+<br>
+
      
-    
-    <img src="<%= element.getPathImage()%>" class="img-thumbnail" alt="...">
-    
+   <!-- FIN FOTOS Y VIDEO DE LA NOTICIA --> 
+   
+   
 
 <div class="profile-content"> <%= element.getDescription()%> </div>
 
@@ -195,17 +227,18 @@
                                         <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
                                     </a>
                                     <div class="media-body">
-                                        <span class="text-muted pull-right">
-                                            <small class="text-muted">30 min ago</small>
-                                        </span>
+                                       
                                         <strong class="text-success"><%= commentary.getUser().getUsername() %></strong>
                                         <p>
                                             <%= commentary.getContent() %>
                                             
                                         </p>
                                         
+                                         <span class="pull-right">
+                                           <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
+                                        </span>
                                              
-                    <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
+                    
                                     </div>
                                 </li>
   
@@ -214,21 +247,7 @@
                     %>
 
                                 
-                                <li class="media">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                                    </a>
-                                    <div class="media-body">
-                                        <span class="text-muted pull-right">
-                                            <small class="text-muted">30 min ago</small>
-                                        </span>
-                                        <strong class="text-success">@JohnNida</strong>
-                                        <p>
-                                            Lorem ipsum dolor <a href="#">#sitamet</a> sit amet, consectetur adipiscing
-                                            elit.
-                                        </p>
-                                    </div>
-                                </li>
+                             
                             </ul>
                         </div>
                     </div>

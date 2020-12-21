@@ -63,64 +63,12 @@
 
     </p>
     
-  
-    
-
-    <div class="carusin">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="Assets/images/image1.jpg"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Noticia destacada de la semana</h5>
-                        <p>Aquí deberá ir el subtítulo de la noticia</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="Assets/images/image1.jpg"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Noticia #2 destacada de la semana</h5>
-                        <p>Aquí deberá ir el subtítulo de la noticia</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="Assets/images/image1.jpg"
-                        class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Noticia #3 destacada de la semana</h5>
-                        <p>Aquí deberá ir el subtítulo de la noticia</p>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-
-    <p>
-        <br>
-        <br>
-        <br>
-        <br>
-    </p>
 
     <div class="container">
   <!-- Content here -->
 
-    <h1 class="text-center">Noticias</h1>
+    <h1 class="text-center">Noticias destacadas</h1>
+    
     
     
      <p>
@@ -138,9 +86,10 @@
     </p>
     
     <div class="row">
-
-      
-                
+        
+        
+        
+        
                 <%
                     for (News element : news) {
                 %>
@@ -155,8 +104,8 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title"><%= element.getTitle()%></h5>
-                                    <p class="card-text"><%= element.getDescription()%></p>
-                                    <p class="card-text"><small class="text-muted"><%= element.getCategory().getName()%></small></p>
+                                    <p class="card-text"><%= element.getCorta()%></p>
+                                    <p class="card-text"><small class="text-muted"> Fecha de publicación: <%= element.getDate()%></small></p>
                                 </div>
                             </div>
                         </div>
@@ -165,9 +114,10 @@
                                   <%
                     }
                 %>
-           
-                                
-                </div>
+        
+        
+        
+    </div>
               
     </div>
 

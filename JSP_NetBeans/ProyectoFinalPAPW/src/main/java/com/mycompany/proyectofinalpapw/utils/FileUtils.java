@@ -23,7 +23,5 @@ public class FileUtils {
         }
         return ".ext";
     }
-
-    
     
 }

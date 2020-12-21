@@ -23,7 +23,6 @@ request.setAttribute("Categories", categories);
     <title>Crear una nueva noticia</title>
 
     <link rel="stylesheet" href="CSS/estilote.css">
-    <script src="/JAVASCRIPT/ARCHIVOS.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
@@ -39,6 +38,8 @@ request.setAttribute("Categories", categories);
 
 
      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+     
 </head>
 
 
@@ -72,26 +73,39 @@ request.setAttribute("Categories", categories);
 
     <div class="container">
         
+       
+        
                <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController" name="Form1" onsubmit="return emptyValidation()" required>
                 
                 
+                   <div class="form-group">
+                   <label for="date">Día de hoy</label>
+                   <p id="date"></p>
+                   
+                    <input id="datePicker" type="date" id="date" name ="date" />
+                   </div>
+                   
+                  
+                 
+                   
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Título de la noticia</label>
+                    <label for="title">Título de la noticia</label>
                     <input type="text" class="form-control" id="title" name="title" required>
                 </div>
+                   
+                   
+                   
+                   <div class="form-group">
+                       <label for="corta">Descripción corta</label>
+                       <input type="text" class="form-control" id="title" name="corta" required>
+                   </div>
+                   
                 
                   <div class="form-group">
                  <label for="descripcion">Nota de la noticia</label>
                 <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required></textarea>
                   </div>
-                   
-                   
-              
-                   <div class="form-group">
-                       <label for="exampleFormControlInput1">Descripción corta</label>
-                       <input type="text" class="form-control" id="title" name="corta" required>
-                   </div>
-
+       
   
                 <div class="form-group">
                     <label for="category">Categorías</label>
@@ -107,37 +121,44 @@ request.setAttribute("Categories", categories);
                     </select>
                 </div>
 
-                        
+                      
                     <div class="form-group">
                         <label for="image">Imagen</label>
                         <input type="file" class="form-control" name="image" id="image" required>
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
-
-              
-                        <div class="form-group">
+                    
+                    
+                    
+                      <div class="form-group">
                         <label for="image">Imagen 2</label>
                         <input type="file" class="form-control" name="image2" id="image" required>
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
                     
                     
-                    <div class="form-group">
+                       <div class="form-group">
                         <label for="image">Imagen 3</label>
                         <input type="file" class="form-control" name="image3" id="image" required>
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
-                
+                    
+                    
+                     <div class="form-group">
+                        <label for="image">Video</label>
+                        <input type="file" class="form-control" name="video" id="image" required>
+                        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                    </div>
+                    
+                    
+                    
+
                 <div class="botoncin">
                     <button class="btn btn-primary" type="submit">Subir noticia</button>
                 </div>    
                   
-               
-                    
+      
             </form> 
-
-        
-        
     </div>    
 
 
@@ -166,3 +187,18 @@ request.setAttribute("Categories", categories);
 
 
 </html>
+
+
+
+
+
+<script>
+
+    $(document).ready( function() {
+    var now = new Date();
+    var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    $('#datePicker').val(today);
+});
+    
+    
+</script>

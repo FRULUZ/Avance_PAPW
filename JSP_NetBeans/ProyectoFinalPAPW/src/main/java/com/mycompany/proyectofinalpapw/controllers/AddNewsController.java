@@ -67,6 +67,10 @@ public class AddNewsController extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("descripcion");
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
+        String date = request.getParameter("date");
+        String corta = request.getParameter("corta");
+        
+        
         
         Part file = request.getPart("image");
 
@@ -81,11 +85,64 @@ public class AddNewsController extends HttpServlet {
         String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         file.write(fullPath);
         
-        News newNews = new News(title, description, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, new Category(idCategory));
+        
+        
+        
+        Part file2 = request.getPart("image2");
+
+        String path2 = request.getServletContext().getRealPath("");
+        File fileSaveDir2 = new File(path2 + FileUtils.RUTE_USER_IMAGE);
+        if (!fileSaveDir2.exists()) {
+            fileSaveDir2.mkdir();
+        }
+        
+        String contentType2 = file2.getContentType();
+        String nameImage2 = file2.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String fullPath2 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage2;
+        file2.write(fullPath2);
+        
+        
+        
+        Part file3 = request.getPart("image3");
+
+        String path3 = request.getServletContext().getRealPath("");
+        File fileSaveDir3 = new File(path3 + FileUtils.RUTE_USER_IMAGE);
+        if (!fileSaveDir3.exists()) {
+            fileSaveDir3.mkdir();
+        }
+        
+        String contentType3 = file3.getContentType();
+        String nameImage3 = file3.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String fullPath3 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage3;
+        file3.write(fullPath3);
+        
+        
+        
+        
+        
+        
+        Part file4 = request.getPart("video");
+
+        String path4 = request.getServletContext().getRealPath("");
+        File fileSaveDir4 = new File(path4 + FileUtils.RUTE_USER_IMAGE);
+        if (!fileSaveDir4.exists()) {
+            fileSaveDir4.mkdir();
+        }
+        String contentType4 = file4.getContentType();
+        String nameImage4 = file4.getName() + System.currentTimeMillis() + FileUtils.GetExtension("video/mp4"); //esta bien///
+        String fullPath4 = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage4;
+        file4.write(fullPath4);
+        
+        
+           
+        //CHECAR BIEN COMO AGREGA TODO//
+        //agregar noticia//
+             
+       
+        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4);
         NewsDAO.insertNews(newNews);
         
-        
-        
+       
         
         List<Category> categories = CategoryDAO.getCategories();
         List<News> news = NewsDAO.getNews();

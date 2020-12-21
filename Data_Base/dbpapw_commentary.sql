@@ -34,7 +34,7 @@ CREATE TABLE `commentary` (
   KEY `fk_news_commentary_idx` (`idNews`),
   CONSTRAINT `fk_news_commentary` FOREIGN KEY (`idNews`) REFERENCES `news` (`idnews`),
   CONSTRAINT `fk_user_commentary` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `commentary` (
 
 LOCK TABLES `commentary` WRITE;
 /*!40000 ALTER TABLE `commentary` DISABLE KEYS */;
-INSERT INTO `commentary` VALUES (9,'Primer comentario',11,1,0),(11,'Muy ricas las verduras',12,1,0),(12,'Este es un comentario de revision',20,1,0);
+INSERT INTO `commentary` VALUES (13,'Es un comentario para probar',39,1,0);
 /*!40000 ALTER TABLE `commentary` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-15 14:18:13
+-- Dump completed on 2020-12-21  2:48:02

@@ -36,6 +36,7 @@ public class LogInController extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String tipo = request.getParameter("tipo");
         String imagen = request.getParameter("image");
         
         User user = new User(username, password, imagen);
@@ -52,6 +53,7 @@ public class LogInController extends HttpServlet {
           session.setAttribute("id", logIn.getId());
           session.setAttribute("username", logIn.getUsername());
           session.setAttribute("image", logIn.getPath_user());
+          session.setAttribute("tipo", logIn.getTipo_user());
           
           response.sendRedirect("VerUsuario.jsp");
           

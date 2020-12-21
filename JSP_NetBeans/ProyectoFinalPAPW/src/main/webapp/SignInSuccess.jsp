@@ -46,21 +46,24 @@
 
             <image src="https://img.icons8.com/clouds/2x/medal.png"/>
             <h1>Haz ingresado</h1>
+            
 
             <p>
                 <br>
             </p>
+            
+            <h1>Ingresemos a tú cuenta: </h1>
+            
+              <p>
+                <br>
+            </p>
+            
 
-            <h3>ID: <%=session.getAttribute("id")%> </h2>
-            <h3>Username: <%=session.getAttribute("username")%> </h2>
+              <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar cuenta</a>
 
             <p>
                 <br>
             </p>
-
-            <form  action="LogOffController" method="POST" > 
-            <input type ="submit" class="btn btn-danger" value="Cerrar Session">
-            </form>
 
         </div>
         

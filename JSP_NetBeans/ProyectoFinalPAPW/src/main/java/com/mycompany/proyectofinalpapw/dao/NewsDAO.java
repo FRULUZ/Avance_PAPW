@@ -28,12 +28,17 @@ public class NewsDAO {
     try{
     
         con = DbConnection.getConnection();
-        String sql = "CALL insertNews(?, ?, ?, ?);";
+        String sql = "CALL insertNews(?, ?, ?, ?, ?, ?, ?, ?, ?);";
         CallableStatement statement = con.prepareCall(sql);
         statement.setString(1, news.getTitle());
         statement.setString(2, news.getDescription());
-        statement.setString(3, news.getPathImage());
-        statement.setInt(4, news.getCategory().getId());
+        statement.setInt(3, news.getCategory().getId());
+        statement.setString(4, news.getDate());
+        statement.setString(5, news.getCorta());
+        statement.setString(6, news.getPathImage());
+        statement.setString(7, news.getPathImage2());
+        statement.setString(8, news.getPathImage3());
+        statement.setString(9, news.getVideo());
         
       return statement.executeUpdate();
         
@@ -76,10 +81,17 @@ public class NewsDAO {
             int id = result.getInt(1);
             String title = result.getString(2);
             String description = result.getString(3);
-            String pathImage = result.getString(4);
-            int idCategory = result.getInt(5);
+            int idCategory = result.getInt(4);
             Category category = CategoryDAO.getCategory(idCategory);
-            news.add(new News(id,title,description,pathImage,category));
+            String fecha = result.getString(5);
+            String corta = result.getString(6);
+            String pathImage = result.getString(7);
+            String pathImage2 = result.getString(8);
+            String pathImage3 = result.getString(9);
+            String Video = result.getString(10);
+            
+            
+            news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video));
         }
     
         return news;
@@ -127,10 +139,16 @@ public class NewsDAO {
                 int id = result.getInt(1);
                 String title = result.getString(2);
                 String description = result.getString(3);
-                String pathImage = result.getString(4);
-                int idCategory = result.getInt(5);
+                int idCategory = result.getInt(4);
                 Category category = CategoryDAO.getCategory(idCategory);
-                return new News(id, title, description, pathImage, category);
+                String fecha = result.getString(5);
+                String corta = result.getString(6);
+                String pathImage = result.getString(7);
+                String pathImage2 = result.getString(8);
+                String pathImage3 = result.getString(9);
+                String Video = result.getString(10);
+                
+                return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

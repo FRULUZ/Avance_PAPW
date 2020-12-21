@@ -8,67 +8,21 @@ and open the template in the editor.
     Author     : EDGAR
 */
 
-body {
-  font-family: "Source Sans Pro", sans-serif;
-  min-height: 100vh;
-  background-color: #feb54b;
-  margin-top:20px;
-}
-
-
-
-#upload {
-  opacity: 0;
-}
-
-#upload-label {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-}
-
-.image-area {
-  border: 2px dashed rgba(255, 255, 255, 0.7);
-  padding: 1rem;
-  position: relative;
-}
-
-.image-area::before {
-  content: "Uploaded image result";
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
-  z-index: 1;
-}
-
-
-.Menu {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-.card-inner {
-  margin-left: 4rem;
-}
-
-input[readonly] {
-  position: absolute;
-  font-family: "Source Sans Pro", sans-serif;
-  background-color: transparent;
-  border: 0;
-  font-size: 1em;
-}
-
-
-
 
 /*Esta parte es para dar estilo a las estrellas*/
+body 
+{
+    min-height: 100vh;
+    background-color: #feb54b;
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 250px;
+}
 
 .rating {
   display: flex;
@@ -107,19 +61,6 @@ input[readonly] {
   opacity: 0.4;
 }
 
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 14px;
-  }
-
-  p {
-    font-size: 12px;
-  }
-}
-
-
-
-
 /*Esta parte es para dar estilo a la sección de porcentaje de las estrellas*/
 
 .badge {
@@ -132,166 +73,4 @@ input[readonly] {
     font-weight: 200
 }
 
-.about-rating {
-    font-size: 15px;
-    font-weight: 500;
-    margin-top: 10px
-}
 
-.total-ratings {
-    font-size: 12px
-}
-
-.bg-custom {
-    background-color: #b7dd29 !important
-}
-
-.text-custom {
-    color: #b7dd29 !important
-}
-
-.progress {
-    margin-top: 2px;
-    border-radius: 0px;
-    padding-left: 0px
-}
-
-
-
-/*Esta parte es para dar estilo a la sección de comentarios*/
-
-
-img {
-  border-radius: 50%;
-}
-
-
-.comment-wrapper .panel-body {
-    max-height:650px;
-    overflow:auto;
-}
-
-.comment-wrapper .media-list .media img {
-    width:64px;
-    height:64px;
-    border:2px solid #e5e7e8;
-}
-
-.comment-wrapper .media-list .media {
-    border-bottom:1px dashed #efefef;
-    margin-bottom:25px;
-}
-
-
-
-
-
-
-
-
-/****/
-
-
-/* Profile container */
-.profile {
-  margin: 20px 0;
-}
-
-/* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-}
-
-.profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
-}
-
-.profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
-}
-
-.profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
-
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
-.profile-usermenu {
-  margin-top: 30px;
-}
-
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
-}
-
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
-}
-
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
-}
-
-.profile-usermenu ul li.active {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
-}
-
-/* Profile Content */
-.profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
-}

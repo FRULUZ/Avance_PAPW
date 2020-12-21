@@ -14,11 +14,14 @@ public class News {
     private int id;
     private String title;
     private String description;
-    private String pathImage;
-    
-    
-    //has-a//
+      //has-a//
     private Category category;
+    private String date;
+    private String corta;
+    private String PathImage;
+    private String PathImage2;
+    private String PathImage3;
+    private String video;
 
     //para multi categorias en una sola noticia
     // private List<Category> categories;
@@ -30,20 +33,34 @@ public class News {
         this.id = id;
     }
 
-    public News(String title, String description, String pathImage, Category category) {
+    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video) {
         this.title = title;
         this.description = description;
-        this.pathImage = pathImage;
         this.category = category;
+        this.date = date;
+        this.corta = corta;
+        this.PathImage = PathImage;
+        this.PathImage2 = PathImage2;
+        this.PathImage3 = PathImage3;
+        this.video = video;
     }
+ 
+    
+    //para crear nueva noticia//
 
-    public News(int id, String title, String description, String pathImage, Category category) {
+    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.pathImage = pathImage;
         this.category = category;
+        this.date = date;
+        this.corta = corta;
+        this.PathImage = PathImage;
+        this.PathImage2 = PathImage2;
+        this.PathImage3 = PathImage3;
+        this.video = video;
     }
+  
 
     public int getId() {
         return id;
@@ -69,13 +86,6 @@ public class News {
         this.description = description;
     }
 
-    public String getPathImage() {
-        return pathImage;
-    }
-
-    public void setPathImage(String pathImage) {
-        this.pathImage = pathImage;
-    }
 
     public Category getCategory() {
         return category;
@@ -84,7 +94,55 @@ public class News {
     public void setCategory(Category category) {
         this.category = category;
     }
- 
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCorta() {
+        return corta;
+    }
+
+    public void setCorta(String corta) {
+        this.corta = corta;
+    }
+
+    public String getPathImage() {
+        return PathImage;
+    }
+
+    public void setPathImage(String PathImage) {
+        this.PathImage = PathImage;
+    }
+
+    public String getPathImage2() {
+        return PathImage2;
+    }
+
+    public void setPathImage2(String PathImage2) {
+        this.PathImage2 = PathImage2;
+    }
+
+    public String getPathImage3() {
+        return PathImage3;
+    }
+
+    public void setPathImage3(String PathImage3) {
+        this.PathImage3 = PathImage3;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
     
     
     

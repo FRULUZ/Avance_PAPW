@@ -54,7 +54,7 @@
          <form class="col-12" action="LogInController" method="POST">
 
             <div class="form-group">
-                <label for="ingresa un Nombre de Uusuario">Username</label>
+                <label for="ingresa un Nombre de Uusuario">Username: </label>
                 <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Usuario">
             </div>
              
@@ -63,7 +63,7 @@
             </p>
 
             <div class="form-group">
-              <label for="ingresa una contraseña">Password</label>
+              <label for="ingresa una contraseña">Password: </label>
               <input type="password" name="password" class="form-control" id="ingresaContraseña" placeholder="Contraseña">
             </div>
             
@@ -74,9 +74,7 @@
             <div class="form-group" >
                 
                 <input class="btn btn-primary" type="submit" value="Submit" placeholder="Ingresar">
-                
-                <%-- <a class="btn btn-info" href="#" role="button">Registrar</a>--%>
-                
+               
             </div>
                 
                    <p>

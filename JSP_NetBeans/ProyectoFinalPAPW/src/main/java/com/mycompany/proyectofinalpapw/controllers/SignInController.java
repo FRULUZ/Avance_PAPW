@@ -50,7 +50,11 @@ public class SignInController extends HttpServlet {
         
         
         Part file = request.getPart("image");
-
+        
+        //si el path esta vacío//
+        
+        if(file != null){
+            
         String path = request.getServletContext().getRealPath("");
         File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
         if (!fileSaveDir.exists()) {
@@ -64,6 +68,8 @@ public class SignInController extends HttpServlet {
        
         User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
         
+        
+        
         if(UserDAO.signInUser(user) == 1){
         
               response.sendRedirect("SignInSuccess.jsp");
@@ -71,6 +77,45 @@ public class SignInController extends HttpServlet {
         }else{
       
               response.sendRedirect("SignInFail.jsp");
+        }
+        
+        
+        //si no anda vacío//
+        
+        }else{
+            
+            
+        String anonimo = "profile.png";   
+        Part file2 = request.getPart("image");
+         
+         
+        String path = request.getServletContext().getRealPath("");
+        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        
+        String contentType = file2.getContentType();
+        String nameImage = anonimo + System.currentTimeMillis() + FileUtils.GetExtension("image/png");
+        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
+        file2.write(fullPath);
+
+        
+        
+        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
+        
+        
+        
+        if(UserDAO.signInUser(user) == 1){
+        
+              response.sendRedirect("SignInSuccess.jsp");
+            
+        }else{
+      
+              response.sendRedirect("SignInFail.jsp");
+        }
+        
+        
         }
         
          /*response.sendRedirect("Registro.jsp"); */

@@ -26,14 +26,19 @@ CREATE TABLE `news` (
   `idnews` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(60) DEFAULT NULL,
   `description` text,
-  `pathImage` varchar(60) DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
   `aprobada` tinyint(4) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `corta` varchar(45) DEFAULT NULL,
+  `PathImage` varchar(90) DEFAULT NULL,
+  `PathImage2` varchar(90) DEFAULT NULL,
+  `PathImage3` varchar(90) DEFAULT NULL,
+  `video` varchar(90) DEFAULT NULL,
   PRIMARY KEY (`idnews`),
   UNIQUE KEY `idnews_UNIQUE` (`idnews`),
   KEY `fk_news_category_idx` (`category`),
   CONSTRAINT `fk_news_category` FOREIGN KEY (`category`) REFERENCES `category` (`idcategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +47,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (11,'tercera','nose','Assets//images//image1607583021725.ext',1,NULL),(12,'Vegetales','Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress. Corn amaranth salsify bunya nuts nori azuki bean chickweed potato bell pepper artichoke.','Assets//images/image1607711496205.jpg',3,NULL),(13,'Perritos','Puppy kitty ipsum dolor sit good dog foot stick canary. Teeth Mittens grooming vaccine walk swimming nest good boy furry tongue heel furry treats fish. Cage run fast kitten dinnertime ball run foot park fleas throw house train licks stick dinnertime window. Yawn litter fish yawn toy pet gate throw Buddy kitty wag tail ball groom crate ferret heel wet nose Rover toys pet supplies. Bird Food treats tongue lick teeth ferret litter box slobbery litter box crate bird small animals yawn small animals shake slobber gimme five toys polydactyl meow. Turtle cage lazy cat foot lazy cat groom canary window tooth brush bedding lazy cat pet supplies turtle water dog shake pet supplies kitty. ','Assets/images/image1607722756298.jpg',3,NULL),(14,'Comics de animales','Pet Food pet supplies gimme five puppy cage food feathers food heel feathers running pet gate walk lazy dog Spike. Good Boy park lazy dog walk kibble Scooby snacks licks canary. Maine Coon Cat walk catch water dog slobber chew scratcher ID tag litter tuxedo dog house lazy cat park.','/assets/images/image1607723234897.jpg',1,NULL),(20,'Noticia revision','Dinnertime fetch throw feathers fleas tongue lazy cat lick throw kitten parrot hamster wag tail aquarium chew heel good boy lick feathers cockatiel. Wet Nose food ferret vaccine finch vaccination Scooby snacks string wagging barky tail head good boy pet gate meow good boy. Commands shake bird biscuit left paw finch bark ferret bark gimme five turtle fur canary. Water puppy dog lick kisses pet supplies slobber cat bird seed. Food sit biscuit groom tongue cage.','/Assets/images/image1607738488688.jpg',3,NULL),(21,'prueba 2','nose','assets/images/image1607972984658.jpg',2,NULL);
+INSERT INTO `news` VALUES (39,'Cyber punk 2077 con retrasos','Dinnertime fetch throw feathers fleas tongue lazy cat lick throw kitten parrot hamster wag tail aquarium chew heel good boy lick feathers cockatiel. Wet Nose food ferret vaccine finch vaccination Scooby snacks string wagging barky tail head good boy pet gate meow good boy. ',2,NULL,'2020-12-20','se han puesto muchos bugs','Assets/images/image1608507777266.jpg','Assets/images/image21608507777267.jpg','Assets/images/image31608507777271.jpg','Assets/images/video1608507777275.mp4'),(40,'Spider obtiene nuevo comic','Walk bird harness wet nose meow harness grooming water dog lol catz water bedding toys bird seed fetch lazy cat. Parakeet scratcher brush biscuit lick dog tooth walk food lazy cat biscuit. Cockatiel Snowball kitten Rover ferret puppy.',1,NULL,'2020-12-20','Se lanzarÃ¡n nuevos comics','Assets/images/image1608509778698.jpg','Assets/images/image21608509778700.jpg','Assets/images/image31608509778703.jpg','Assets/images/video1608509778705.mp4');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-15 14:18:14
+-- Dump completed on 2020-12-21  2:48:02

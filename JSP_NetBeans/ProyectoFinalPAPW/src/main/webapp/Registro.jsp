@@ -82,20 +82,25 @@
 
     <div class="form-group">
         <label for="image">Imagen del perfil</label>
-        <input type="file" class="form-control" name="image" id="image" required>
+        <input type="file" class="form-control" name="image" id="image">
         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
     </div>
 
             <div class="form-group">
                 <label for="ingresa un Nombre de Uusuario">Username</label>
-                <input type="text"  name="username"  class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)" required>
+                <input type="text"  name="username" pattern=".{3,}" title="Debe contener al menos 3 caracteres o más." class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)" required>
             </div>
        
-            <div class="form-group">
+       
+   
+       
+         <div class="form-group">
               <label for="ingresa una contraseña">Password</label>
-              <input type="password" name="password" maxlength="8" class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～" required>
+              <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minuscula y al menos 8 caracteres o más." class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～" required>
             </div>
        
+       
+          
             
             <div class="form-group">
                 
@@ -142,7 +147,7 @@
    
             </div>
             
-              <a href="Login.jsp" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ingresar cuenta</a>
+              
         </form> 
         
         
