@@ -69,6 +69,7 @@ public class AddNewsController extends HttpServlet {
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
         String date = request.getParameter("date");
         String corta = request.getParameter("corta");
+        boolean aprobada = request.equals(null);
         
         
         
@@ -139,7 +140,7 @@ public class AddNewsController extends HttpServlet {
         //agregar noticia//
              
        
-        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4);
+        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada);
         NewsDAO.insertNews(newNews);
         
        

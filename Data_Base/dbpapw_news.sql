@@ -27,18 +27,18 @@ CREATE TABLE `news` (
   `title` varchar(60) DEFAULT NULL,
   `description` text,
   `category` int(11) DEFAULT NULL,
-  `aprobada` tinyint(4) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `corta` varchar(45) DEFAULT NULL,
   `PathImage` varchar(90) DEFAULT NULL,
   `PathImage2` varchar(90) DEFAULT NULL,
   `PathImage3` varchar(90) DEFAULT NULL,
   `video` varchar(90) DEFAULT NULL,
+  `aprobada` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`idnews`),
   UNIQUE KEY `idnews_UNIQUE` (`idnews`),
   KEY `fk_news_category_idx` (`category`),
   CONSTRAINT `fk_news_category` FOREIGN KEY (`category`) REFERENCES `category` (`idcategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (39,'Cyber punk 2077 con retrasos','Dinnertime fetch throw feathers fleas tongue lazy cat lick throw kitten parrot hamster wag tail aquarium chew heel good boy lick feathers cockatiel. Wet Nose food ferret vaccine finch vaccination Scooby snacks string wagging barky tail head good boy pet gate meow good boy. ',2,NULL,'2020-12-20','se han puesto muchos bugs','Assets/images/image1608507777266.jpg','Assets/images/image21608507777267.jpg','Assets/images/image31608507777271.jpg','Assets/images/video1608507777275.mp4'),(40,'Spider obtiene nuevo comic','Walk bird harness wet nose meow harness grooming water dog lol catz water bedding toys bird seed fetch lazy cat. Parakeet scratcher brush biscuit lick dog tooth walk food lazy cat biscuit. Cockatiel Snowball kitten Rover ferret puppy.',1,NULL,'2020-12-20','Se lanzarÃ¡n nuevos comics','Assets/images/image1608509778698.jpg','Assets/images/image21608509778700.jpg','Assets/images/image31608509778703.jpg','Assets/images/video1608509778705.mp4');
+INSERT INTO `news` VALUES (39,'Cyber punk 2077 con retrasos','Dinnertime fetch throw feathers fleas tongue lazy cat lick throw kitten parrot hamster wag tail aquarium chew heel good boy lick feathers cockatiel. Wet Nose food ferret vaccine finch vaccination Scooby snacks string wagging barky tail head good boy pet gate meow good boy. ',2,'2020-12-20','se han puesto muchos bugs','Assets/images/image1608507777266.jpg','Assets/images/image21608507777267.jpg','Assets/images/image31608507777271.jpg','Assets/images/video1608507777275.mp4',1),(40,'Spider obtiene nuevo comic','Walk bird harness wet nose meow harness grooming water dog lol catz water bedding toys bird seed fetch lazy cat. Parakeet scratcher brush biscuit lick dog tooth walk food lazy cat biscuit. Cockatiel Snowball kitten Rover ferret puppy.',1,'2020-12-20','Se lanzarÃ¡n nuevos comics','Assets/images/image1608509778698.jpg','Assets/images/image21608509778700.jpg','Assets/images/image31608509778703.jpg','Assets/images/video1608509778705.mp4',0),(41,'Prueba de nulos','nulo',2,'2020-12-22','a ver si funciona','Assets/images/image1608677042321.jpg','Assets/images/image21608677042324.jpg','Assets/images/image31608677042326.jpg','Assets/images/video1608677042329.mp4',1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-21  2:48:02
+-- Dump completed on 2020-12-23  1:49:11

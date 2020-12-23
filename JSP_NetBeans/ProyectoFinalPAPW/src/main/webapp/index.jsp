@@ -95,6 +95,12 @@
                 %>
                 
                 
+                
+                 <%
+                     
+                    if((boolean)element.isAprobada() == true){
+                %>
+                
                 <div class="card mb-3 col-12 news-card" >
                     <a href="ShowNewsController?id=<%= element.getId() %>">
                         <div class="row no-gutters"
@@ -110,8 +116,14 @@
                             </div>
                         </div>
                     </a>
+                  
+                           
                                 
-                                  <%
+                                    <%
+                                        }
+                                    %>    
+                                
+                   <%
                     }
                 %>
         

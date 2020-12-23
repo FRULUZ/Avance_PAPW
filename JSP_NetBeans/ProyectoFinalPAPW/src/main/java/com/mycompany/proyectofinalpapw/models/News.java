@@ -22,6 +22,7 @@ public class News {
     private String PathImage2;
     private String PathImage3;
     private String video;
+    private boolean aprobada;
 
     //para multi categorias en una sola noticia
     // private List<Category> categories;
@@ -33,7 +34,7 @@ public class News {
         this.id = id;
     }
 
-    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video) {
+    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -43,12 +44,15 @@ public class News {
         this.PathImage2 = PathImage2;
         this.PathImage3 = PathImage3;
         this.video = video;
+        this.aprobada = aprobada;
     }
+
+   
  
     
     //para crear nueva noticia//
 
-    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video) {
+    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -59,7 +63,10 @@ public class News {
         this.PathImage2 = PathImage2;
         this.PathImage3 = PathImage3;
         this.video = video;
+        this.aprobada = aprobada;
     }
+
+  
   
 
     public int getId() {
@@ -143,8 +150,13 @@ public class News {
         this.video = video;
     }
 
-    
-    
+    public boolean isAprobada() {
+        return aprobada;
+    }
+
+    public void setAprobada(boolean aprobada) {
+        this.aprobada = aprobada;
+    }
     
     
 }

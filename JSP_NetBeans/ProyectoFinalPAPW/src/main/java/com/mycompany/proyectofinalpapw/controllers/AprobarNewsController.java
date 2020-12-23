@@ -5,9 +5,7 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.CommentaryDAO;
-import com.mycompany.proyectofinalpapw.models.Commentary;
-import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.dao.NewsDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "CommentaryController", urlPatterns = {"/CommentaryController"})
-public class CommentaryController extends HttpServlet {
+@WebServlet(name = "AprobarNewsController", urlPatterns = {"/AprobarNewsController"})
+public class AprobarNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +31,13 @@ public class CommentaryController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   
-         String content = request.getParameter("commentary");
-         String idNews = request.getParameter("idNews");
-         
-        CommentaryDAO.insertCommentary(new Commentary(content,Integer.parseInt(idNews),new User(1),0));
-        request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
-         
+
         
-        
-        
-        
-        
-        
-         
+        String idNews = request.getParameter("id");
+        NewsDAO.aprobarNews(Integer.parseInt(idNews, 10));
+        request.getRequestDispatcher("Editor.jsp").forward(request, response);
+
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

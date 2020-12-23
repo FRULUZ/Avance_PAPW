@@ -49,61 +49,25 @@ public class SignInController extends HttpServlet {
         
         
         
-        Part file = request.getPart("image");
-        
-        //si el path esta vacío//
-        
-        if(file != null){
-            
-        String path = request.getServletContext().getRealPath("");
+       Part file = request.getPart("image");
+       
+       
+       
+       String path = request.getServletContext().getRealPath("");
         File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
         
         String contentType = file.getContentType();
-        String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String nameImage = + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
         String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         file.write(fullPath);
-       
-        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
-        
-        
-        
-        if(UserDAO.signInUser(user) == 1){
-        
-              response.sendRedirect("SignInSuccess.jsp");
-            
-        }else{
-      
-              response.sendRedirect("SignInFail.jsp");
-        }
-        
-        
-        //si no anda vacío//
-        
-        }else{
-            
-            
-        String anonimo = "profile.png";   
-        Part file2 = request.getPart("image");
-         
-         
-        String path = request.getServletContext().getRealPath("");
-        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        
-        String contentType = file2.getContentType();
-        String nameImage = anonimo + System.currentTimeMillis() + FileUtils.GetExtension("image/png");
-        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
-        file2.write(fullPath);
 
-        
-        
+            
+  
         User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
-        
+          
         
         
         if(UserDAO.signInUser(user) == 1){
@@ -115,9 +79,9 @@ public class SignInController extends HttpServlet {
               response.sendRedirect("SignInFail.jsp");
         }
         
-        
-        }
-        
+         
+      
+       
          /*response.sendRedirect("Registro.jsp"); */
     }
     

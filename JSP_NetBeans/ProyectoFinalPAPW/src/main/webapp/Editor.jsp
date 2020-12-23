@@ -4,7 +4,21 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.News"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    
+        List<News> news = NewsDAO.getNews();
+        request.setAttribute("News", news);
+%>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,45 +63,52 @@
     <div class="container-md">
         
         
-   
-        
+         <h5 class="titulito">Noticias sin revisión: </h5>
 
-        <form>
+                <%
+                    for (News element : news) {
+                %>
+       
+                
+                
+                <div class="form-group">
+                    <label for="ingresaApodo">Autor</label>
+                    <input type="text" class="form-control" id="ingresaApodo" placeholder="Nombre de la persona que escribio la noticia">
+                </div>
+                
+                 <div>
+                    <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
+                </div>
+                
+                <div>
 
-            <div class="form-group">
-                <label for="ingresaApodo">Autor</label>
-                <input type="text" class="form-control" id="ingresaApodo" placeholder="Nombre de la persona que escribio la noticia">
-            </div>
-
-            <div class="form-group">
-                <label for="Notita">Nota</label>
-                <textarea class="form-control" rows="5" id="Notita" name="text" placeholder="Noticia escrita"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="comment">Comentario:</label>
+                    <a href="ShowNewsController?id=<%=element.getId()%>">
+                    <img src= <%= element.getPathImage() %> alt="..." class="img-thumbnail">
+                    </a>
+                </div>
+            
+                <div class="form-group">
+                    <label for="corta"> Descripción corta:  <%= element.getCorta()%></label>
+                </div>
+                  
+            
+            
+              <div class="form-group">
+                <label for="comment">Agregar una nota al escritor: </label>
                 <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota"></textarea>
             </div>
             
-
-            <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" value=""> Aprobado
-                </label>
-            </div>
-
-            <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input" value="">No aprobado
-                </label>
+            <div class="btn-group">
+                <a class="btn btn-mini btn-success" href="AprobarNewsController?id=<%=element.getId()%>">Aprobar</a>
+                <a class="btn btn-mini btn-danger" href="#">Rechazar</a>
             </div>
             
+                                  <%
+                    }
+                %>
+        
 
-            <div class="form-group">
-                <a class="btn btn-info" href="#" role="button">Enviar</a>
-            </div>
-
-        </form> 
+      
     </div>
     
 

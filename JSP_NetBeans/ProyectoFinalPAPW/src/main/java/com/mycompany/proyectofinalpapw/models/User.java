@@ -56,6 +56,8 @@ public class User {
         this.red = red;
     }
 
+       
+
     public User(String username, String password, String path_user) {
         this.username = username;
         this.password = password;

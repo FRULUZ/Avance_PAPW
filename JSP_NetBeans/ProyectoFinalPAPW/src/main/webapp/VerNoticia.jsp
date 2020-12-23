@@ -169,7 +169,9 @@
 <!----EN ESTA PARTE VA LA SECCION PARA CALIFICAR CON ESTRELLAS LA NOTICIA--->
 <br><br>
 <h1>Califica esta noticia</h1>
-<div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+<div class="rating"> 
+    
+  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
   <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio"
   name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2"
  id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
@@ -198,6 +200,15 @@
 
                         <div class="panel-body">
                             
+                            
+                            
+                             <%
+                                  if ((int) session.getAttribute("tipo") != 2) {
+                              %>
+                            
+                              
+                              
+                              
                             <form method="POST" action="CommentaryController" >
                             <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
                             <br>
@@ -206,7 +217,10 @@
                             
                             </form>
                            
-                            
+                             <%
+                                 }
+                              %>
+                                            
                             
                             <div class="clearfix"></div>
                             <hr>
@@ -220,7 +234,7 @@
                         for (Commentary commentary : commentaries) {
                     %>
                 
-               
+             
                                         
                                          <li class="media">
                                     <a href="#" class="pull-left">
@@ -232,15 +246,30 @@
                                         <p>
                                             <%= commentary.getContent() %>
                                             
+                                            <%
+                                                if ((int) session.getAttribute("tipo") == 4) {
+                                            %>
+                                            
                                         </p>
-                                        
-                                         <span class="pull-right">
+                                         <span class="pull-left">
                                            <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
+                                        </span>
+                                        
+                                           <%
+                                               }
+                                           %>
+                                        
+                                          <span class="pull-right">
+                                           <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                           <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
                                         </span>
                                              
                     
                                     </div>
                                 </li>
+                                
+                  
+                                
   
                                  <%
                         }

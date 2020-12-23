@@ -4,18 +4,20 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Nov 28, 2020, 4:12:41 PM
+    Created on : Dec 22, 2020, 6:14:58 PM
     Author     : EDGAR
 */
 
+ body {
 
-body 
-{
-    min-height: 100vh;
-    background-color: #feb54b;
-    font-family: 'Source Sans Pro', sans-serif;
-}
 
+            min-height: 100vh;
+            background-color: #feb54b;
+            font-family: 'Source Sans Pro', sans-serif;
+
+        }
+       
+        
 .img-thumbnail{
     
     

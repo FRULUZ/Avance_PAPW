@@ -37,7 +37,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
         
-        <link rel="stylesheet" type="text/css" href="/CSS/logoff_style.css">
+        <link rel="stylesheet" type="text/css" href="CSS/profile.css">
 
 </head>
 
@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre de usuario</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                             <input class="form-control" type="text" placeholder=<%= session.getAttribute("username")%> readonly>
+                             <input class="form-control" type="text" value=<%= session.getAttribute("username")%> readonly>
                         </div>
                     </div>
 
@@ -84,17 +84,88 @@
                         
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Id</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                           <input class="form-control" type="text" placeholder=<%= session.getAttribute("id")%> readonly>
+                           <input class="form-control" type="text" value=<%= session.getAttribute("id")%> readonly>
                         </div>
                     </div>
-
+                     
+                        
+                        
+                        
+                              <%
+                               if ((int)session.getAttribute("tipo") == 1) {
+                           %>
+                        
+                   
                     <div class="form-group">
                         <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" value=<%= session.getAttribute("tipo")%> readonly>
+                            <input type="text" class="form-control" value= "Usuario registrado" readonly>
                         </div>
                     </div>
-                    
+                        
+                            <%
+                                }
+                            %>
+                        
+                        
+                        
+                           <%
+                               if ((int)session.getAttribute("tipo") == 2) {
+                           %>
+                        
+                   
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" value= "Editor" readonly>
+                        </div>
+                    </div>
+                        
+                            <%
+                                }
+                            %>
+                            
+                            
+                            
+                            <%
+                               if ((int)session.getAttribute("tipo") == 3) {
+                           %>
+                        
+                   
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" value= "Creador de contenido" readonly>
+                        </div>
+                    </div>
+                        
+                            <%
+                                }
+                            %>  
+                            
+                            
+                            
+                            
+                                   <%
+                               if ((int)session.getAttribute("tipo") == 4) {
+                           %>
+                        
+                   
+                    <div class="form-group">
+                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" value= "Administrador" readonly>
+                        </div>
+                    </div>
+                        
+                            <%
+                                }
+                            %>  
+                            
+                            
+                            
+                            
+                        
                     <div>
                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Noticias que me gustan
@@ -132,3 +203,4 @@
 </body>
 
 </html>
+

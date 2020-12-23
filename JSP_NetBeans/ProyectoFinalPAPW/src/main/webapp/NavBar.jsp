@@ -52,17 +52,10 @@ request.setAttribute("Categories", categories);
                     </div>
                 </div>
 
-             
-
-                <li class="nav-item">
-                    <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="Editor.jsp">Editor <span class="sr-only">(current)</span></a>
-                </li>
-               
+            
+                
+              
+                
                 
                 
                   <%
@@ -72,6 +65,63 @@ request.setAttribute("Categories", categories);
                 %>
                 
                 
+                
+                
+                
+                  
+                           <%
+                               if ((int)session.getAttribute("tipo") == 2) {
+                           %>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="Editor.jsp">Editar noticias <span class="sr-only">(current)</span></a>
+                </li>
+               
+                <%
+                        }
+                     
+                %>
+                
+                
+                
+                
+                      <%
+                               if ((int)session.getAttribute("tipo") == 3) {
+                           %>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
+                </li>
+                
+                
+              
+                <%
+                        }
+                     
+                %>
+                
+                
+                
+                    <%
+                               if ((int)session.getAttribute("tipo") == 4) {
+                           %>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
+                </li>
+                
+                   <li class="nav-item">
+                    <a class="nav-link" href="Editor.jsp">Editar noticias <span class="sr-only">(current)</span></a>
+                </li>
+               
+              
+                <%
+                        }
+                     
+                %>
             
                 
                 <li class="nav-item">
@@ -89,7 +139,8 @@ request.setAttribute("Categories", categories);
                 <li class="nav-item">
                     <a class="nav-link" href="VerUsuario.jsp">Ver perfil<span class="sr-only">(current)</span></a>
                 </li>
-                    
+                
+
                     
                  <%
                   }else{

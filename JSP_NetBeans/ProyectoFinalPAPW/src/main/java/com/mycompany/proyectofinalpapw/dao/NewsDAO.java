@@ -28,7 +28,7 @@ public class NewsDAO {
     try{
     
         con = DbConnection.getConnection();
-        String sql = "CALL insertNews(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "CALL insertNews(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         CallableStatement statement = con.prepareCall(sql);
         statement.setString(1, news.getTitle());
         statement.setString(2, news.getDescription());
@@ -39,6 +39,7 @@ public class NewsDAO {
         statement.setString(7, news.getPathImage2());
         statement.setString(8, news.getPathImage3());
         statement.setString(9, news.getVideo());
+        statement.setBoolean(10, false);
         
       return statement.executeUpdate();
         
@@ -89,9 +90,10 @@ public class NewsDAO {
             String pathImage2 = result.getString(8);
             String pathImage3 = result.getString(9);
             String Video = result.getString(10);
+            boolean aprobada = result.getBoolean(11);
             
             
-            news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video));
+            news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video, aprobada));
         }
     
         return news;
@@ -147,8 +149,9 @@ public class NewsDAO {
                 String pathImage2 = result.getString(8);
                 String pathImage3 = result.getString(9);
                 String Video = result.getString(10);
+                boolean aprobada = result.getBoolean(11);
                 
-                return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video);
+                return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video, aprobada);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -166,7 +169,31 @@ public class NewsDAO {
     }
 
     
-    
+       public static int aprobarNews(int idNew) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL Aprobar_news(?);";
+            
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idNew);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                  con.close();
+                } catch (SQLException ex) {
+                  Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
     
     
     
