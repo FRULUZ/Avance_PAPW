@@ -38,7 +38,7 @@ public class ShowNewsController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-           String idNews = request.getParameter("id");
+        String idNews = request.getParameter("id");
  
         List<Category> categories = CategoryDAO.getCategories();
         request.setAttribute("Categories", categories);
@@ -52,7 +52,7 @@ public class ShowNewsController extends HttpServlet {
         
         request.getRequestDispatcher("VerNoticia.jsp").forward(request, response);
 
-           
+                  
         }
     
 

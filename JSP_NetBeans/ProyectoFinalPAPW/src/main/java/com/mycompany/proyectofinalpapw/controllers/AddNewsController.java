@@ -9,6 +9,7 @@ import com.mycompany.proyectofinalpapw.dao.CategoryDAO;
 import com.mycompany.proyectofinalpapw.dao.NewsDAO;
 import com.mycompany.proyectofinalpapw.models.Category;
 import com.mycompany.proyectofinalpapw.models.News;
+import com.mycompany.proyectofinalpapw.models.User;
 import com.mycompany.proyectofinalpapw.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
@@ -135,12 +136,16 @@ public class AddNewsController extends HttpServlet {
         file4.write(fullPath4);
         
         
+        
+         int idNews = Integer.parseInt(request.getParameter("id"), 10);
+        
+        
            
         //CHECAR BIEN COMO AGREGA TODO//
         //agregar noticia//
              
        
-        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada);
+        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada, idNews);
         NewsDAO.insertNews(newNews);
         
        

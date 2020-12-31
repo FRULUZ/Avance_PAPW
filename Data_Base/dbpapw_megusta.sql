@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `megusta`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `megusta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
-  `idcategory` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  `order` int(11) DEFAULT NULL,
-  `parent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idcategory`),
-  UNIQUE KEY `idcategory_UNIQUE` (`idcategory`),
-  KEY `fk_parent_category_idx` (`parent`),
-  CONSTRAINT `fk_parent_category` FOREIGN KEY (`parent`) REFERENCES `category` (`idcategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `megusta` (
+  `idMegusta` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) DEFAULT NULL,
+  `idNews` int(11) DEFAULT NULL,
+  `estado` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`idMegusta`),
+  UNIQUE KEY `idMegusta_UNIQUE` (`idMegusta`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `megusta`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'COMICS',3,NULL),(2,'VIDEOJUEGOS',1,NULL),(3,'ANIME',2,NULL);
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `megusta` WRITE;
+/*!40000 ALTER TABLE `megusta` DISABLE KEYS */;
+INSERT INTO `megusta` VALUES (11,25,41,1);
+/*!40000 ALTER TABLE `megusta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-29  3:18:22
+-- Dump completed on 2020-12-29  3:18:23

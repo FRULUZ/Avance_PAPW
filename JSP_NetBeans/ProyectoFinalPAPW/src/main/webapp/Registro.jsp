@@ -79,13 +79,6 @@
             
     </div>
 
-
-    <div class="form-group">
-        <label for="image">Imagen del perfil</label>
-        <input type="file" class="form-control" name="image" id="image">
-        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
-    </div>
-
             <div class="form-group">
                 <label for="ingresa un Nombre de Uusuario">Username</label>
                 <input type="text"  name="username" pattern=".{3,}" title="Debe contener al menos 3 caracteres o más." class="form-control" id="ingresaApodo" placeholder="Username a tu gusto (●ˇ∀ˇ●)" required>
@@ -104,20 +97,16 @@
             
             <div class="form-group">
                 
-         
-                
                 <div>
                 <label for="emailAddress">Correo</label><br>
                 <input id="emailAddress" type="email" size="64" maxLength="64" required
                        placeholder="De preferencia en uso (●'◡'●)" name="correo">
                 </div>
-
-                
-                
+                      
              </div>
             
              <div class="form-group">
-              <label for="ingresa una Red Social">Red social</label>
+              <label for="ingresa una Red Social">Red social (facebook, twitter ó instagram)</label>
               <input type="text"   name="red" class="form-control" id="ingresaCorreo" placeholder="Ingresa nombre de la cuenta" required>
             </div>
             

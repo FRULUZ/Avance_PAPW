@@ -1,12 +1,15 @@
 <%-- 
-    Document   : Editor
-    Created on : Nov 20, 2020, 1:42:07 AM
+    Document   : CateNews
+    Created on : Dec 28, 2020, 8:19:29 PM
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
+<%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
-<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -15,13 +18,30 @@
         request.setAttribute("News", news);
 %>
 
-
+<%
+    List<Category> categories = CategoryDAO.getCategories();
+    request.setAttribute("Categories", categories);
+  
+%>
 
 
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Registro</title>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Noticias por categoría</title>
+        
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,44 +57,68 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
+        
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/CSS" href="CSS/estilito.css">
+    <link rel="stylesheet" type="text/css" href="CSS/categostyle.css">
+     
+        
+    </head>
     
-  </head>
-
-  <body>
-      
-          <jsp:include page="NavBar.jsp"/>
+    
+    <body>
+        
+        
+           <jsp:include page="NavBar.jsp"/>
 
     <p>
         <br>
 
     </p>
-      
-
-   <div class="container-md">
-    <h1 class="titulito">Bienvenido editor</h1>
-   <h5 class="titulito">¿Qué tal si revisamos unas cuantas notas?</h5>
-   </div>
-   
-
+    
+        
     <div class="container-md">
-        
-        
-         <h5 class="titulito">Noticias sin revisión: </h5>
+        <h1 class="titulito">Buscar por categorías: </h1>
+    </div>
 
+    
+     <div class="container-md">
+ 
+         
+         
+             <!-- Example single danger button -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</button>
+        <div class="dropdown-menu">
+            
+            
+            
+                <%
+                if(categories != null){
+                for(Category category : categories){
+                %>
+                
+                
+                <a class="dropdown-item" href="ResLikeController?id=<%=category.getId()%>"><%=category.getName()%></a>
+                
+                
+                <%
+                  }
+                  }
+                %>
+           
+
+        </div>
+    </div>
+    
+    
+         
+         
+         
                 <%
                     for (News element : news) {
                 %>
        
-                
-                
-                <div class="form-group">
-                    <label for="ingresaApodo">Autor</label>
-                    <input type="text" class="form-control" id="ingresaApodo" placeholder="Nombre de la persona que escribio la noticia">
-                </div>
-                
                  <div>
                     <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
                 </div>
@@ -95,18 +139,8 @@
                     <label for="fecha"> Fecha de publicación:  <%= element.getDate() %></label>
                 </div>
                   
-       
-              <div class="form-group">
-                <label for="comment">Agregar una nota al escritor: </label>
-                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota"></textarea>
-            </div>
-            
-            <div class="btn-group">
-                <a class="btn btn-mini btn-success" href="AprobarNewsController?id=<%=element.getId()%>">Aprobar</a>
-                <a class="btn btn-mini btn-danger" href="#">Rechazar</a>
-            </div>
-            
-                                  <%
+   
+                <%
                     }
                 %>
         
@@ -114,6 +148,12 @@
       
     </div>
     
-
-  </body>
+    
+    
+        
+        
+    </body>
+    
+    
+    
 </html>

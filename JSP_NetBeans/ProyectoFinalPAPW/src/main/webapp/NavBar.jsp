@@ -14,6 +14,8 @@ List<Category> categories = CategoryDAO.getCategories();
 request.setAttribute("Categories", categories);
 %>
 
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       
         <a class="navbar-brand" href="MainPageController">Geek zone</a>
@@ -28,35 +30,11 @@ request.setAttribute("Categories", categories);
             <ul class="navbar-nav mr-auto">
                 
                 
+                 <li class="nav-item">
+                    <a class="nav-link" href="CateNews.jsp">Buscar noticias<span class="sr-only">(current)</span></a>
+                 </li>
                
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"> Categorías </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">   
-                        
-                        
-                 <%
-                if(categories != null){
-                for(Category category : categories){
-                %>
-                
-                
-                  <a class="dropdown-item" href="#"><%=category.getName()%></a>
-                
-                
-                <%
-                  }
-                  }
-                %>
-                        
-                        
-                    </div>
-                </div>
 
-            
-                
-              
-                
-                
                 
                   <%
                       
@@ -64,7 +42,25 @@ request.setAttribute("Categories", categories);
 
                 %>
                 
+                    <%
+                    if ((int) session.getAttribute("tipo") == 5) {
+                %>
+
+                 
+                <nav class="navbar navbar-light">
+                  
+                      <form action="LogOffController" method="POST">
+  <button type="submit" formmethod="post">SALIR DE LA PAGINA</button>
+</form>
+                </nav>
+
                 
+              
+                
+                <%
+                        }else{
+                     
+                %>
                 
                 
                 
@@ -73,11 +69,21 @@ request.setAttribute("Categories", categories);
                                if ((int)session.getAttribute("tipo") == 2) {
                            %>
 
+                           
+                           
+                           <li class="nav-item">
+                               <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
+                           </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="Editor.jsp">Editar noticias <span class="sr-only">(current)</span></a>
-                </li>
-               
+
+                           <li class="nav-item">
+                               <a class="nav-link" href="Borradores.jsp">Borradores<span class="sr-only">(current)</span></a>
+                           </li>
+
+                           <li class="nav-item">
+                               <a class="nav-link" href="Editor.jsp">Editar noticias <span class="sr-only">(current)</span></a>
+                           </li>
+
                 <%
                         }
                      
@@ -96,6 +102,11 @@ request.setAttribute("Categories", categories);
                 </li>
                 
                 
+                 <li class="nav-item">
+                    <a class="nav-link" href="Borradores.jsp">Borradores<span class="sr-only">(current)</span></a>
+                </li>
+                
+                
               
                 <%
                         }
@@ -111,6 +122,10 @@ request.setAttribute("Categories", categories);
 
                 <li class="nav-item">
                     <a class="nav-link" href="AddNewsController">Redactar noticia<span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="Borradores.jsp">Borradores<span class="sr-only">(current)</span></a>
                 </li>
                 
                    <li class="nav-item">
@@ -140,21 +155,32 @@ request.setAttribute("Categories", categories);
                     <a class="nav-link" href="VerUsuario.jsp">Ver perfil<span class="sr-only">(current)</span></a>
                 </li>
                 
+                
+            
 
                     
                  <%
-                  }else{
+                  }
                   
                 %>    
+                
+                       <%
+                        }else{
+                     
+                %>
                 
                  <li class="nav-item">
                     <a class="nav-link" href="Login.jsp">Log In <span class="sr-only">(current)</span></a>
                 </li>
                 
+            
                    <%
                        }
                   
                 %>   
+                
+                
+             
                 
             </ul>
          

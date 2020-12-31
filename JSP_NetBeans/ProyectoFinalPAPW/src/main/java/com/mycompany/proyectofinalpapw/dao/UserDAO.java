@@ -29,7 +29,7 @@ public static int signInUser(User user){
        try{
         
         con = DbConnection.getConnection();
-        CallableStatement statement = con.prepareCall("call signIn(?,?,?,?,?,?)");
+        CallableStatement statement = con.prepareCall("call signIn(?,?,?,?,?,?,?)");
     
         statement.setString(1, user.getUsername());
         statement.setString(2, user.getPassword());
@@ -37,6 +37,7 @@ public static int signInUser(User user){
         statement.setString(4, user.getCorreo());
         statement.setString(5, user.getPath_user());
         statement.setString(6, user.getRed());
+        statement.setString(7, user.getAbout());
         
         return statement.executeUpdate();
         
@@ -58,7 +59,7 @@ public static int signInUser(User user){
 
 }
 
-
+//pendiente//
 
 
 public static User LogInUser(User user){
@@ -78,10 +79,15 @@ public static User LogInUser(User user){
    
            int id = result.getInt(1);
            String username = result.getString(2);
-           int tipo = result.getInt(3);
-           String path = result.getString(4);
-           return new User(id, username, tipo, path);
-       
+           String password = result.getString(3);
+           int tipo = result.getInt(4);
+           String correo = result.getString(5);
+           String path = result.getString(6);
+           String red = result.getString(7);
+           String about = result.getString(8);
+
+           return new User(id, username, password, tipo, correo, path, red, about);
+                
        
        }
        
@@ -98,6 +104,7 @@ public static User LogInUser(User user){
 
 }
 
+//pendiente//
 
     public static User getUser(int idUser) {
         Connection con = null;
@@ -112,9 +119,14 @@ public static User LogInUser(User user){
                 
                 int id = result.getInt(1);
                 String username = result.getString(2);
-                int tipo = result.getInt(3);
-                String path = result.getString(4);
-                return new User(id, username, tipo, path);
+                String password = result.getString(3);
+                int tipo = result.getInt(4);
+                String correo = result.getString(5);
+                String path = result.getString(6);
+                String red = result.getString(7);
+                String about = result.getString(8);
+                
+                return new User(id, username, password, tipo, correo, path, red, about);
                 
                 
             }
@@ -132,7 +144,113 @@ public static User LogInUser(User user){
         return null;
     }
 
+
+    
+    public static int modificar_user(User users){
+    
+    Connection con =  null;
+    
+       try{
+        
+        con = DbConnection.getConnection();
+        CallableStatement statement = con.prepareCall("call modificar_user(?,?,?,?,?,?,?)");
+    
+            statement.setInt(1,users.getId());
+            statement.setString(2, users.getUsername());
+            statement.setString(3, users.getPassword());
+            statement.setString(4, users.getCorreo());
+            statement.setString(5, users.getPath_user());
+            statement.setString(6, users.getRed());
+            statement.setString(7, users.getAbout());
+            
+           
+        
+        return statement.executeUpdate();
+        
+    }catch(SQLException ex){
+     
+        System.out.print(ex.getMessage());
+    }finally{
+       
+           if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    }
+
+     return 0;
+
+}
+    
+    
+    
+    
+        public static User DeleteUser(int idUser) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL delete_user(?)");
+            statement.setInt(1, idUser);
+
+            ResultSet result = statement.executeQuery();
+        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
+    
    
+        
+        
+        
+    public static int addAnonimo(User user){
+    
+    Connection con =  null;
+    
+       try{
+        
+        con = DbConnection.getConnection();
+        CallableStatement statement = con.prepareCall("call signIn(?,?,?,?,?,?,?)");
+    
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getPassword());
+        statement.setInt(3, user.getTipo_user());
+        statement.setString(4, user.getCorreo());
+        statement.setString(5, user.getPath_user());
+        statement.setString(6, user.getRed());
+        statement.setString(7, user.getAbout());
+        
+        return statement.executeUpdate();
+        
+    }catch(SQLException ex){
+     
+        System.out.print(ex.getMessage());
+    }finally{
+       
+           if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    }
+
+     return 0;
+
+}
 
 }
 

@@ -18,6 +18,7 @@ public class User {
     private String correo;
     private String path_user;
     private String red;
+    private String about;
        
     
     //constructores//
@@ -36,8 +37,7 @@ public class User {
         this.username = username;
     }
 
-    
-     public User(int id, String username, String password, int tipo_user, String correo, String path_user, String red) {
+    public User(int id, String username, String password, int tipo_user, String correo, String path_user, String red, String about) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -45,19 +45,31 @@ public class User {
         this.correo = correo;
         this.path_user = path_user;
         this.red = red;
+        this.about = about;
     }
 
-    public User(String username, String password, int tipo_user, String correo, String path_user, String red) {
+    public User(String username, String password, int tipo_user, String correo, String path_user, String red, String about) {
         this.username = username;
         this.password = password;
         this.tipo_user = tipo_user;
         this.correo = correo;
         this.path_user = path_user;
         this.red = red;
+        this.about = about;
     }
 
-       
 
+    public User(int id, String username, String password, String correo, String path_user, String red, String about) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.correo = correo;
+        this.path_user = path_user;
+        this.red = red;
+        this.about = about;
+    }
+
+ 
     public User(String username, String password, String path_user) {
         this.username = username;
         this.password = password;
@@ -78,6 +90,15 @@ public class User {
         this.path_user = path_user;
     }
 
+    
+    //para los anonimos//
+
+    public User(String username, int tipo_user) {
+        this.username = username;
+        this.tipo_user = tipo_user;
+    }
+    
+   //-----------GETTER AND SETTERS-----------//
     
     
     public int getId() {
@@ -135,11 +156,26 @@ public class User {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
     public String getPassword() {
         return password;
     }
-    
-    
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
     
     
     

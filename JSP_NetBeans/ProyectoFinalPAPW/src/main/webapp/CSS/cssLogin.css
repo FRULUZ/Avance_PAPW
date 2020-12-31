@@ -8,10 +8,28 @@ and open the template in the editor.
     Author     : EDGAR
 */
 
+
+
+input[type=button], input[type=submit], role[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.botones{
+background-color: #4CAF50;
+ text-decoration: none;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body{
@@ -20,17 +38,7 @@ body{
     background: rgb(0, 47, 89);
 }
 
-.form-login{
-    width: 400px;
-    height: 340px;
-    background: #4e4e4e ;
-    margin: auto;
-    margin-top: 180px;
-    box-shadow: 7px 13px 37px rgb(24, 24, 24);
-    padding: 20px 30px;
-    border-top: 4px solid #e7c713;
-    color: white;
-}
+
 
 .form-login h5 {
     margin: 0;
@@ -41,21 +49,9 @@ body{
     font-size: 20px;
 }
 
-.controls{
-    width: 100%;
-    border: 1px solid rgb(0, 47, 89);
-    margin-bottom: 15px;
-    padding: 11px 10px;
-    background: #252323 ;
-    font-size:14px;
-    font-weight: bold;
-}
 
 
 
-
-
-/*PARTE DE LA ANIMACION DE LETRAS*/
 
 h1 {
 
@@ -78,13 +74,13 @@ html {
 		url(''); 
 	background-repeat: repeat-x;
 	background-position: 
-		0 20%,
+		0 200%,
 		0 100%,
 		0 100%,
-		0 100%,
+		0 50%,
 		0 0;
 	background-size: 
-		2500px,
+		8000px,
 		800px,
 		500px,
 		1000px,

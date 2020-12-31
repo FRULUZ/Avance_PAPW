@@ -30,11 +30,12 @@ CREATE TABLE `user` (
   `Correo` varchar(60) DEFAULT NULL,
   `image` varchar(60) DEFAULT NULL,
   `Redes` varchar(45) DEFAULT NULL,
+  `About` text,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
   UNIQUE KEY `Correo_UNIQUE` (`Correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalo','contra',NULL,NULL,NULL,NULL),(25,'Vane','lol',3,'vane_@hotmail.com','Assets/images/image1608247932398.jpg','vanesaaa99'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan'),(28,'eli','Ep123456',2,'eli_@hotmail.com','Assets/images/image1608536904201.png','yadira3'),(30,'lol','123',4,'edo_@hotmail.com2','Assets/images/image1608538740288.jpg','edobertop');
+INSERT INTO `user` VALUES (1,'lalito','1234',1,'lalin@hotmail.com','humpty.png','lalin',NULL),(25,'Vane','lol',3,'vane_@hotmail.com','Assets/images/image1608247932398.jpg','vanesaaa99','no se que decir'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan',NULL),(28,'elizabeth','Porta7777',2,'eliza444_@hotmail.com','Assets/images/1609044953716.jpg','eliza4555',NULL),(30,'lol','LOl7897899',4,'edo_@hotmail.com2','Assets/images/1609112322752.jpg','edobertop','cambio de datos esta muy largo ahora, me gusta el anime.'),(59,'Pablo','Nose123456',2,'albertini_@hotmail.com','Assets/images/1609059197705.ext','mailicirus',''),(60,'GATO','Po123456',3,'gatito@gmail.com','Assets/images/profile.png','kittykat','');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-23  1:49:10
+-- Dump completed on 2020-12-29  3:18:23

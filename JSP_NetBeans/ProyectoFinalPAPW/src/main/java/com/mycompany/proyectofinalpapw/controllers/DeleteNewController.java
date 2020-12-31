@@ -5,10 +5,9 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.CommentaryDAO;
-import com.mycompany.proyectofinalpapw.models.Commentary;
-import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.dao.NewsDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "CommentaryController", urlPatterns = {"/CommentaryController"})
-public class CommentaryController extends HttpServlet {
+@WebServlet(name = "DeleteNewController", urlPatterns = {"/DeleteNewController"})
+public class DeleteNewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +33,12 @@ public class CommentaryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
    
-         String content = request.getParameter("commentary");
-         String idNews = request.getParameter("idNews");
-         String hora = request.getParameter("hour");
-         String fecha = request.getParameter("date");
-         String idUser = request.getParameter("idUser");
-         int likes = 0;
-         
-         //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
-         
-        CommentaryDAO.insertCommentary(new Commentary(content,Integer.parseInt(idNews),new User(Integer.parseInt(idUser, 10)), 0, hora, fecha, likes));
         
-        request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
+        String idNew = request.getParameter("id");
+        NewsDAO.DeleteNews(Integer.parseInt(idNew, 10));
+        request.getRequestDispatcher("Borradores.jsp").forward(request, response);
+
         
-         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

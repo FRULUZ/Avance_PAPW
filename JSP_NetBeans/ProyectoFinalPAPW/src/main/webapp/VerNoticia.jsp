@@ -4,12 +4,15 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.models.NewsLikes"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.CommentaryDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Commentary"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewLikesDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.UserDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -23,15 +26,19 @@
          
         News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
         request.setAttribute("New", element);
+        
+
+        List<NewsLikes> newslikes = NewLikesDAO.getNewsLike();
+        request.setAttribute("Newslikes", newslikes);
+     
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
-    
-    
+
     
     <title>Noticia</title>
     
@@ -168,20 +175,52 @@
 
 <!----EN ESTA PARTE VA LA SECCION PARA CALIFICAR CON ESTRELLAS LA NOTICIA--->
 <br><br>
-<h1>Califica esta noticia</h1>
-<div class="rating"> 
-    
-  <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-  <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio"
-  name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2"
- id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
- for="1">☆</label>
+<h1>Califica esta noticia y/o agregala como favorita: </h1>
 
-</div>
 
-<a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="false">No me gusta</a>
-<a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Me gusta</a>
+      <form method="POST" action="NewLikesController">
 
+
+
+          <input type="hidden" name="idNews" value="<%=element.getId()%>">
+          <input type="hidden" name="idUser" value="<%=session.getAttribute("id")%>">
+          <input type="hidden" name="valor" value=1>  
+          <input type="hidden" name="title" value="<%=element.getTitle()%>">  
+          
+           <input type="submit"  class="btn btn-success" value="me gusta">
+          
+          <%
+             
+             for (NewsLikes megustan : newslikes) {
+                
+          %>
+          
+          
+           <%
+                    if(megustan.getNews().getId() == (int)element.getId() && megustan.getUser() == (int)session.getAttribute("id")) {
+                %>
+                
+                
+                <input type="submit" disabled class="btn btn-success" value="me gusta">
+                  
+                <a class="btn btn-danger" href="DeleteNewsLikeController?id=<%=megustan.getId()%>">Ya no me gusta</a>
+   
+         
+           <%
+                   }else{
+           %>
+
+           <input type="submit"  class="btn btn-success" value="me gusta">
+           
+            <%
+                   }
+           %>
+           
+               <%
+                   }
+           %>
+           
+      </form>
 
 </div>
 
@@ -202,26 +241,54 @@
                             
                             
                             
-                             <%
-                                  if ((int) session.getAttribute("tipo") != 2) {
-                              %>
+                         <%
+                            if (session.getAttribute("username") == null) {
+                        %>
+                                     
+                        <form class="col-12"  method="POST" enctype="multipart/form-data" action="AddAnonimoController"  name="Form1" onsubmit="return emptyValidation()" required>
+                        
+                        <div class="form-group">
+                        <label for="ingresa un Nombre de Uusuario">Elije un nombre: </label>
+                        <input type="text"  name="username">
+                        </div>
+                 
                             
-                              
-                              
+                        </form>
+                        
+                          <%
+                            }
+                        %>
+                        
                               
                             <form method="POST" action="CommentaryController" >
+                                
+             
+                                
+                                <div class="form-group">
+                                    <label for="date">Día de hoy</label>
+                                    <p id="date"></p>
+                                    <input id="datePicker" type="date" id="date" name ="date" />
+                                </div>
+
+                                <br>
+
+                                <div class="form-group">
+                                    <label for="date">Hora actual</label>
+                                    <input type="time" id="hour"  name ="hour"/>
+                                </div>
+                            
+                                <br>
+                                
                             <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
                             <br>
-                            <input type="submit" class="btn btn-success" value="Postear comentario">
+                             
+                            
                             <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                            <input type="hidden" name="idUser" value="<%= session.getAttribute("id")%>">
+                            <input type="submit" class="btn btn-success" value="Postear comentario">
                             
                             </form>
-                           
-                             <%
-                                 }
-                              %>
-                                            
-                            
+   
                             <div class="clearfix"></div>
                             <hr>
                             <ul class="media-list">
@@ -237,47 +304,69 @@
              
                                         
                                          <li class="media">
-                                    <a href="#" class="pull-left">
-                                        <img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                                    </a>
+                                   
                                     <div class="media-body">
                                        
+                                        
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">Comentado a las <%= commentary.getHora()%> horas</small>
+                                        </span>
+                                        
+                                        <br>
+
+
+                                         <span class="text-muted pull-right">
+                                            <small class="text-muted">Comentado el día: <%= commentary.getFecha()%> </small>
+                                        </span>
+                                        
+                                     
+                                        
                                         <strong class="text-success"><%= commentary.getUser().getUsername() %></strong>
                                         <p>
                                             <%= commentary.getContent() %>
                                             
-                                            <%
-                                                if ((int) session.getAttribute("tipo") == 4) {
-                                            %>
+                                       
                                             
                                         </p>
                                          <span class="pull-left">
                                            <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
                                         </span>
                                         
-                                           <%
-                                               }
-                                           %>
+                                        
+                                        
                                         
                                           <span class="pull-right">
-                                           <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                                           <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-                                        </span>
+                                           <a href="ResLikeController?id=<%=commentary.getId()%>&idNews=<%= element.getId() %>" class="float-right btn text-white btn btn-danger">  <i class="fa fa-heart"></i> Dislike</a>
+                                           <a href="AddLikeController?id=<%=commentary.getId()%>&idNews=<%= element.getId() %>" class="float-right btn text-white btn btn-success">  <i class="fa fa-heart"></i> Likes <%= commentary.getLikes()%></a>
+                                          </span>
                                              
                     
                                     </div>
                                 </li>
                                 
-                  
-                                
-  
+       
+                                <!-- Respuestas de los comentarios -->
+                                <ul class="comments-list reply-list">
+                                   
+
+                                    <br>
+                                    <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
+                                    <br>
+
+
+                                    <input type="hidden" name="idNews" value="<%= element.getId()%>">
+                                    <input type="hidden" name="idUser" value="<%= session.getAttribute("id")%>">
+                                    <input type="submit" class="fa fa-reply" value="Responder">
+                            
+                        
+                            </ul>
+
                                  <%
                         }
                     %>
 
                                 
                              
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -292,3 +381,30 @@
 </body>
 
 </html>
+
+
+
+<script>
+
+    $(document).ready( function() {
+    var now = new Date();
+    var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    $('#datePicker').val(today);
+});
+    
+    
+</script>
+
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+</script>
+
+<script>
+var date = new Date();
+
+document.getElementById("date").value = date.getFullYear() + "-" + (date.getMonth()<10?'0':'') + (date.getMonth() + 1) + "-" + (date.getDate()<10?'0':'') + date.getDate();
+
+document.getElementById("hour").value = (date.getHours()<10?'0':'') + date.getHours()  + ":" + (date.getMinutes()<10?'0':'')  + date.getMinutes();
+</script>

@@ -7,8 +7,10 @@ package com.mycompany.proyectofinalpapw.controllers;
 import com.mycompany.proyectofinalpapw.dao.UserDAO;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +36,8 @@ public class LogInController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         
+        
+  
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String tipo = request.getParameter("tipo");
@@ -41,23 +45,34 @@ public class LogInController extends HttpServlet {
         
         User user = new User(username, password, imagen);
         
+
+        
         User logIn = UserDAO.LogInUser(user);
+
         
         if(logIn == null){
         
             response.sendRedirect("SignInFail.jsp");
             
         }else{
-          
-          HttpSession session = request.getSession();
-          session.setAttribute("id", logIn.getId());
-          session.setAttribute("username", logIn.getUsername());
-          session.setAttribute("image", logIn.getPath_user());
-          session.setAttribute("tipo", logIn.getTipo_user());
-          
-          response.sendRedirect("VerUsuario.jsp");
-          
+           
+           
+
+            HttpSession session = request.getSession();
+            session.setAttribute("id", logIn.getId());
+            session.setAttribute("username", logIn.getUsername());
+            session.setAttribute("password", logIn.getPassword());
+            session.setAttribute("tipo", logIn.getTipo_user());
+            session.setAttribute("correo", logIn.getCorreo());
+            session.setAttribute("image", logIn.getPath_user());
+            session.setAttribute("red", logIn.getRed());
+            session.setAttribute("about", logIn.getAbout());
+
+            response.sendRedirect("VerUsuario.jsp");
+
         }
+        
+     
     }
 
     /**

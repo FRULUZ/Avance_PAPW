@@ -28,13 +28,16 @@ public class CommentaryDAO {
         Connection con = null;
         try {
             con = DbConnection.getConnection();
-            String sql = "CALL insertCommentary(?, ?, ?, ?);";
+            String sql = "CALL insertCommentary(?, ?, ?, ?, ?, ?, ?);";
             CallableStatement statement = con.prepareCall(sql);
 
             statement.setString(1, commentary.getContent());
             statement.setInt(2, commentary.getIdNews());
             statement.setInt(3, commentary.getUser().getId());
             statement.setInt(4, commentary.getParent());
+            statement.setString(5, commentary.getHora());
+            statement.setString(6, commentary.getFecha());
+            statement.setInt(7, commentary.getLikes());
 
             return statement.executeUpdate();
 
@@ -70,7 +73,11 @@ public class CommentaryDAO {
                 int idUser = result.getInt(4);
                 int parent = result.getInt(5);
                 User user = UserDAO.getUser(idUser);
-                commentaries.add(new Commentary(id, content, idNews, user, parent));
+                String hora = result.getString(6);
+                String fecha = result.getString(7);
+                int likes = result.getInt(8);
+                
+                commentaries.add(new Commentary(id, content, idNews, user, parent, hora, fecha, likes));
             }
             return commentaries;
         } catch (SQLException ex) {
@@ -112,6 +119,70 @@ public class CommentaryDAO {
         }
         return 0;
     }
+       
+       
+       
+       
+       
+       
+       
+        public static int addlike(int idCommentary) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL sum_like(?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idCommentary);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommentaryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+        
+        
+        
+        
+        
+        public static int dislike(int idCommentary) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL res_like(?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idCommentary);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommentaryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+       
+       
+       
+
 
     
 }

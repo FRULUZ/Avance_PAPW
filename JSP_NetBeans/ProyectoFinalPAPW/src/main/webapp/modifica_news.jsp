@@ -1,30 +1,29 @@
 <%-- 
-    Document   : CreaNoticia
-    Created on : Nov 20, 2020, 1:38:39 AM
+    Document   : modifica_news
+    Created on : Dec 29, 2020, 12:13:15 AM
     Author     : EDGAR
 --%>
 
 <%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 
 <%
 List<Category> categories = CategoryDAO.getCategories();
 request.setAttribute("Categories", categories);
 %>
 
+
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear una nueva noticia</title>
-
-    <link rel="stylesheet" href="CSS/estilote.css">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Modificar noticias</title>
+        
+        
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -38,40 +37,38 @@ request.setAttribute("Categories", categories);
 
 
      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-
-     
-</head>
-
-
-
-<body>
-
     
-    
-    <jsp:include page="NavBar.jsp"/> 
-    
+         <link rel="stylesheet" href="CSS/modifica_news_style.css">
         
-    <p>
-        <br>
-    
-    </p>
+    </head>
     
     
-    
-  <header class="text-white text-center">
-    <h1 class="display-4">REDACTA UNA NOTICIA</h1>
-
-</header>
-
-<p>
-    <br>
-
-</p>
+    <body>
+        
+        <jsp:include page="NavBar.jsp"/> 
 
 
+        <p>
+            <br>
 
+        </p>
+        
+            
+        <header class="text-white text-center">
+            <h1 class="display-4">MODIFICA ESTA NOTICIA</h1>
+        </header>
+        
+        
+        <p>
+            <br>
 
-    <div class="container">
+        </p>
+        
+        
+        
+        
+        
+        <div class="container">
         
        
         
@@ -170,44 +167,34 @@ request.setAttribute("Categories", categories);
             </form> 
     </div>    
 
+        
+        
+        
+        
+        
+        <p>
+            <br>
 
-<p>
-    <br>
+        </p>
 
-</p>
+        <footer>
 
-<footer>
-
-    <div class="footer-limiter">
-
-
-        <div class="footer-left">
-
-            <p>Bitsonte studios © 2020</p>
-        </div>
-
-    </div>
-
-</footer>
+            <div class="footer-limiter">
 
 
+                <div class="footer-left">
 
-</body>
+                    <p>Bitsonte studios © 2020</p>
+                </div>
 
+            </div>
 
+        </footer>
+        
+        
+        
+        
+    </body>
+    
+    
 </html>
-
-
-
-
-
-<script>
-
-    $(document).ready( function() {
-    var now = new Date();
-    var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-    $('#datePicker').val(today);
-});
-    
-    
-</script>

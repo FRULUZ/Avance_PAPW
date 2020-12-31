@@ -28,13 +28,16 @@ CREATE TABLE `commentary` (
   `idNews` int(11) DEFAULT NULL,
   `idUser` int(11) DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
+  `hora` varchar(45) DEFAULT NULL,
+  `fecha` varchar(45) DEFAULT NULL,
+  `likes` int(11) DEFAULT NULL,
   PRIMARY KEY (`idcommentary`),
   UNIQUE KEY `idcommentary_UNIQUE` (`idcommentary`),
   KEY `fk_user_commentary_idx` (`idUser`),
   KEY `fk_news_commentary_idx` (`idNews`),
   CONSTRAINT `fk_news_commentary` FOREIGN KEY (`idNews`) REFERENCES `news` (`idnews`),
   CONSTRAINT `fk_user_commentary` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +46,7 @@ CREATE TABLE `commentary` (
 
 LOCK TABLES `commentary` WRITE;
 /*!40000 ALTER TABLE `commentary` DISABLE KEYS */;
-INSERT INTO `commentary` VALUES (13,'Es un comentario para probar',39,1,0);
+INSERT INTO `commentary` VALUES (20,'nota para borrarse xd bye bye',41,1,0,NULL,NULL,1),(21,'otro comentario',41,1,0,NULL,NULL,1),(22,'a ver si jala :\'v',41,25,0,NULL,'2020-12-28',1),(23,'comentario horas',41,25,0,'01:59','2020-12-28',2),(24,'comentarios',41,25,0,'03:30','2020-12-28',1),(25,'Coments 1',40,30,0,'18:13','2020-12-28',0),(26,'comentario 5',40,30,0,'18:13','2020-12-28',0),(29,'otro coment',41,25,0,'02:25','2020-12-29',0);
 /*!40000 ALTER TABLE `commentary` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-23  1:49:10
+-- Dump completed on 2020-12-29  3:18:22

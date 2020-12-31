@@ -19,6 +19,9 @@ public class Commentary {
     private User user;
     private int parent;
     private List<Commentary> answers;
+    private String hora;
+    private String fecha;
+    private int likes;
 
     public Commentary() {
     }
@@ -32,19 +35,31 @@ public class Commentary {
         this.content = content;
     }
 
-    public Commentary(String content, int idNews, User user, int parent) {
+    //este cambia//
+
+    public Commentary(String content, int idNews, User user, int parent, String hora, String fecha, int likes) {
         this.content = content;
         this.idNews = idNews;
         this.user = user;
         this.parent = parent;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.likes = likes;
     }
+    
+  
 
-    public Commentary(int id, String content, int idNews, User user, int parent) {
+    //este cambia//
+    
+    public Commentary(int id, String content, int idNews, User user, int parent, String hora, String fecha, int likes) {
         this.id = id;
         this.content = content;
         this.idNews = idNews;
         this.user = user;
         this.parent = parent;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.likes = likes;
     }
 
     public Commentary(int id, String content, int idNews, User user, int parent, List<Commentary> answers) {
@@ -103,6 +118,32 @@ public class Commentary {
     public void setAnswers(List<Commentary> answers) {
         this.answers = answers;
     }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+    
+    
     
 
 

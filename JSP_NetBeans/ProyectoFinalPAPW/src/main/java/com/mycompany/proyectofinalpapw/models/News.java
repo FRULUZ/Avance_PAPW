@@ -23,6 +23,7 @@ public class News {
     private String PathImage3;
     private String video;
     private boolean aprobada;
+    private int user;
 
     //para multi categorias en una sola noticia
     // private List<Category> categories;
@@ -34,7 +35,7 @@ public class News {
         this.id = id;
     }
 
-    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada) {
+    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada, int user) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -45,14 +46,12 @@ public class News {
         this.PathImage3 = PathImage3;
         this.video = video;
         this.aprobada = aprobada;
+        this.user = user;
     }
 
-   
- 
-    
     //para crear nueva noticia//
 
-    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada) {
+    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, boolean aprobada, int user) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -64,10 +63,9 @@ public class News {
         this.PathImage3 = PathImage3;
         this.video = video;
         this.aprobada = aprobada;
+        this.user = user;
     }
 
-  
-  
 
     public int getId() {
         return id;
@@ -157,6 +155,15 @@ public class News {
     public void setAprobada(boolean aprobada) {
         this.aprobada = aprobada;
     }
-    
+
+    public int getUser() {
+        return user;
+    }
+
+    public void setUser(int user) {
+        this.user = user;
+    }
+
+
     
 }

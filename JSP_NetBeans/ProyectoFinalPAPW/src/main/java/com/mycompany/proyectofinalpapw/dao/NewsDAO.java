@@ -6,6 +6,7 @@
 package com.mycompany.proyectofinalpapw.dao;
 import com.mycompany.proyectofinalpapw.models.Category;
 import com.mycompany.proyectofinalpapw.models.News;
+import com.mycompany.proyectofinalpapw.models.User;
 import com.mycompany.proyectofinalpapw.utils.DbConnection;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -28,7 +29,7 @@ public class NewsDAO {
     try{
     
         con = DbConnection.getConnection();
-        String sql = "CALL insertNews(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "CALL insertNews(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         CallableStatement statement = con.prepareCall(sql);
         statement.setString(1, news.getTitle());
         statement.setString(2, news.getDescription());
@@ -40,6 +41,7 @@ public class NewsDAO {
         statement.setString(8, news.getPathImage3());
         statement.setString(9, news.getVideo());
         statement.setBoolean(10, false);
+        statement.setInt(11, news.getUser());
         
       return statement.executeUpdate();
         
@@ -65,7 +67,7 @@ public class NewsDAO {
     }
     
     
-    public static List<News>  getNews(){
+    public static List<News> getNews(){
     
     List<News> news = new ArrayList<>();
         
@@ -91,9 +93,9 @@ public class NewsDAO {
             String pathImage3 = result.getString(9);
             String Video = result.getString(10);
             boolean aprobada = result.getBoolean(11);
+            int idUser = result.getInt(12);
             
-            
-            news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video, aprobada));
+            news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video, aprobada, idUser));
         }
     
         return news;
@@ -150,8 +152,9 @@ public class NewsDAO {
                 String pathImage3 = result.getString(9);
                 String Video = result.getString(10);
                 boolean aprobada = result.getBoolean(11);
+                int idUser = result.getInt(12);
                 
-                return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video, aprobada);
+                return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video, aprobada, idUser);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -195,7 +198,68 @@ public class NewsDAO {
         return 0;
     }
     
+       
+       
+       
+      public static News DeleteNews(int idNew) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            CallableStatement statement = con.prepareCall("CALL delete_News(?)");
+            statement.setInt(1, idNew);
+
+            ResultSet result = statement.executeQuery();
+        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
     
+   
+       
+       
+       
+       
+       
+       
+       
+       
+    
+       
+   public static int getNewsCatego(int idCate) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL get_news_catego(?);";
+            
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idCate);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                  con.close();
+                } catch (SQLException ex) {
+                  Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
     
     
     

@@ -45,15 +45,13 @@ public class SignInController extends HttpServlet {
         int tipo = Integer.parseInt(request.getParameter("tipo"), 10);
         String correo = request.getParameter("correo");    
         String red = request.getParameter("red");
+        String about = "";
         
         
-        
-        
-       Part file = request.getPart("image");
-       
-       
-       
-       String path = request.getServletContext().getRealPath("");
+        Part file = request.getPart("image");
+
+
+        String path = request.getServletContext().getRealPath("");
         File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
@@ -64,9 +62,9 @@ public class SignInController extends HttpServlet {
         String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         file.write(fullPath);
 
-            
+              
   
-        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red); 
+        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" +  "profile.png", red, about); 
           
         
         
@@ -82,10 +80,8 @@ public class SignInController extends HttpServlet {
          
       
        
-         /*response.sendRedirect("Registro.jsp"); */
+         /*response.sendRedirect("Registro.jsp"); */    
     }
-    
-    
     
 
     /**
