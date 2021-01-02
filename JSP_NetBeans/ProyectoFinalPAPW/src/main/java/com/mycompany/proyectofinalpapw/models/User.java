@@ -27,6 +27,8 @@ public class User {
     
     }
 
+    
+    
     public User(int id) {
         this.id = id;
     }
@@ -36,7 +38,10 @@ public class User {
         this.id = id;
         this.username = username;
     }
-
+   
+    
+    
+    
     public User(int id, String username, String password, int tipo_user, String correo, String path_user, String red, String about) {
         this.id = id;
         this.username = username;
@@ -59,15 +64,19 @@ public class User {
     }
 
 
-    public User(int id, String username, String password, String correo, String path_user, String red, String about) {
+    //modificar datos//
+    
+    public User(int id, String username, String password, String correo, String red, String about) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.correo = correo;
-        this.path_user = path_user;
         this.red = red;
         this.about = about;
     }
+  
+
+
 
  
     public User(String username, String password, String path_user) {
@@ -93,10 +102,22 @@ public class User {
     
     //para los anonimos//
 
-    public User(String username, int tipo_user) {
+    
+
+
+    public User(String password, String correo) {
+        this.password = password;
+        this.correo = correo;
+    }
+
+    public User(int id, String username, int tipo_user) {
+        this.id = id;
         this.username = username;
         this.tipo_user = tipo_user;
     }
+    
+    
+    
     
    //-----------GETTER AND SETTERS-----------//
     
@@ -146,11 +167,6 @@ public class User {
         this.path_user = path_user;
     }
 
-    
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;

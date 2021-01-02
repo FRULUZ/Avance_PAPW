@@ -11,12 +11,15 @@ package com.mycompany.proyectofinalpapw.models;
  */
 public class NewsLikes {
     
-    
+   
     private int id;
     private int user;
     private News news;
     private int likes;
     private String title;
+
+    public NewsLikes() {
+    }
     
     
     //insert//

@@ -67,24 +67,9 @@ public class ModificarUserController extends HttpServlet {
         String red = request.getParameter("red");
         String about = request.getParameter("about");
        
-       
-        Part file = request.getPart("image");
-
-
-        String path = request.getServletContext().getRealPath("");
-        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        
-        String contentType = file.getContentType();
-        String nameImage = + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
-        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
-        file.write(fullPath);
-
-            
+      
   
-        User user = new User(id, username, password, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red, about); 
+        User user = new User(id, username, password, correo, red, about); 
           
       
         
@@ -108,32 +93,18 @@ public class ModificarUserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         int id = Integer.parseInt(request.getParameter("id"), 10);
+       
+        
+        int id = Integer.parseInt(request.getParameter("id"), 10);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String correo = request.getParameter("correo");    
         String red = request.getParameter("red");
         String about = request.getParameter("about");
        
-       
-        Part file = request.getPart("image");
-
-        
-
-        String path = request.getServletContext().getRealPath("");
-        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-        
-        String contentType = file.getContentType();
-        String nameImage = + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
-        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
-        file.write(fullPath);
-
-            
+      
   
-        User user = new User(id, username, password, correo, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, red, about); 
+        User user = new User(id, username, password, correo, red, about); 
           
       
         

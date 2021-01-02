@@ -4,10 +4,10 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.models.User"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.NewsLikes"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.CommentaryDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Commentary"%>
-<%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewLikesDAO"%>
@@ -29,9 +29,11 @@
         
 
         List<NewsLikes> newslikes = NewLikesDAO.getNewsLike();
-        request.setAttribute("Newslikes", newslikes);
-     
+        request.setAttribute("Newslikes", newslikes);    
+
 %>
+
+
 
 
 <!DOCTYPE html>
@@ -116,7 +118,7 @@
 <div class="container-md">
     <br><br>
 
-    <h1 style="color: #002f59;"><%= element.getTitle()%></h1>
+    <h1><%= element.getTitle()%></h1>
 
 </div>
     
@@ -242,19 +244,38 @@
                             
                             
                          <%
-                            if (session.getAttribute("username") == null) {
+                            if ((int)session.getAttribute("tipo") == 5) {
                         %>
                                      
-                        <form class="col-12"  method="POST" enctype="multipart/form-data" action="AddAnonimoController"  name="Form1" onsubmit="return emptyValidation()" required>
+ 
+                 
+       
+                        <form class="col-12"  method="POST"  action="ProvitionalNameController">
+                        
+                              
                         
                         <div class="form-group">
-                        <label for="ingresa un Nombre de Uusuario">Elije un nombre: </label>
-                        <input type="text"  name="username">
+                                <input class="form-control" type="text"   name="id" value=<%= session.getAttribute("id")%> hidden>
+ 
                         </div>
-                 
+                          
                             
+                      <div class="form-group">
+                                <input class="form-control" name="username" type="text">
+                        </div>
+                            <br>
+                        
+                         
+                        
+                        <div class="botoncin">
+                            <button class="btn btn-primary" type="submit">CAMBIAR POR PROVISIONAL</button>
+                        </div>  
+                 
                         </form>
                         
+                            
+                            <br>
+                            
                           <%
                             }
                         %>
@@ -266,9 +287,9 @@
                                 
                                 <div class="form-group">
                                     <label for="date">Día de hoy</label>
-                                    <p id="date"></p>
-                                    <input id="datePicker" type="date" id="date" name ="date" />
+                                    <input type="date" id="date" name="date"/>
                                 </div>
+                 
 
                                 <br>
 
@@ -282,9 +303,9 @@
                             <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
                             <br>
                              
-                            
-                            <input type="hidden" name="idNews" value="<%= element.getId()%>">
-                            <input type="hidden" name="idUser" value="<%= session.getAttribute("id")%>">
+                   
+                            <input type="text" name="idNews" value="<%= element.getId()%>">
+                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>">
                             <input type="submit" class="btn btn-success" value="Postear comentario">
                             
                             </form>

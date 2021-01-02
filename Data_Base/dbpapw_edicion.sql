@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `megusta`
+-- Table structure for table `edicion`
 --
 
-DROP TABLE IF EXISTS `megusta`;
+DROP TABLE IF EXISTS `edicion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `megusta` (
-  `idMegusta` int(11) NOT NULL AUTO_INCREMENT,
-  `idUser` int(11) DEFAULT NULL,
-  `idNews` int(11) DEFAULT NULL,
+CREATE TABLE `edicion` (
+  `idedicion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
+  `id_news` int(11) DEFAULT NULL,
+  `comentario` text,
   `estado` tinyint(4) DEFAULT NULL,
-  `title` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idMegusta`),
-  UNIQUE KEY `idMegusta_UNIQUE` (`idMegusta`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idedicion`),
+  UNIQUE KEY `idedicion_UNIQUE` (`idedicion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `megusta`
+-- Dumping data for table `edicion`
 --
 
-LOCK TABLES `megusta` WRITE;
-/*!40000 ALTER TABLE `megusta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `megusta` ENABLE KEYS */;
+LOCK TABLES `edicion` WRITE;
+/*!40000 ALTER TABLE `edicion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `edicion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-02  3:18:47
+-- Dump completed on 2021-01-02  3:18:49

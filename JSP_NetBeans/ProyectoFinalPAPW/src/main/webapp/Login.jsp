@@ -79,11 +79,11 @@
     
     <h3>Ingresa con correo y contraseña: </h3>
          <br>
-      <form class="col-12" action="LogInController" method="POST">
+      <form class="col-12" action="LogInCorreoController" method="POST">
 
             <div class="form-group">
-                <label for="ingresa un Nombre de Uusuario">correo: </label>
-                <input type="text" name="username" class="form-control" id="ingresaApodo" placeholder="Usuario">
+                <label for="ingresa un Nombre de Uusuario">Correo: </label>
+                <input type="text" name="correo" class="form-control" id="ingresaApodo" placeholder="Correo">
             </div>
              
                <p>
@@ -117,12 +117,18 @@
            
              <div class="form-group">
                         
-                        <input type="text" id="nombre" name="username" hidden>
+            <input type="text" id="nombre" name="username" hidden>
+            
              </div>
            
                <div class="form-group">
                         
                <input type="text"  name="tipo" value= 5 hidden>
+             </div>
+           
+            <div class="form-group">
+                        
+               <input type="text"  name="id" id="id" hidden>
              </div>
                  
                             
@@ -179,6 +185,37 @@
 		
 		// insert random string to the field
 		var elem = document.getElementById("nombre").value = random;
+		
+	})();
+    
+</script>
+
+
+
+
+<script>
+
+ ;(function() {
+		var randomString = function(length) {
+			
+			var text = "5";
+		
+			var possible = "0123456789101112131415161718192021222324252627829";
+			
+			for(var i = 0; i < length; i++) {
+			
+				text += possible.charAt(Math.floor(Math.random() * possible.length));
+			
+			}
+			
+			return text;
+		}
+
+		// random string length
+		var random = randomString(2);
+		
+		// insert random string to the field
+		var elem = document.getElementById("id").value = random;
 		
 	})();
     

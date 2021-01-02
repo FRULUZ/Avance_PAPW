@@ -40,7 +40,7 @@ public class NewsDAO {
         statement.setString(7, news.getPathImage2());
         statement.setString(8, news.getPathImage3());
         statement.setString(9, news.getVideo());
-        statement.setBoolean(10, false);
+        statement.setInt(10, news.getAprobada()); 
         statement.setInt(11, news.getUser());
         
       return statement.executeUpdate();
@@ -92,7 +92,7 @@ public class NewsDAO {
             String pathImage2 = result.getString(8);
             String pathImage3 = result.getString(9);
             String Video = result.getString(10);
-            boolean aprobada = result.getBoolean(11);
+            int aprobada = result.getInt(11);
             int idUser = result.getInt(12);
             
             news.add(new News(id,title,description,category,fecha,corta, pathImage, pathImage2, pathImage3, Video, aprobada, idUser));
@@ -151,7 +151,7 @@ public class NewsDAO {
                 String pathImage2 = result.getString(8);
                 String pathImage3 = result.getString(9);
                 String Video = result.getString(10);
-                boolean aprobada = result.getBoolean(11);
+                int aprobada = result.getInt(11);
                 int idUser = result.getInt(12);
                 
                 return new News(id, title, description, category, fecha, corta, pathImage, pathImage2, pathImage3, Video, aprobada, idUser);

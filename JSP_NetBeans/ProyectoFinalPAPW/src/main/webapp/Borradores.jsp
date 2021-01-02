@@ -62,8 +62,61 @@
 
 
         <header class="text-white text-center">
-            <h1 class="display-4">BORRADORES DE NOTICIAS REDACTADAS</h1>
+            <h1 class="display-4">NOTICIAS REDACTADAS: </h1>
         </header>
+        
+        
+         <p>
+            <br>
+
+        </p>
+        
+        
+        
+                <%
+                    for (News element : news) {
+                %>
+       
+                
+         
+              
+                 <div>
+                    <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
+                </div>
+                
+                <div>
+
+                    <a href="ShowNewsController?id=<%=element.getId()%>">
+                    <img src= <%= element.getPathImage() %> alt="..." class="img-thumbnail">
+                    </a>
+                </div>
+            
+                <div class="form-group">
+                    <label for="corta"> Descripción corta:  <%= element.getCorta()%></label>
+                </div>
+                  
+                    <div class="form-group">
+                        <label for="fecha"> Fecha de publicación:  <%= element.getDate()%></label>
+                    </div>
+            
+                    
+                <div class="form-group">
+                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=element.getId()%>">Eliminar noticia</a>
+                </div>
+                    
+                    
+                <div class="form-group">
+                    
+                  <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
+                </div>
+                   
+                    
+            
+                    
+                <%
+                    }
+                %>
+        
 
         <p>
             <br>
@@ -104,9 +157,8 @@
        
                 
                   <%
-                    if(element.getUser() == (int)session.getAttribute("id")) {
+                    if(element.getAprobada() == 2) {
                 %>
-       
                 
                 
                 <div class="form-group">
@@ -144,10 +196,12 @@
                   <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
                 </div>
                    
-                    
-                  <%
+                 
+                 <%
                     }
                 %> 
+                
+               
                     
                 <%
                     }

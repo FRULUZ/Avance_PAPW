@@ -35,7 +35,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
   UNIQUE KEY `Correo_UNIQUE` (`Correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=590 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalito','1234',1,'lalin@hotmail.com','humpty.png','lalin',NULL),(25,'Vane','lol',3,'vane_@hotmail.com','Assets/images/image1608247932398.jpg','vanesaaa99','no se que decir'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan',NULL),(28,'elizabeth','Porta7777',2,'eliza444_@hotmail.com','Assets/images/1609044953716.jpg','eliza4555',NULL),(30,'lol','LOl7897899',4,'edo_@hotmail.com2','Assets/images/1609112322752.jpg','edobertop','cambio de datos esta muy largo ahora, me gusta el anime.'),(59,'Pablo','Nose123456',2,'albertini_@hotmail.com','Assets/images/1609059197705.ext','mailicirus',''),(60,'GATO','Po123456',3,'gatito@gmail.com','Assets/images/profile.png','kittykat','');
+INSERT INTO `user` VALUES (1,'lalito','1234',1,'lalin@hotmail.com','humpty.png','lalin',NULL),(25,'Vane22','Lolito11',3,'vane89@hotmail.com','Assets/images/1609578898766.png','vane22','ahora si se que decir me gustas'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan',NULL),(28,'elizabeth','Porta7777',2,'eliza444_@hotmail.com','Assets/images/1609044953716.jpg','eliza4555',NULL),(30,'lol','LOl7897899',4,'edo_@hotmail.com2','Assets/images/1609112322752.jpg','edobertop','cambio de datos esta muy largo ahora, me gusta el anime.'),(59,'Pablo','Nose123456',2,'albertini_@hotmail.com','Assets/images/1609059197705.ext','mailicirus',''),(60,'GATO','Po123456',3,'gatito@gmail.com','Assets/images/profile.png','kittykat',''),(521,'Lolo',NULL,5,NULL,NULL,NULL,NULL),(589,'norvert',NULL,5,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-29  3:18:23
+-- Dump completed on 2021-01-02  3:18:47

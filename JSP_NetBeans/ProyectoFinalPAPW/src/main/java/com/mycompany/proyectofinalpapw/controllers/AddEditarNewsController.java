@@ -5,27 +5,20 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.UserDAO;
-import com.mycompany.proyectofinalpapw.models.User;
-import com.mycompany.proyectofinalpapw.utils.FileUtils;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author EDGAR
  */
-@WebServlet(name = "AddAnonimoController", urlPatterns = {"/AddAnonimoController"})
-public class AddAnonimoController extends HttpServlet {
+@WebServlet(name = "AddEditarNewsController", urlPatterns = {"/AddEditarNewsController"})
+public class AddEditarNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +31,7 @@ public class AddAnonimoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-   
+  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,24 +61,6 @@ public class AddAnonimoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
- 
-        int id = Integer.parseInt(request.getParameter("id"), 10);
-        String username = request.getParameter("username");
-        int tipo2 = Integer.parseInt(request.getParameter("tipo"), 10);
-
-         
-        User user = new User(id,username, tipo2); 
-        UserDAO.addAnonimo(user);
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("id", user.getId());
-        session.setAttribute("aidi", user.getId());
-        session.setAttribute("username", user.getUsername());
-        session.setAttribute("tipo", user.getTipo_user());
-        response.sendRedirect("index.jsp");
-
-     
-  
     }
 
     /**

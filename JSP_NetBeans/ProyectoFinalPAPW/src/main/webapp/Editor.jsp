@@ -4,6 +4,7 @@
     Author     : EDGAR
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page import="java.util.List"%>
@@ -21,7 +22,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Registro</title>
+    <title>Editorial</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -67,8 +68,14 @@
                 <%
                     for (News element : news) {
                 %>
-       
                 
+                
+                 <%
+                    if (element.getAprobada() != 1) {
+                %>
+       
+      
+                   <br>
                 
                 <div class="form-group">
                     <label for="ingresaApodo">Autor</label>
@@ -95,25 +102,52 @@
                     <label for="fecha"> Fecha de publicación:  <%= element.getDate() %></label>
                 </div>
                   
-       
+                 <br>
+        
+                <label for="comment">Necesita primero aprobar o rechazar la noticia para poder comentar</label>
+                
+                 <br>
+                 
               <div class="form-group">
-                <label for="comment">Agregar una nota al escritor: </label>
-                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota"></textarea>
+                <label for="comment">Agregar una nota de aprobación al escritor: </label>
+                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota" required></textarea>
+                <a class="btn btn-mini btn-warning" href="summit">Comentar</a>  
             </div>
             
             <div class="btn-group">
-                <a class="btn btn-mini btn-success" href="AprobarNewsController?id=<%=element.getId()%>">Aprobar</a>
-                <a class="btn btn-mini btn-danger" href="#">Rechazar</a>
+                <a class="btn btn-mini btn-success" href="AprobarNewsController?id=<%=element.getId()%>">Aprobar</a>  
+            </div>   
+           
+             <br>
+              <br>
+             
+          <div class="form-group">
+                <label for="comment">Agregar una nota de rechazo al escritor: </label>
+                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota" required></textarea>
+                <a class="btn btn-mini btn-warning" href="summit">Comentar</a>  
             </div>
             
+                <div class="btn-group">
+                     <a class="btn btn-mini btn-danger" href="#">Rechazar</a>
+                </div>
+            
+                   <br>
+
+                          <%
+                    }
+                %>
+                
                                   <%
                     }
                 %>
         
-
+   <br>
       
     </div>
     
 
   </body>
 </html>
+
+
+

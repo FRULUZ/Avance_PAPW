@@ -4,6 +4,8 @@
     Author     : EDGAR
 --%>
 
+
+
 <%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
@@ -78,14 +80,12 @@ request.setAttribute("Categories", categories);
                <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController" name="Form1" onsubmit="return emptyValidation()" required>
                 
                 
+                   
+                   
                    <div class="form-group">
-                   <label for="date">Día de hoy</label>
-                   <p id="date"></p>
-                   
-                    <input id="datePicker" type="date" id="date" name ="date" />
+                       <label for="date">Día de hoy</label>
+                       <input type="date" id="date" name="date"/>
                    </div>
-                   
-                  
                  
                    
                 <div class="form-group">
@@ -160,6 +160,12 @@ request.setAttribute("Categories", categories);
                     </div>
                     
                     
+                         <div class="form-group">
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                           <input type="text" class="form-control"  name="estado" value= 2>
+                        </div>
+                    </div>
+                    </div>
                     
 
                 <div class="botoncin">
@@ -200,7 +206,6 @@ request.setAttribute("Categories", categories);
 
 
 
-
 <script>
 
     $(document).ready( function() {
@@ -210,4 +215,16 @@ request.setAttribute("Categories", categories);
 });
     
     
+</script>
+
+
+<script>
+var dt = new Date();
+document.getElementById("date").innerHTML = dt.toLocaleTimeString();
+</script>
+
+<script>
+var date = new Date();
+
+document.getElementById("date").value = date.getFullYear() + "-" + (date.getMonth()<10?'0':'') + (date.getMonth() + 1) + "-" + (date.getDate()<10?'0':'') + date.getDate();
 </script>

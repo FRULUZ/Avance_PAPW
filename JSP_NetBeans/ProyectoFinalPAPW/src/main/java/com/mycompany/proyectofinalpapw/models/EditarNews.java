@@ -13,11 +13,68 @@ public class EditarNews {
  
     
     private int id;
-       //has-a//
     private User uuario;
-       //has-a//
     private News noticia;
-    private String descripcion;
-    private boolean aprobar;
+    private String texto;
+    private int estado;
+
+    public EditarNews() {
+    }
+
+    public EditarNews(User uuario, News noticia, String texto, int estado) {
+        this.uuario = uuario;
+        this.noticia = noticia;
+        this.texto = texto;
+        this.estado = estado;
+    }
+
+    public EditarNews(int id, User uuario, News noticia, String texto, int estado) {
+        this.id = id;
+        this.uuario = uuario;
+        this.noticia = noticia;
+        this.texto = texto;
+        this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUuario() {
+        return uuario;
+    }
+
+    public void setUuario(User uuario) {
+        this.uuario = uuario;
+    }
+
+    public News getNoticia() {
+        return noticia;
+    }
+
+    public void setNoticia(News noticia) {
+        this.noticia = noticia;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+   
     
 }

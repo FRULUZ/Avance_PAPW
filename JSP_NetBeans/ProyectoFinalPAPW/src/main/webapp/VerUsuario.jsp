@@ -83,18 +83,60 @@
 
 
             <div class="content-panel">
+                
+                
                 <h3 class="fieldset-title">Perfil del usuario</h3>
 
 
+                 <img src=<%= session.getAttribute("image")%> class="img-thumbnail" alt="...">
+                 
+                 
+                 
+                 
+              
+                 <form class="col-12"  method="POST" enctype="multipart/form-data" action="ImageUserController"  name="Form1" onsubmit="return emptyValidation()" required>
+
+
+                     <div class="form-group">
+
+                         <input type="text"  name="username" value="<%= session.getAttribute("username")%>" required hidden>
+                     </div>
+                     
+                     
+                        <div class="form-group">
+
+                         <input type="text"  name="id" value=<%= session.getAttribute("id")%> required hidden>
+                     </div>
+                     
+                     <div class="form-group">
+
+                         <input type="text"  name="tipo" value=<%= session.getAttribute("tipo")%> required hidden>
+                     </div>
+                     
+                     
+                     <div class="form-group">
+                         <label for="image">Imagen</label>
+                         <input type="file" class="form-control" name="image" id="image" required>
+                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                     </div>
+
+
+                     <input class="btn btn-primary" type="submit" value="CAMBIAR FOTO">
 
 
 
+                 </form> 
+        
+                        
+                         
+                <br>
+                
                 <fieldset class="fieldset">
 
                     <form  class="col-12" method="POST" enctype="multipart/form-data" action="ModificarUserController" name="Form1">
                         
                         
-                        <img src=<%= session.getAttribute("image")%> class="img-thumbnail" alt="...">
+                     
 
                         <p>
                             <br>
@@ -118,20 +160,11 @@
 
                         <div class="form-group">
                             <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombre de usuario</label>
-                            <div class="col-md-10 col-sm-9 col-xs-12">
+                         
                                 <input class="form-control" name="username" type="text" value=<%= session.getAttribute("username")%>>
-                            </div>
+                         
                         </div>
-
-                            
-                            
-                        <div class="form-group">
-                        <label for="image">Cambiar imagen de perfil: </label>
-                        <input type="file" class="form-control" name="image" id="image">
-                        <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
-                        </div>
-                    
-
+         
                         <div class="form-group">
                             <label for="ingresa una contraseña">Password: </label>
                             <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minuscula y al menos 8 caracteres o más." class="form-control" id="ingresaContraseña" placeholder="Que no se te olvide (～￣▽￣)～"  value=<%= session.getAttribute("password")%> required>
@@ -225,6 +258,25 @@
                         <%
                             }
                         %>  
+                        
+                        
+                        
+                        
+                           <%
+                            if ((int) session.getAttribute("tipo") == 5) {
+                        %>
+
+
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tipo de usuario</label>
+                            <div class="col-md-10 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control" value= "Anonimo" readonly>
+                            </div>
+                        </div>
+
+                        <%
+                            }
+                        %>  
 
                         
                         
@@ -280,8 +332,7 @@
 
                         
                         <input class="btn btn-primary" type="submit" value="Modificar datos">
-                        
-                        
+   
                         <a class="btn btn-primary" href="Logoff.jsp" role="button">Salir</a>
 
                         
@@ -289,9 +340,9 @@
 
                     </form>
                         
-                     
-                        <a class="btn btn-mini btn-success" href="DeleteUserController?id=<%= session.getAttribute("id")%>">Eliminar cuenta</a>
-                        
+                     <div>
+                     <a class="btn btn-mini btn-success" href="DeleteUserController?id=<%= session.getAttribute("id")%>">Eliminar cuenta</a>
+                     </div>
                      
                 </fieldset>
             </div>

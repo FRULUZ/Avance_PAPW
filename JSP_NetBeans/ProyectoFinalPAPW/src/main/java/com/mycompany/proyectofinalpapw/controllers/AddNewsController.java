@@ -70,7 +70,7 @@ public class AddNewsController extends HttpServlet {
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
         String date = request.getParameter("date");
         String corta = request.getParameter("corta");
-        boolean aprobada = request.equals(null);
+        int aprobada = Integer.parseInt(request.getParameter("estado"), 10);
         
         
         
@@ -137,7 +137,7 @@ public class AddNewsController extends HttpServlet {
         
         
         
-         int idNews = Integer.parseInt(request.getParameter("id"), 10);
+         int idUser = Integer.parseInt(request.getParameter("id"), 10);
         
         
            
@@ -145,7 +145,7 @@ public class AddNewsController extends HttpServlet {
         //agregar noticia//
              
        
-        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada, idNews);
+        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada, idUser);
         NewsDAO.insertNews(newNews);
         
        
@@ -156,7 +156,7 @@ public class AddNewsController extends HttpServlet {
         
         request.setAttribute("Categories", categories);
         request.setAttribute("News", news);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("Borradores.jsp").forward(request, response);
         
         
     }

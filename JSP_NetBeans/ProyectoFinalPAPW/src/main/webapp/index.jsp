@@ -98,7 +98,7 @@
                 
                  <%
                      
-                    if((boolean)element.isAprobada() == true){
+                    if(element.getAprobada()== 1){
                 %>
                 
                 <div class="card mb-3 col-12 news-card" >
