@@ -92,7 +92,7 @@ public class NewLikesController extends HttpServlet {
         request.setAttribute("Newslikes", newslikes);
        
        
-       request.getRequestDispatcher("index.jsp").forward(request, response);
+       request.getRequestDispatcher("VerUsuario.jsp").forward(request, response);
        
 
         

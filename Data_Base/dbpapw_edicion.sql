@@ -30,7 +30,7 @@ CREATE TABLE `edicion` (
   `estado` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`idedicion`),
   UNIQUE KEY `idedicion_UNIQUE` (`idedicion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `edicion` (
 
 LOCK TABLES `edicion` WRITE;
 /*!40000 ALTER TABLE `edicion` DISABLE KEYS */;
+INSERT INTO `edicion` VALUES (1,28,56,'no me gusta',0),(2,25,53,'no me gusta',0),(3,28,56,'',1);
 /*!40000 ALTER TABLE `edicion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-02  3:18:49
+-- Dump completed on 2021-01-03  3:31:59

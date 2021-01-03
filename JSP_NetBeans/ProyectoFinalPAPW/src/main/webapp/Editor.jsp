@@ -11,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    
+    String idNews = request.getParameter("id");
         List<News> news = NewsDAO.getNews();
         request.setAttribute("News", news);
 %>
@@ -69,18 +69,11 @@
                     for (News element : news) {
                 %>
                 
-                
-                 <%
-                    if (element.getAprobada() != 1) {
-                %>
-       
+        
       
                    <br>
                 
-                <div class="form-group">
-                    <label for="ingresaApodo">Autor</label>
-                    <input type="text" class="form-control" id="ingresaApodo" placeholder="Nombre de la persona que escribio la noticia">
-                </div>
+  
                 
                  <div>
                     <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
@@ -93,6 +86,41 @@
                     </a>
                 </div>
             
+                    
+                          
+                    <%
+                    if(element.getAprobada() == 2) {
+                %>
+                       <div class="form-group">
+                    <label for="ingresaApodo">Estado de la noticia: Espera</label>
+                </div>
+                   <%
+                        }
+                %>
+                   
+                   
+                   
+                   <%
+                    if(element.getAprobada() == 1) {
+                %>
+                <div class="form-group">
+                    <label for="ingresaApodo">Estado de la noticia: Aprobada</label>
+                </div>
+                    <%
+                        }
+                %>
+                   
+                   
+                   <%
+                    if(element.getAprobada() == 0) {
+                %>
+                   <div class="form-group">
+                    <label for="ingresaApodo">Estado de la noticia: Rechazada</label>
+                </div>
+                     <%
+                        }
+                %>
+                    
                 <div class="form-group">
                     <label for="corta"> Descripción corta:  <%= element.getCorta()%></label>
                 </div>
@@ -108,11 +136,23 @@
                 
                  <br>
                  
-              <div class="form-group">
-                <label for="comment">Agregar una nota de aprobación al escritor: </label>
-                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota" required></textarea>
-                <a class="btn btn-mini btn-warning" href="summit">Comentar</a>  
-            </div>
+          
+                 
+                 
+                <form  class="col-12" method="POST" action="AddEditarNewsController">
+ 
+                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3" value="" name="commentary" id="commentary" hidden></textarea>
+                            <input type="text" name="idNew" value="<%= element.getId()%>" hidden>
+                            <input type="text" name="idUser" value="<%= element.getUser()%>" hidden>
+                            <input type="text" name="estado" value="1" hidden>
+                
+                     
+                <input type="submit" class="fa fa-reply" value="Mandar aprobación">
+                
+             </form>    
+                 
+                 
+                 
             
             <div class="btn-group">
                 <a class="btn btn-mini btn-success" href="AprobarNewsController?id=<%=element.getId()%>">Aprobar</a>  
@@ -121,21 +161,35 @@
              <br>
               <br>
              
-          <div class="form-group">
+              
+              
+              
+             <form  class="col-12" method="POST" action="AddEditarNewsController">
+              
                 <label for="comment">Agregar una nota de rechazo al escritor: </label>
-                <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Comentarios sobre la nota" required></textarea>
-                <a class="btn btn-mini btn-warning" href="summit">Comentar</a>  
-            </div>
-            
+                
+                  
+                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
+                            <input type="text" name="idNew" value="<%= element.getId()%>" hidden>
+                            <input type="text" name="idUser" value="<%= element.getUser()%>" hidden>
+                            <input type="text" name="estado" value="0" hidden>
+                
+                     
+                <input type="submit" class="fa fa-reply" value="Mandar comentario">
+                
+             </form>
+              
+             
+             
+             
+             
+              
                 <div class="btn-group">
-                     <a class="btn btn-mini btn-danger" href="#">Rechazar</a>
+                     <a class="btn btn-mini btn-danger" href="RechazarNewsController?id=<%=element.getId()%>">Rechazar</a>
                 </div>
             
                    <br>
 
-                          <%
-                    }
-                %>
                 
                                   <%
                     }

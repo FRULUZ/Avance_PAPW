@@ -4,6 +4,8 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.models.EditarNews"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.EditarNewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page import="java.util.List"%>
@@ -14,6 +16,12 @@
     
         List<News> news = NewsDAO.getNews();
         request.setAttribute("News", news);
+%>
+
+<%
+    
+       List<EditarNews> ediciones = EditarNewsDAO.getEdiciones();
+       request.setAttribute("Ediciones", ediciones);
 %>
 
 
@@ -62,7 +70,7 @@
 
 
         <header class="text-white text-center">
-            <h1 class="display-4">NOTICIAS REDACTADAS: </h1>
+            <h1 class="display-4">NOTICIAS REDACTADAS POR EL USUARIO: </h1>
         </header>
         
         
@@ -78,7 +86,9 @@
                 %>
        
                 
-         
+               <%
+                    if (element.getUser() == (int)session.getAttribute("id")) {
+                %>
               
                  <div>
                     <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
@@ -110,7 +120,9 @@
                   <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
                 </div>
                    
-                    
+                <%
+                    }
+                %>     
             
                     
                 <%
@@ -155,6 +167,10 @@
                     for (News element : news) {
                 %>
        
+                
+                 <%
+                    if (element.getUser() == (int)session.getAttribute("id")) {
+                %>
                 
                   <%
                     if(element.getAprobada() == 2) {
@@ -201,6 +217,11 @@
                     }
                 %> 
                 
+                
+                 <%
+                    }
+                %> 
+                
                
                     
                 <%
@@ -217,6 +238,36 @@
         <header class="text-white text-center">
             <h1 class="display-4">NOTICIAS APROBADAS</h1>
         </header>
+                
+                
+                
+                 <%
+                    for (EditarNews edits : ediciones) {
+                %>
+       
+                <%
+                    if (edits.getUuario().getId() == (int)session.getAttribute("id") && edits.getEstado() == 1) {
+                %>
+              
+    
+                <div>
+                    <a href="ShowNewsController?id=<%=edits.getNoticia().getId()%>" class="btn btn-info" role="button">Ver noticia</a>
+                </div>
+                    
+                    
+                <div class="form-group">
+                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=edits.getNoticia().getId()%>">Eliminar noticia</a>
+                </div>
+                   
+                
+                
+                  <%
+                    }
+                %>
+                
+                <%
+                    }
+                %>
         
          <p>
             <br>
@@ -228,6 +279,46 @@
             <h1 class="display-4">NOTICIAS RECHAZADAS</h1>
         </header>
         
+                <%
+                    for (EditarNews edits : ediciones) {
+                %>
+       
+                <%
+                    if (edits.getUuario().getId() == (int)session.getAttribute("id") && edits.getEstado() == 0) {
+                %>
+              
+               
+          
+                <div>
+                    <a href="ShowNewsController?id=<%=edits.getNoticia().getId()%>" class="btn btn-info" role="button">Ver noticia</a>
+                </div>
+                    
+        
+                
+               <div class="form-group">
+                <label for="exampleFormControlTextarea3">Comentario del editor:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"><%= edits.getTexto()%></textarea>
+                </div>
+                    
+                <div class="form-group">
+                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=edits.getNoticia().getId()%>">Eliminar noticia</a>
+                </div>
+                    
+                    
+                <div class="form-group">
+                    
+                  <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
+                </div>
+                
+                
+                  <%
+                    }
+                %>
+                
+                <%
+                    }
+                %>
+       
          <p>
             <br>
 

@@ -29,11 +29,6 @@ request.setAttribute("Categories", categories);
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 
-                
-                 <li class="nav-item">
-                    <a class="nav-link" href="CateNews.jsp">Buscar noticias<span class="sr-only">(current)</span></a>
-                 </li>
-               
 
                 
                   <%

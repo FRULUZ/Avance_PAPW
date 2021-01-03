@@ -5,13 +5,9 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.EditarNewsDAO;
-import com.mycompany.proyectofinalpapw.models.EditarNews;
-import com.mycompany.proyectofinalpapw.models.News;
-import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.dao.NewsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "AddEditarNewsController", urlPatterns = {"/AddEditarNewsController"})
-public class AddEditarNewsController extends HttpServlet {
+@WebServlet(name = "RechazarNewsController", urlPatterns = {"/RechazarNewsController"})
+public class RechazarNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +32,13 @@ public class AddEditarNewsController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-  
+        
+        String idNews = request.getParameter("id");
+        NewsDAO.rechazarNews(Integer.parseInt(idNews, 10));
+        request.getRequestDispatcher("Editor.jsp").forward(request, response);
+
+       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,26 +68,6 @@ public class AddEditarNewsController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-    
-        String idUser = request.getParameter("idUser");
-        String idNew = request.getParameter("idNew");
-        String comentario = request.getParameter("commentary");
-        String estado = request.getParameter("estado");
-        
-        
-        
-        EditarNews newEditar = new EditarNews(new User(Integer.parseInt(idUser, 10)),new News(Integer.parseInt(idNew, 10)), comentario, Integer.parseInt(estado, 10));
-        EditarNewsDAO.insertEdicion(newEditar);
-        
-        
-        List<EditarNews> ediciones = EditarNewsDAO.getEdiciones();
-        
-        request.setAttribute("Ediciones", ediciones);
-        
-        request.getRequestDispatcher("Editor.jsp").forward(request, response);
-   
-        
     }
 
     /**

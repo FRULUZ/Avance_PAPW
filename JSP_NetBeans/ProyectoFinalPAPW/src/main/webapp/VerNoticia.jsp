@@ -4,6 +4,8 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.ReplyDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Reply"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.User"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.NewsLikes"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.CommentaryDAO"%>
@@ -22,6 +24,10 @@
     
         List<Commentary> commentaries = CommentaryDAO.getCommentariesByNews(Integer.parseInt(idNews, 10));
         request.setAttribute("Commentaries", commentaries);
+        
+        
+        List<Reply> respuestas = ReplyDAO.getReplyByNews(Integer.parseInt(idNews, 10));
+        request.setAttribute("Respuestas", respuestas);
         
          
         News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
@@ -322,13 +328,13 @@
                         for (Commentary commentary : commentaries) {
                     %>
                 
-             
-                                        
-                                         <li class="media">
+         
+                                    <li class="media">
                                    
                                     <div class="media-body">
                                        
-                                        
+                                         <br>
+
                                         <span class="text-muted pull-right">
                                             <small class="text-muted">Comentado a las <%= commentary.getHora()%> horas</small>
                                         </span>
@@ -364,21 +370,90 @@
                     
                                     </div>
                                 </li>
+                                <br>
+                                           <strong class="text">Respuestas: </strong>
+                                <br>
                                 
+                                 <%
+                        for (Reply responder : respuestas) {
+                    %>
+                    
+                    
+                           <%
+                        if (commentary.getId() == responder.getParent()) {
+                    %>
+                    
+                    
+                     <ul class="comments-list reply-list">
+ 
+                                    <br>
+                      <li class="media">
+                                   
+                                    <div class="media-body">
+                                       
+                                        
+                                        <span class="text-muted pull-right">
+                                            <small class="text-muted">Comentado a las <%= responder.getHora()%> horas</small>
+                                        </span>
+                                        
+                                        <br>
+
+
+                                         <span class="text-muted pull-right">
+                                            <small class="text-muted">Comentado el día: <%= responder.getFecha()%> </small>
+                                        </span>
+                                        
+                                     
+                                        
+                                        <strong class="text-success"><%= responder.getUser().getUsername()%></strong>
+                                        <p>
+                                            <%= responder.getContent() %>
+            
+                                    </div>
+                                </li>
+                     </ul>
+                                   
+                       <%
+                           }
+                    %>
+                    
+                      <%
+                           }
+                    %>
+                    
+                    <br>
        
                                 <!-- Respuestas de los comentarios -->
                                 <ul class="comments-list reply-list">
                                    
+                                    
+                                                 
+                            <form method="POST" action="ResponderController" >
+                                
+                                <div class="form-group">
+                                    <label for="date">Día de hoy</label>
+                                    <input type="text" id="date2" name="date"/>
+                                </div>
+                                <br>
 
-                                    <br>
-                                    <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
-                                    <br>
-
-
-                                    <input type="hidden" name="idNews" value="<%= element.getId()%>">
-                                    <input type="hidden" name="idUser" value="<%= session.getAttribute("id")%>">
-                                    <input type="submit" class="fa fa-reply" value="Responder">
+                                <div class="form-group">
+                                    <label for="date">Hora actual</label>
+                                    <input type="text" id="hour2"  name ="hour"/>
+                                </div>
                             
+                                <br>
+                                
+                            <textarea class="form-control" placeholder="Escribe una respuesta..." rows="3"  name="commentary" id="commentary"></textarea>
+                            <br>
+                             
+                   
+                            <input type="text" name="idComentario" value="<%= commentary.getId()%>">
+                            <input type="text" name="idNews" value="<%= element.getId()%>">
+                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>">
+                            <input type="submit" class="fa fa-reply" value="Responder">
+                            
+                            </form>
+
                         
                             </ul>
 
@@ -429,3 +504,23 @@ document.getElementById("date").value = date.getFullYear() + "-" + (date.getMont
 
 document.getElementById("hour").value = (date.getHours()<10?'0':'') + date.getHours()  + ":" + (date.getMinutes()<10?'0':'')  + date.getMinutes();
 </script>
+
+
+
+
+
+<script>
+var date2 = new Date();
+document.getElementById("date2").value = date2.getFullYear() + "-" + (date2.getMonth()<10?'0':'') + (date2.getMonth() + 1) + "-" + (date2.getDate()<10?'0':'') + date2.getDate();
+document.getElementById("hour2").value = (date2.getHours()<10?'0':'') + date2.getHours()  + ":" + (date2.getMinutes()<10?'0':'')  + date2.getMinutes();
+</script>
+
+
+
+
+
+
+
+
+
+

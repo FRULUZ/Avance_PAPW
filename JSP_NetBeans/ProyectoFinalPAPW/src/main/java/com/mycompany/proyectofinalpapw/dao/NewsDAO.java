@@ -223,15 +223,6 @@ public class NewsDAO {
         }
         return null;
     }
-    
-   
-       
-       
-       
-       
-       
-       
-       
        
     
        
@@ -244,6 +235,34 @@ public class NewsDAO {
             CallableStatement statement = con.prepareCall(sql);
 
             statement.setInt(1, idCate);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                  con.close();
+                } catch (SQLException ex) {
+                  Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+    
+  
+   
+       public static int rechazarNews(int idNew) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL Rechazar_news(?);";
+            
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idNew);
 
             return statement.executeUpdate();
 

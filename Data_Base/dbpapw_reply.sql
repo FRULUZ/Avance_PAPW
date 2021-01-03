@@ -16,32 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `category`
+-- Table structure for table `reply`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `reply`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
-  `idcategory` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  `order` int(11) DEFAULT NULL,
+CREATE TABLE `reply` (
+  `idreply` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text,
+  `idNews` int(11) DEFAULT NULL,
+  `idUser` int(11) DEFAULT NULL,
   `parent` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idcategory`),
-  UNIQUE KEY `idcategory_UNIQUE` (`idcategory`),
-  KEY `fk_parent_category_idx` (`parent`),
-  CONSTRAINT `fk_parent_category` FOREIGN KEY (`parent`) REFERENCES `category` (`idcategory`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `hora` varchar(45) DEFAULT NULL,
+  `fecha` varchar(45) DEFAULT NULL,
+  `likes` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idreply`),
+  UNIQUE KEY `idreply_UNIQUE` (`idreply`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `reply`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'COMICS',3,NULL),(2,'VIDEOJUEGOS',1,NULL),(3,'ANIME',2,NULL);
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `reply` WRITE;
+/*!40000 ALTER TABLE `reply` DISABLE KEYS */;
+INSERT INTO `reply` VALUES (1,'prueba responder',41,25,23,'20:10','2021-01-02',0),(2,'otra respuesta',41,512,23,'20:18','2021-01-02',0);
+/*!40000 ALTER TABLE `reply` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-03  3:31:53
+-- Dump completed on 2021-01-03  3:31:58
