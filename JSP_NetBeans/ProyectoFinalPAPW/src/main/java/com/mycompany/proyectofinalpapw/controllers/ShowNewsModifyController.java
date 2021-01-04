@@ -5,10 +5,13 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.ReplyDAO;
-import com.mycompany.proyectofinalpapw.models.Reply;
-import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.dao.CategoryDAO;
+import com.mycompany.proyectofinalpapw.dao.NewsDAO;
+import com.mycompany.proyectofinalpapw.models.Category;
+import com.mycompany.proyectofinalpapw.models.News;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "ResponderController", urlPatterns = {"/ResponderController"})
-public class ResponderController extends HttpServlet {
+@WebServlet(name = "ShowNewsModifyController", urlPatterns = {"/ShowNewsModifyController"})
+public class ShowNewsModifyController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +38,15 @@ public class ResponderController extends HttpServlet {
             throws ServletException, IOException {
      
         
-         String content = request.getParameter("commentary");
-         String idNews = request.getParameter("idNews");
-         String idComentario = request.getParameter("idComentario");
-         String hora = request.getParameter("hour");
-         String fecha = request.getParameter("date");
-         String idUser = request.getParameter("idUser");
-         int likes = 0;
-         
-         //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
-         
-        ReplyDAO.insertReply(new Reply(content,Integer.parseInt(idNews,10),new User(Integer.parseInt(idUser, 10)), Integer.parseInt(idComentario,10), hora, fecha, likes));
+        String idNews = request.getParameter("id");
+ 
+        List<Category> categories = CategoryDAO.getCategories();
+        request.setAttribute("Categories", categories);
         
-        request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
+        News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
+        request.setAttribute("New", element);
         
-        
+        request.getRequestDispatcher("modifica_news.jsp").forward(request, response);
         
     }
 

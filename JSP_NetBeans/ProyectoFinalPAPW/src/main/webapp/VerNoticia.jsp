@@ -183,8 +183,38 @@
 
 <!----EN ESTA PARTE VA LA SECCION PARA CALIFICAR CON ESTRELLAS LA NOTICIA--->
 <br><br>
-<h1>Califica esta noticia y/o agregala como favorita: </h1>
+<h1>Califica esta noticia: </h1>
 
+<br>
+
+
+<form method="POST" action="RankController">
+
+<label for="numberSize">Califica esta noticia con un valor entre el 1(mínimo) al 10 (máximo): </label>
+
+<input name="rank"  type="number" min="1" max="10" id="numberSize" oninput="(!validity.rangeOverflow||(value=10)) && (!validity.rangeUnderflow||(value=1)) &&
+       (!validity.stepMismatch||(value=parseInt(this.value)));">
+
+  
+<input type="hidden" name="id" value="<%=element.getId()%>">
+
+<input type="submit"  class="btn btn-success" value="Votar">
+
+<div class="form-group">
+    <label>Calificación promedio de esta noticia por los usuarios: </label>
+    <input class="form-control" name="about" value="<%= element.getRank()%>" type="text">
+
+</div>
+
+
+</form>
+
+
+<br>
+<br>
+<h1>Agregala como favorita: </h1>
+
+<br>
 
       <form method="POST" action="NewLikesController">
 

@@ -101,7 +101,7 @@ public class ImageUserController extends HttpServlet {
         
         
         UserDAO.modifyPic(user);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("VerUsuario.jsp").forward(request, response);
     
     }
    

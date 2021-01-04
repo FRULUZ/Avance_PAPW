@@ -5,15 +5,13 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.CategoryDAO;
 import com.mycompany.proyectofinalpapw.dao.NewsDAO;
 import com.mycompany.proyectofinalpapw.models.Category;
 import com.mycompany.proyectofinalpapw.models.News;
-import com.mycompany.proyectofinalpapw.models.User;
 import com.mycompany.proyectofinalpapw.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -26,11 +24,24 @@ import javax.servlet.http.Part;
  *
  * @author EDGAR
  */
-@WebServlet(name = "AddNewsController", urlPatterns = {"/AddNewsController"})
+@WebServlet(name = "ModificarMediaNewsController", urlPatterns = {"/ModificarMediaNewsController"})
 @MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 25)
-public class AddNewsController extends HttpServlet {
+public class ModificarMediaNewsController extends HttpServlet {
 
-  
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -43,12 +54,7 @@ public class AddNewsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        List<Category> categories = CategoryDAO.getCategories();
-        request.setAttribute("Categories", categories);
-        request.getRequestDispatcher("CreaNoticia.jsp").forward(request, response);
-        
-        
+        processRequest(request, response);
     }
 
     /**
@@ -62,19 +68,13 @@ public class AddNewsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
         
         
-         
-        String title = request.getParameter("title");
-        String description = request.getParameter("descripcion");
-        int idCategory = Integer.parseInt(request.getParameter("category"), 10);
-        String date = request.getParameter("date");
-        String corta = request.getParameter("corta");
-        int aprobada = Integer.parseInt(request.getParameter("estado"), 10);
+           
+       String id = request.getParameter("id");
         
-        
-        
-        Part file = request.getPart("image");
+      Part file = request.getPart("image");
 
         String path = request.getServletContext().getRealPath("");
         File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE);
@@ -136,29 +136,24 @@ public class AddNewsController extends HttpServlet {
         file4.write(fullPath4);
         
         
-        
-         int idUser = Integer.parseInt(request.getParameter("id"), 10);
-         int rank = Integer.parseInt(request.getParameter("rank"), 10);
-        
-           
-        //CHECAR BIEN COMO AGREGA TODO//
-        //agregar noticia//
-             
-       
-        News newNews = new News(title, description, new Category(idCategory),date, corta, FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4, aprobada, idUser, rank);
-        NewsDAO.insertNews(newNews);
-        
-       
-        
-        List<Category> categories = CategoryDAO.getCategories();
-        List<News> news = NewsDAO.getNews();
-        
-        
-        request.setAttribute("Categories", categories);
-        request.setAttribute("News", news);
+      
+  
+        News news = new News(Integer.parseInt(id, 10),FileUtils.RUTE_USER_IMAGE + "/" + nameImage, FileUtils.RUTE_USER_IMAGE + "/" + nameImage2, FileUtils.RUTE_USER_IMAGE + "/" + nameImage3, FileUtils.RUTE_USER_IMAGE + "/" + nameImage4); 
+
+        NewsDAO.modificar_media(news);
         request.getRequestDispatcher("Borradores.jsp").forward(request, response);
         
         
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

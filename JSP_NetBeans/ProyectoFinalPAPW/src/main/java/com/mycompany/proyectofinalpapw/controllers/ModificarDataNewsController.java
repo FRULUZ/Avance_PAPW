@@ -5,10 +5,12 @@
  */
 package com.mycompany.proyectofinalpapw.controllers;
 
-import com.mycompany.proyectofinalpapw.dao.ReplyDAO;
-import com.mycompany.proyectofinalpapw.models.Reply;
+import com.mycompany.proyectofinalpapw.dao.NewsDAO;
+import com.mycompany.proyectofinalpapw.models.Category;
+import com.mycompany.proyectofinalpapw.models.News;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "ResponderController", urlPatterns = {"/ResponderController"})
-public class ResponderController extends HttpServlet {
+@WebServlet(name = "ModificarDataNewsController", urlPatterns = {"/ModificarDataNewsController"})
+public class ModificarDataNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +35,7 @@ public class ResponderController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
-        
-         String content = request.getParameter("commentary");
-         String idNews = request.getParameter("idNews");
-         String idComentario = request.getParameter("idComentario");
-         String hora = request.getParameter("hour");
-         String fecha = request.getParameter("date");
-         String idUser = request.getParameter("idUser");
-         int likes = 0;
-         
-         //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
-         
-        ReplyDAO.insertReply(new Reply(content,Integer.parseInt(idNews,10),new User(Integer.parseInt(idUser, 10)), Integer.parseInt(idComentario,10), hora, fecha, likes));
-        
-        request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
-        
-        
-        
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,6 +65,22 @@ public class ResponderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        
+        String id = request.getParameter("id");
+        String title = request.getParameter("title");
+        String description = request.getParameter("descripcion");
+        String date = request.getParameter("date2");
+        String idCategory = request.getParameter("category");
+        String corta = request.getParameter("corta");
+        
+
+        News news = new News(Integer.parseInt(id, 10),title,description, new Category(Integer.parseInt(idCategory,10)), date, corta); 
+
+        NewsDAO.modificar_data(news);
+        request.getRequestDispatcher("Borradores.jsp").forward(request, response);
+        
+        
     }
 
     /**

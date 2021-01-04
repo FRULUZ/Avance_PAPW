@@ -24,6 +24,7 @@ public class News {
     private String video;
     private int aprobada;
     private int user;
+    private int rank;
 
     //para multi categorias en una sola noticia
     // private List<Category> categories;
@@ -35,7 +36,10 @@ public class News {
         this.id = id;
     }
 
-    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, int aprobada, int user) {
+    
+    //crear noricia/
+
+    public News(String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, int aprobada, int user, int rank) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -47,12 +51,12 @@ public class News {
         this.video = video;
         this.aprobada = aprobada;
         this.user = user;
+        this.rank = rank;
     }
+    
+    //para traer noticia//
 
- 
-    //para crear nueva noticia//
-
-    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, int aprobada, int user) {
+    public News(int id, String title, String description, Category category, String date, String corta, String PathImage, String PathImage2, String PathImage3, String video, int aprobada, int user, int rank) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -65,8 +69,40 @@ public class News {
         this.video = video;
         this.aprobada = aprobada;
         this.user = user;
+        this.rank = rank;
+    }
+
+    //sacar promedio//
+    public News(int id, int rank) {
+        this.id = id;
+        this.rank = rank;
+    }
+
+    
+    //modificar datos news//
+    public News(int id, String title, String description, Category category, String date, String corta) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.date = date;
+        this.corta = corta;
+    }
+    
+    
+    //modificar media news//
+
+    public News(int id, String PathImage, String PathImage2, String PathImage3, String video) {
+        this.id = id;
+        this.PathImage = PathImage;
+        this.PathImage2 = PathImage2;
+        this.PathImage3 = PathImage3;
+        this.video = video;
     }
    
+    
+    
+    
 
     public int getId() {
         return id;
@@ -166,6 +202,13 @@ public class News {
         this.user = user;
     }
 
+    public int getRank() {
+        return rank;
+    }
 
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+    
     
 }

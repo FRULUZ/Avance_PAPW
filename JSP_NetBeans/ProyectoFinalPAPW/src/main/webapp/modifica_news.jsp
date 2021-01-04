@@ -4,6 +4,8 @@
     Author     : EDGAR
 --%>
 
+<%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.CategoryDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.Category"%>
 <%@page import="java.util.List"%>
@@ -11,8 +13,14 @@
 
 
 <%
-List<Category> categories = CategoryDAO.getCategories();
-request.setAttribute("Categories", categories);
+        String idNews = request.getParameter("id");
+         
+        News element = NewsDAO.getNew(Integer.parseInt(idNews, 10));
+        request.setAttribute("New", element);
+ 
+       List<Category> categories = CategoryDAO.getCategories();
+       request.setAttribute("Categories", categories);
+
 %>
 
 
@@ -66,67 +74,117 @@ request.setAttribute("Categories", categories);
         
         
         
+        <div class="container">
+
+            
+            <div class="container-md">
+                <br><br>
+
+                <h1>Título: <%= element.getTitle()%></h1>
+
+            </div>
+                
+          <div class="container-md">
+                <br><br>
+
+                <h1>Publicada el día: <%=element.getDate()%></h1>
+
+            </div>
+
+
+            <div class="container-md">
+                <br><br>
+
+                <h1>Descripción corta: <%= element.getCorta()%></h1>
+
+            </div>
+                
+                
+                
+                <div class="container-md">
+                    <br><br>
+
+                    <h1>Descripción: <%= element.getDescription()%></h1>
+
+                </div>
+                    
+                    
+               <div class="container-md">
+                    <br><br>
+
+                    <h1>Categoría: <%= element.getCategory().getName()%></h1>
+
+                </div>
+                
+
+
+
+        </div> 
+
+
+        <p>
+            <br>
+
+        </p>
         
         
         <div class="container">
-        
-       
-        
-               <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController" name="Form1" onsubmit="return emptyValidation()" required>
-                
-                
-                   <div class="form-group">
-                   <label for="date">Día de hoy</label>
-                   <p id="date"></p>
-                   
-                    <input id="datePicker" type="date" id="date" name ="date" />
-                   </div>
-                   
-                  
-                 
-                   
-                <div class="form-group">
-                    <label for="title">Título de la noticia</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
-                </div>
-                   
-                   
-                   
-                   <div class="form-group">
-                       <label for="corta">Descripción corta</label>
-                       <input type="text" class="form-control" id="title" name="corta" required>
-                   </div>
-                   
-                
-                  <div class="form-group">
-                 <label for="descripcion">Nota de la noticia</label>
-                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required></textarea>
-                  </div>
-       
-  
-                <div class="form-group">
-                    <label for="category">Categorías</label>
-                    <select class="form-control" name="category" id="category" required>
-                        <option value="-1">Seleccione una categoría</option>
-                        <%
-                            for (Category category : categories) {
-                        %>
-                        <option value="<%= category.getId()%>"><%= category.getName()%></option>
-                        <%
-                            }
-                        %>
-                    </select>
-                </div>
 
-                      
-                    <div class="form-group">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src=<%= element.getPathImage()%> class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src=<%= element.getPathImage2()%> class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src=<%= element.getPathImage3()%> class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+                    <br>
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src=<%= element.getVideo()%> allowfullscreen></iframe>
+            </div>
+        </div> 
+
+
+        <p>
+            <br>
+
+        </p>
+        
+        
+        
+         <div class="container">
+        
+       
+        
+               <form  class="col-12" method="POST" enctype="multipart/form-data" action="ModificarMediaNewsController" name="Form1" onsubmit="return emptyValidation()" required>
+        
+        
+                   
+                     <input type="text" name="id" value="<%= element.getId()%>">
+                
+                   
+                     <div class="form-group">
                         <label for="image">Imagen</label>
                         <input type="file" class="form-control" name="image" id="image" required>
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
                     
-                    
-                    
+        
                       <div class="form-group">
                         <label for="image">Imagen 2</label>
                         <input type="file" class="form-control" name="image2" id="image" required>
@@ -147,30 +205,80 @@ request.setAttribute("Categories", categories);
                         <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                     </div>
                     
-                    
-                    
-                     <div class="form-group">
-                        <div class="col-md-10 col-sm-9 col-xs-12">
-                           <input type="hidden" class="form-control" type="text"   name="id" value=<%= session.getAttribute("id")%>>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    
-                    
+                      <div class="botoncin">
+                    <button class="btn btn-primary" type="submit">Modificar media</button>
+                </div>    
+                  
+               </form> 
+            </div> 
+        
+        
+           <p>
+            <br>
+
+        </p>
+        
+        
+        <div class="container">
+        
+       
+        
+               <form  class="col-12" method="POST" action="ModificarDataNewsController" required>
+                
+                   
+                       <input type="text" name="id" value="<%= element.getId()%>">
+                
+              
+
+                       <div class="form-group">
+                           <input type="text" id="date2" name="date2"/>
+                       </div>
+                   
+                  
+                 
+                   
+                  <div class="form-group">
+                    <label for="title">Título de la noticia: </label>
+                    <input type="text" name="title" required>
+                   </div>
+                   
+                   
+                   
+                   <div class="form-group">
+                       <label for="corta">Descripción corta: </label>
+                       <input type="text"  name="corta" required>
+                   </div>
+                   
+                
+                  <div class="form-group">
+                 <label for="descripcion">Nota de la noticia</label>
+                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required></textarea>
+                  </div>
+       
+  
+                <div class="form-group">
+                    <label for="category">Categorías</label>
+                    <select name="category"  required>
+                        <option value="-1">Seleccione una categoría</option>
+                        <%
+                            for (Category category : categories) {
+                        %>
+                        <option value="<%= category.getId()%>"><%= category.getName()%></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
+            
 
                 <div class="botoncin">
-                    <button class="btn btn-primary" type="submit">Subir noticia</button>
+                    <button class="btn btn-primary" type="submit">Modificar datos</button>
                 </div>    
                   
       
             </form> 
     </div>    
-
-        
-        
-        
-        
+ 
         
         <p>
             <br>
@@ -198,3 +306,41 @@ request.setAttribute("Categories", categories);
     
     
 </html>
+
+
+<script>
+
+    $(document).ready( function() {
+    var now = new Date();
+    var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    $('#datePicker').val(today);
+});
+    
+    
+</script>
+
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+</script>
+
+<script>
+var date = new Date();
+
+document.getElementById("date").value = date.getFullYear() + "-" + (date.getMonth()<10?'0':'') + (date.getMonth() + 1) + "-" + (date.getDate()<10?'0':'') + date.getDate();
+
+document.getElementById("hour").value = (date.getHours()<10?'0':'') + date.getHours()  + ":" + (date.getMinutes()<10?'0':'')  + date.getMinutes();
+</script>
+
+
+
+
+
+<script>
+var date2 = new Date();
+document.getElementById("date2").value = date2.getFullYear() + "-" + (date2.getMonth()<10?'0':'') + (date2.getMonth() + 1) + "-" + (date2.getDate()<10?'0':'') + date2.getDate();
+document.getElementById("hour2").value = (date2.getHours()<10?'0':'') + date2.getHours()  + ":" + (date2.getMinutes()<10?'0':'')  + date2.getMinutes();
+</script>
+
+

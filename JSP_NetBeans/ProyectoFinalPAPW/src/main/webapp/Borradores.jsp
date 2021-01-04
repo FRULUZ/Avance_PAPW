@@ -114,10 +114,10 @@
                    <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=element.getId()%>">Eliminar noticia</a>
                 </div>
                     
-                    
-                <div class="form-group">
-                    
-                  <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
+                   
+                
+                 <div>
+                    <a href="ShowNewsModifyController?id=<%=element.getId()%>" class="btn btn-info" role="button">Modificar noticia</a>
                 </div>
                    
                 <%
@@ -207,10 +207,10 @@
                 </div>
                     
                     
-                <div class="form-group">
-                    
-                  <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
+                <div>
+                    <a href="ShowNewsModifyController?id=<%=element.getId()%>" class="btn btn-info" role="button">Modificar noticia</a>
                 </div>
+                   
                    
                  
                  <%
@@ -305,10 +305,10 @@
                 </div>
                     
                     
-                <div class="form-group">
-                    
-                  <a class="btn btn-mini btn-success" href="modifica_news.jsp">Modificar noticia</a>
+                <div>
+                    <a href="ShowNewsModifyController?id=<%=edits.getId()%>" class="btn btn-info" role="button">Modificar noticia</a>
                 </div>
+                   
                 
                 
                   <%
