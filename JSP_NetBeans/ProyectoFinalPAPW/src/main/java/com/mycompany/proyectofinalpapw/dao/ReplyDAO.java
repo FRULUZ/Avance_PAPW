@@ -96,6 +96,67 @@ public class ReplyDAO {
         }
         return commentaries;
     }        
+      
+      
+      
+      
+      
+      
+       public static int addlikeReply(int idReply) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL sum_like_reply(?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idReply);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ReplyDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+        
+        
+        
+        
+        
+        public static int dislikeReply(int idReply) {
+        Connection con = null;
+        try {
+            con = DbConnection.getConnection();
+            String sql = "CALL res_like_reply(?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idReply);
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ReplyDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+      
+      
          
          
 }

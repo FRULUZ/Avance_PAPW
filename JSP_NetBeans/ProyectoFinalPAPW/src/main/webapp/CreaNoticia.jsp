@@ -71,11 +71,19 @@ request.setAttribute("Categories", categories);
 </p>
 
 
+ 
+            <img src="Assets/images/videoicon.jpg"  class="img-responsive center-block d-block mx-auto" style="width: 500px; height: 300px;">
+        
+        
+        <p>
+            <br>
+
+        </p>
 
 
     <div class="container">
         
-       
+
         
                <form  class="col-12" method="POST" enctype="multipart/form-data" action="AddNewsController" name="Form1" onsubmit="return emptyValidation()" required>
                 

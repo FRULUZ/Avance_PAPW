@@ -58,6 +58,11 @@
     <h5 class="center"> Es hora de iniciar tú registro</h5>
    </div>
 
+    
+     <img src="Assets/images/comix.jpg"  class="img-responsive center-block d-block mx-auto" style="width: 500px; height: 330px;">
+        
+    
+    
    <div class="container">
 
     <div class="container py-3">

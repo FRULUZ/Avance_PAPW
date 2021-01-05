@@ -30,7 +30,7 @@ CREATE TABLE `megusta` (
   `title` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idMegusta`),
   UNIQUE KEY `idMegusta_UNIQUE` (`idMegusta`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `megusta` (
 
 LOCK TABLES `megusta` WRITE;
 /*!40000 ALTER TABLE `megusta` DISABLE KEYS */;
+INSERT INTO `megusta` VALUES (20,25,60,1,'Boku no hero la peli.');
 /*!40000 ALTER TABLE `megusta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-04  1:04:21
+-- Dump completed on 2021-01-05  1:49:08

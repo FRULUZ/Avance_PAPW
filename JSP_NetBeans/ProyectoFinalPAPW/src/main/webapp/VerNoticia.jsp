@@ -193,7 +193,7 @@
 <label for="numberSize">Califica esta noticia con un valor entre el 1(mínimo) al 10 (máximo): </label>
 
 <input name="rank"  type="number" min="1" max="10" id="numberSize" oninput="(!validity.rangeOverflow||(value=10)) && (!validity.rangeUnderflow||(value=1)) &&
-       (!validity.stepMismatch||(value=parseInt(this.value)));">
+       (!validity.stepMismatch||(value=parseInt(this.value)));" required>
 
   
 <input type="hidden" name="id" value="<%=element.getId()%>">
@@ -297,7 +297,7 @@
                           
                             
                       <div class="form-group">
-                                <input class="form-control" name="username" type="text">
+                                <input class="form-control" name="username" type="text" required>
                         </div>
                             <br>
                         
@@ -322,26 +322,24 @@
              
                                 
                                 <div class="form-group">
-                                    <label for="date">Día de hoy</label>
-                                    <input type="date" id="date" name="date"/>
+                                    <input type="text" id="date" name="date" hidden/>
                                 </div>
                  
 
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="date">Hora actual</label>
-                                    <input type="time" id="hour"  name ="hour"/>
+                                    <input type="text" id="hour"  name ="hour" hidden/>
                                 </div>
                             
                                 <br>
                                 
-                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary"></textarea>
+                            <textarea class="form-control" placeholder="Escribe un comentario..." rows="3"  name="commentary" id="commentary" required></textarea>
                             <br>
                              
                    
-                            <input type="text" name="idNews" value="<%= element.getId()%>">
-                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>">
+                            <input type="text" name="idNews" value="<%= element.getId()%>" hidden>
+                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>" hidden>
                             <input type="submit" class="btn btn-success" value="Postear comentario">
                             
                             </form>
@@ -383,13 +381,17 @@
                                             <%= commentary.getContent() %>
                                             
                                        
-                                            
+                                             <%
+                            if ((int)session.getAttribute("tipo") == 4) {
+                        %>
                                         </p>
                                          <span class="pull-left">
                                            <a class="btn btn-danger" href="DeleteCommentaryController?id=<%= commentary.getId() %>&idNews=<%= element.getId() %>">Eliminar</a>
                                         </span>
                                         
-                                        
+                                            <%
+                                                }
+                        %>
                                         
                                         
                                           <span class="pull-right">
@@ -436,9 +438,18 @@
                                      
                                         
                                         <strong class="text-success"><%= responder.getUser().getUsername()%></strong>
-                                        <p>
-                                            <%= responder.getContent() %>
+                                        <p>  <%= responder.getContent() %> </p>
             
+                                              
+                                        
+                                          <span class="pull-right">
+                                           <a href="ResLikeReplyController?id=<%=responder.getId()%>&idNews=<%= element.getId() %>" class="float-right btn text-white btn btn-danger">  <i class="fa fa-heart"></i> Dislike</a>
+                                           <a href="AddLikeReplyController?id=<%=responder.getId()%>&idNews=<%= element.getId() %>" class="float-right btn text-white btn btn-success">  <i class="fa fa-heart"></i> Likes <%= responder.getLikes()%></a>
+                                          </span>
+                                             
+                    
+                                            
+                                            
                                     </div>
                                 </li>
                      </ul>
@@ -460,26 +471,30 @@
                                                  
                             <form method="POST" action="ResponderController" >
                                 
+                                
+              
                                 <div class="form-group">
-                                    <label for="date">Día de hoy</label>
-                                    <input type="text" id="date2" name="date"/>
+                                    <input type="text" id="date2" name="date" hidden/>
                                 </div>
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="date">Hora actual</label>
-                                    <input type="text" id="hour2"  name ="hour"/>
+                                    <input type="text" id="hour2"  name ="hour" hidden/>
                                 </div>
                             
                                 <br>
                                 
-                            <textarea class="form-control" placeholder="Escribe una respuesta..." rows="3"  name="commentary" id="commentary"></textarea>
+                                
+                             
+                            <textarea class="form-control" placeholder="Escribe una respuesta..." rows="3"  name="commentary" id="commentary" required></textarea>
                             <br>
+                            
+                            
                              
                    
-                            <input type="text" name="idComentario" value="<%= commentary.getId()%>">
-                            <input type="text" name="idNews" value="<%= element.getId()%>">
-                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>">
+                            <input type="text" name="idComentario" value="<%= commentary.getId()%>" hidden>
+                            <input type="text" name="idNews" value="<%= element.getId()%>" hidden>
+                            <input type="text" name="idUser" value="<%= session.getAttribute("id")%>" hidden>
                             <input type="submit" class="fa fa-reply" value="Responder">
                             
                             </form>
@@ -527,17 +542,6 @@ var dt = new Date();
 document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
 </script>
 
-<script>
-var date = new Date();
-
-document.getElementById("date").value = date.getFullYear() + "-" + (date.getMonth()<10?'0':'') + (date.getMonth() + 1) + "-" + (date.getDate()<10?'0':'') + date.getDate();
-
-document.getElementById("hour").value = (date.getHours()<10?'0':'') + date.getHours()  + ":" + (date.getMinutes()<10?'0':'')  + date.getMinutes();
-</script>
-
-
-
-
 
 <script>
 var date2 = new Date();
@@ -547,10 +551,39 @@ document.getElementById("hour2").value = (date2.getHours()<10?'0':'') + date2.ge
 
 
 
+<script>
+var date2 = new Date();
+document.getElementById("date").value = date2.getFullYear() + "-" + (date2.getMonth()<10?'0':'') + (date2.getMonth() + 1) + "-" + (date2.getDate()<10?'0':'') + date2.getDate();
+document.getElementById("hour").value = (date2.getHours()<10?'0':'') + date2.getHours()  + ":" + (date2.getMinutes()<10?'0':'')  + date2.getMinutes();
+</script>
 
 
 
 
 
+<script>
+                                   
+                unction addInput(val) {
+   var input = document.createElement('input');
+   input.setAttribute('type', 'hidden');
+   input.setAttribute('value', val);
+   document.body.appendChild(input);
+}
+</script>
 
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+
+    var now = new Date();
+
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+    $("#date2").val(today);
+});
+</script>

@@ -35,7 +35,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   UNIQUE KEY `UserName_UNIQUE` (`UserName`),
   UNIQUE KEY `Correo_UNIQUE` (`Correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=590 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=591 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'lalito','1234',1,'lalin@hotmail.com','humpty.png','lalin',NULL),(25,'Vane','lol',3,'vane@hotmail.com','Assets/images/1609741540086.jpg','vane99','me gusta el anime'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan',NULL),(28,'elizabeth','Porta7777',2,'eliza444_@hotmail.com','Assets/images/1609044953716.jpg','eliza4555',NULL),(30,'lol','LOl7897899',4,'edo_@hotmail.com2','Assets/images/1609112322752.jpg','edobertop','cambio de datos esta muy largo ahora, me gusta el anime.'),(59,'Pablo','Nose123456',2,'albertini_@hotmail.com','Assets/images/1609059197705.ext','mailicirus',''),(60,'GATO','Po123456',3,'gatito@gmail.com','Assets/images/profile.png','kittykat',''),(512,'Anonimo1020',NULL,5,NULL,NULL,NULL,NULL),(521,'Lolo',NULL,5,NULL,NULL,NULL,NULL),(589,'norvert',NULL,5,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (1,'lalito','1234',1,'lalin@hotmail.com','humpty.png','lalin',NULL),(25,'Vane','lol',3,'vane@hotmail.com','Assets/images/1609741540086.jpg','vane99','me gusta el anime'),(26,'Eddy','EAop19999',1,'eddy_@hotmail.com2','Assets/images/image1608536201852.jpg','eddisan',NULL),(28,'elizabeth','Porta7777',2,'eliza444_@hotmail.com','Assets/images/1609044953716.jpg','eliza4555',NULL),(30,'lol','LOl7897899',4,'edo_@hotmail.com2','Assets/images/1609112322752.jpg','edobertop','cambio de datos esta muy largo ahora, me gusta el anime.'),(59,'Pablo','Nose123456',2,'albertini_@hotmail.com','Assets/images/1609059197705.ext','mailicirus',''),(60,'GATO','Po123456',3,'gatito@gmail.com','Assets/images/profile.png','kittykat',''),(512,'Anonimo1020',NULL,5,NULL,NULL,NULL,NULL),(521,'Lolo',NULL,5,NULL,NULL,NULL,NULL),(584,'Anonimo1922',NULL,5,NULL,NULL,NULL,NULL),(589,'norvert',NULL,5,NULL,NULL,NULL,NULL),(590,'Anonimo2874',NULL,5,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-04  1:04:21
+-- Dump completed on 2021-01-05  1:49:09

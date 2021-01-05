@@ -66,9 +66,8 @@
 
     <div class="container">
   <!-- Content here -->
-
-    <h1 class="text-center">Noticias destacadas</h1>
-    
+  
+    <img src="Assets/images/titulo3.png" class="img-fluid" alt="Noticia"  >
     
     
      <p>
@@ -77,7 +76,7 @@
     </p>
     
     
-    <img src="Assets/images/image2.jpg" class="img-fluid" alt="Noticia">
+    <img src="Assets/images/image2.jpg" class="img-fluid" alt="Noticia" >
     
     
        <p>
@@ -88,8 +87,14 @@
     <div class="row">
         
         
-        
-        
+           <h1 class="text-center">Noticias destacadas:</h1>
+    
+         <p>
+        <br>
+        <br>
+    </p>
+           
+           
                 <%
                     for (News element : news) {
                 %>
@@ -131,12 +136,26 @@
         
     </div>
               
+                
+<p>
+    <br>
+
+</p>
+
+ <div class="container">
+                <img src="Assets/images/puntitos.jpg" class="img-responsive inline-block" class="block" style="width: 1050px; height: 525px;">
+                
+                </div>
     </div>
 
 <p>
     <br>
 
 </p>
+
+
+
+
 
 <footer>
 

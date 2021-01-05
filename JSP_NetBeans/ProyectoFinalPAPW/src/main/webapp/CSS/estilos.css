@@ -16,10 +16,21 @@ and open the template in the editor.
             }
 
 
- h1.text-center{ 
-        color: black; 
-      } 
+              h1{ 
+                color: black; 
 
+                font-family: 'Source Sans Pro', sans-serif;
+                max-height: 400px;
+                max-width: 100%;
+            } 
+
+
+            h1.text-center{ 
+                color: black; 
+            } 
+
+            
+            
 
 .news-card a {
     text-decoration: none;

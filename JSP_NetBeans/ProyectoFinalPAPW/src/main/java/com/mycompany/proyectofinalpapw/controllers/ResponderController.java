@@ -9,6 +9,9 @@ import com.mycompany.proyectofinalpapw.dao.ReplyDAO;
 import com.mycompany.proyectofinalpapw.models.Reply;
 import com.mycompany.proyectofinalpapw.models.User;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,9 +46,16 @@ public class ResponderController extends HttpServlet {
          String idUser = request.getParameter("idUser");
          int likes = 0;
          
+         
+        Date date = new Date();
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm");
+        String hora2 = hourFormat.format(date);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha2 =dateFormat.format(date);
+         
          //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
          
-        ReplyDAO.insertReply(new Reply(content,Integer.parseInt(idNews,10),new User(Integer.parseInt(idUser, 10)), Integer.parseInt(idComentario,10), hora, fecha, likes));
+        ReplyDAO.insertReply(new Reply(content,Integer.parseInt(idNews,10),new User(Integer.parseInt(idUser, 10)), Integer.parseInt(idComentario,10), hora2, fecha2, likes));
         
         request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
         

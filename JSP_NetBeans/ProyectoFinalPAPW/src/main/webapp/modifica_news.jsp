@@ -175,7 +175,7 @@
         
         
                    
-                     <input type="text" name="id" value="<%= element.getId()%>">
+                     <input type="text" name="id" value="<%= element.getId()%>" hidden>
                 
                    
                      <div class="form-group">
@@ -226,12 +226,12 @@
                <form  class="col-12" method="POST" action="ModificarDataNewsController" required>
                 
                    
-                       <input type="text" name="id" value="<%= element.getId()%>">
+                       <input type="text" name="id" value="<%= element.getId()%>" hidden>
                 
               
 
                        <div class="form-group">
-                           <input type="text" id="date2" name="date2"/>
+                           <input type="text" id="date2" name="date2" hidden/>
                        </div>
                    
                   
@@ -239,20 +239,20 @@
                    
                   <div class="form-group">
                     <label for="title">Título de la noticia: </label>
-                    <input type="text" name="title" required>
+                    <input type="text" name="title" value="<%= element.getTitle()%>" required>
                    </div>
                    
                    
                    
                    <div class="form-group">
                        <label for="corta">Descripción corta: </label>
-                       <input type="text"  name="corta" required>
+                       <input type="text"  name="corta" value="<%= element.getCorta()%>" required>
                    </div>
                    
                 
                   <div class="form-group">
                  <label for="descripcion">Nota de la noticia</label>
-                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required></textarea>
+                <textarea class="form-control" id="descripcion"  name="descripcion" rows="3" required><%= element.getDescription()%></textarea>
                   </div>
        
   

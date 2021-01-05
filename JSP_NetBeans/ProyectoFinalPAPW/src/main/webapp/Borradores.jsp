@@ -67,14 +67,22 @@
 
         </p>
 
+        
+          <img src="Assets/images/comix.jpg"  class="img-responsive center-block d-block mx-auto" style="width: 560px; height: 500px;">
+      
 
+        
+        
+          <p>
+            <br>
+
+        </p>
 
         <header class="text-white text-center">
             <h1 class="display-4">NOTICIAS REDACTADAS POR EL USUARIO: </h1>
         </header>
         
-        
-         <p>
+        <p>
             <br>
 
         </p>
@@ -105,11 +113,58 @@
                     <label for="corta"> Descripción corta:  <%= element.getCorta()%></label>
                 </div>
                   
+                   
+                
+                
+                    <%
+                    if(element.getAprobada() == 0) {
+                %>
+                
+                
                     <div class="form-group">
-                        <label for="fecha"> Fecha de publicación:  <%= element.getDate()%></label>
+                        <label for="fecha"> Estado: Rechazada</label>
                     </div>
+                
             
+                     <%
+                         }
+                %>
+                
+                
+                
+                
                     
+                    
+                     <%
+                    if(element.getAprobada() == 1) {
+                %>
+                
+                
+                    <div class="form-group">
+                        <label for="fecha"> Estado: Aprobada</label>
+                    </div>
+                
+            
+                     <%
+                         }
+                %>
+                
+                
+                
+                    <%
+                    if(element.getAprobada() == 2) {
+                %>
+                
+                
+                    <div class="form-group">
+                        <label for="fecha"> Estado: En espera de edición</label>
+                    </div>
+                
+            
+                     <%
+                         }
+                %>
+                
                 <div class="form-group">
                    <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=element.getId()%>">Eliminar noticia</a>
                 </div>
@@ -136,148 +191,25 @@
         </p>
 
         
-        
-           <div>
-
-                    <a>
-                        <img src="Assets/images/image1.jpg" class="rounded mx-auto d-block" alt="..." >
-                    </a>
-               
-               
-                </div>
-         
-          <p>
-            <br>
-
-        </p>
-         
-        <header class="text-white text-center">
-            <h1 class="display-4">NOTICIAS PENDIENTES DE APROBAR</h1>
-        </header>
-        
-         <p>
-            <br>
-
-        </p>
-        
-        
-        
-        
-                <%
-                    for (News element : news) {
-                %>
-       
-                
-                 <%
-                    if (element.getUser() == (int)session.getAttribute("id")) {
-                %>
-                
-                  <%
-                    if(element.getAprobada() == 2) {
-                %>
-                
-                
-                <div class="form-group">
-                    <label for="estadonoticia">Estado: </label>
-                    <input type="text" class="form-control" id="ingresaApodo" placeholder="Noticia en espera">
-                </div>
-                
-                 <div>
-                    <label>Haga click en la imagen para ver el contenido completo de la nota: </label>
-                </div>
-                
-                <div>
-
-                    <a href="ShowNewsController?id=<%=element.getId()%>">
-                    <img src= <%= element.getPathImage() %> alt="..." class="img-thumbnail">
-                    </a>
-                </div>
-            
-                <div class="form-group">
-                    <label for="corta"> Descripción corta:  <%= element.getCorta()%></label>
-                </div>
-                  
-                    <div class="form-group">
-                        <label for="fecha"> Fecha de publicación:  <%= element.getDate()%></label>
-                    </div>
-            
-                    
-                <div class="form-group">
-                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=element.getId()%>">Eliminar noticia</a>
-                </div>
-                    
-                    
-                <div>
-                    <a href="ShowNewsModifyController?id=<%=element.getId()%>" class="btn btn-info" role="button">Modificar noticia</a>
-                </div>
-                   
-                   
-                 
-                 <%
-                    }
-                %> 
-                
-                
-                 <%
-                    }
-                %> 
-                
-               
-                    
-                <%
-                    }
-                %>
-        
-                
-                <p>
-                    <br>
-
-                </p>
-
-        
-        <header class="text-white text-center">
-            <h1 class="display-4">NOTICIAS APROBADAS</h1>
-        </header>
-                
-                
-                
-                 <%
-                    for (EditarNews edits : ediciones) {
-                %>
-       
-                <%
-                    if (edits.getUuario().getId() == (int)session.getAttribute("id") && edits.getEstado() == 1) {
-                %>
-              
     
-                <div>
-                    <a href="ShowNewsController?id=<%=edits.getNoticia().getId()%>" class="btn btn-info" role="button">Ver noticia</a>
-                </div>
-                    
-                    
-                <div class="form-group">
-                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=edits.getNoticia().getId()%>">Eliminar noticia</a>
-                </div>
-                   
-                
-                
-                  <%
-                    }
-                %>
-                
-                <%
-                    }
-                %>
-        
-         <p>
-            <br>
-
-        </p>
-        
-        
+         
+       
         <header class="text-white text-center">
             <h1 class="display-4">NOTICIAS RECHAZADAS</h1>
         </header>
+        
+         <p>
+            <br>
+
+        </p>
+        
+            <h2 class="display-4">Historial de notas: </h2>
+        
+         <p>
+            <br>
+
+        </p>
+        
         
                 <%
                     for (EditarNews edits : ediciones) {
@@ -287,29 +219,27 @@
                     if (edits.getUuario().getId() == (int)session.getAttribute("id") && edits.getEstado() == 0) {
                 %>
               
-               
-          
+       
+               <div class="form-group">
+                <label for="exampleFormControlTextarea3">Comentario del editor:</label>
+                <textarea class="form-control" readonly id="exampleFormControlTextarea3" rows="7"><%= edits.getTexto()%></textarea>
+                </div>
+                    
+                
+                   <p>
+                    <br>
+
+                </p>
+        
+                
                 <div>
                     <a href="ShowNewsController?id=<%=edits.getNoticia().getId()%>" class="btn btn-info" role="button">Ver noticia</a>
                 </div>
-                    
-        
                 
-               <div class="form-group">
-                <label for="exampleFormControlTextarea3">Comentario del editor:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"><%= edits.getTexto()%></textarea>
-                </div>
-                    
-                <div class="form-group">
-                   <a class="btn btn-mini btn-danger" href="DeleteNewController?id=<%=edits.getNoticia().getId()%>">Eliminar noticia</a>
-                </div>
-                    
-                    
-                <div>
-                    <a href="ShowNewsModifyController?id=<%=edits.getId()%>" class="btn btn-info" role="button">Modificar noticia</a>
-                </div>
-                   
-                
+                  <p>
+                    <br>
+
+                </p>
                 
                   <%
                     }

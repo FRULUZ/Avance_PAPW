@@ -62,8 +62,7 @@
 
     <div class="container-md">
         
-        
-         <h5 class="titulito">Noticias sin revisión: </h5>
+       
 
                 <%
                     for (News element : news) {
