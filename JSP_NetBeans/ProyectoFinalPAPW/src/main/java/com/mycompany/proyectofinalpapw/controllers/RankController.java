@@ -66,7 +66,6 @@ public class RankController extends HttpServlet {
         processRequest(request, response);
         
         
-        
         int id = Integer.parseInt(request.getParameter("id"), 10);
         int rank = Integer.parseInt(request.getParameter("rank"), 10);
        
@@ -75,7 +74,7 @@ public class RankController extends HttpServlet {
 
         
        NewsDAO.RankNews(rankeada);
-       request.getRequestDispatcher("index.jsp").forward(request, response);
+       request.getRequestDispatcher("VerNoticia.jsp?id=" + id).forward(request, response);
 
     }
 

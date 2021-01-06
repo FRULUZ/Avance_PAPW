@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +57,11 @@ public class ResponderController extends HttpServlet {
          //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
          
         ReplyDAO.insertReply(new Reply(content,Integer.parseInt(idNews,10),new User(Integer.parseInt(idUser, 10)), Integer.parseInt(idComentario,10), hora2, fecha2, likes));
+        
+        
+         List<Reply> responder = ReplyDAO.getReplies();
+         request.setAttribute("replies", responder);
+        
         
         request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
         

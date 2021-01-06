@@ -157,6 +157,72 @@ public class ReplyDAO {
     }
       
       
-         
+        
+        
+        
+        
+        
+     public static List<Reply> getReplies(){
+    
+    List<Reply> replies = new ArrayList<>();
+        
+    Connection con = null;
+    
+    try{
+    
+        con = DbConnection.getConnection();
+        String sql = "CALL getReplies();";
+        CallableStatement statement = con.prepareCall(sql);
+         ResultSet result = statement.executeQuery();
+        while(result.next()){
+        
+            
+            int id = result.getInt(1);
+                String content = result.getString(2);
+                int idNew = result.getInt(3);
+                int idUser = result.getInt(4);
+                int parent = result.getInt(5);
+                User user = UserDAO.getUser(idUser);
+                String hora = result.getString(6);
+                String fecha = result.getString(7);
+                int likes = result.getInt(8);
+                
+                replies.add(new Reply(id, content, idNew, user, parent, hora, fecha, likes));
+      
+        }
+    
+        return replies;
+        
+    }catch(SQLException ex){
+    
+    System.out.println(ex.getMessage());
+        
+    }finally{
+    
+    
+    if(con !=null){
+        
+        try{
+        
+         con.close();
+        
+        }catch(SQLException ex){
+        
+            Logger.getLogger(ReplyDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+    
+    }
+    
+   
+    }
+ 
+    
+       return replies; 
+    }
+        
+       
+        
+     
          
 }

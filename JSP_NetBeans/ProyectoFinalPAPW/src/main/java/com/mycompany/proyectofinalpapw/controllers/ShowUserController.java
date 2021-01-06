@@ -6,9 +6,13 @@
 package com.mycompany.proyectofinalpapw.controllers;
 
 import com.mycompany.proyectofinalpapw.dao.CommentaryDAO;
+import com.mycompany.proyectofinalpapw.dao.NewLikesDAO;
+import com.mycompany.proyectofinalpapw.dao.ReplyDAO;
 import com.mycompany.proyectofinalpapw.models.Commentary;
-import com.mycompany.proyectofinalpapw.models.User;
+import com.mycompany.proyectofinalpapw.models.NewsLikes;
+import com.mycompany.proyectofinalpapw.models.Reply;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author EDGAR
  */
-@WebServlet(name = "CommentaryController", urlPatterns = {"/CommentaryController"})
-public class CommentaryController extends HttpServlet {
+@WebServlet(name = "ShowUserController", urlPatterns = {"/ShowUserController"})
+public class ShowUserController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,25 +38,21 @@ public class CommentaryController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   
-         String content = request.getParameter("commentary");
-         String idNews = request.getParameter("idNews");
-         String hora = request.getParameter("hour");
-         String fecha = request.getParameter("date");
-         String idUser = request.getParameter("idUser");
-         int likes = 0;
-         
-         //Commentary(String content, int idNews, User user, int parent, String hora, String fecha)
-         
-        CommentaryDAO.insertCommentary(new Commentary(content,Integer.parseInt(idNews),new User(Integer.parseInt(idUser, 10)), 0, hora, fecha, likes));
-        
 
-         List<Commentary> comentar = CommentaryDAO.getComments();
-         request.setAttribute("comments", comentar);
         
-        request.getRequestDispatcher("VerNoticia.jsp?id=" + idNews).forward(request, response);
+        String idUser = request.getParameter("id");
+
+        List<NewsLikes> newslikes = NewLikesDAO.getNewsLike();
+        request.setAttribute("Newslikes", newslikes);
+
+        List<Commentary> comentar = CommentaryDAO.getComments();
+        request.setAttribute("comments", comentar);
+
+        List<Reply> responder = ReplyDAO.getReplies();
+        request.setAttribute("replies", responder);
         
-         
+          
+          request.getRequestDispatcher("VerUsuario.jsp?id=" + idUser).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

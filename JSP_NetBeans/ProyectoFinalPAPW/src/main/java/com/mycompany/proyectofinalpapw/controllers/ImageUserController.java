@@ -81,6 +81,9 @@ public class ImageUserController extends HttpServlet {
         
         int Tipo = Integer.parseInt(request.getParameter("tipo"), 10);
         
+        
+        
+        
         Part file = request.getPart("image");
 
 

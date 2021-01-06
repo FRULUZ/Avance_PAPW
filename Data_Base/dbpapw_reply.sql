@@ -42,7 +42,7 @@ CREATE TABLE `reply` (
 
 LOCK TABLES `reply` WRITE;
 /*!40000 ALTER TABLE `reply` DISABLE KEYS */;
-INSERT INTO `reply` VALUES (1,'prueba responder',41,25,23,'20:10','2021-01-02',0),(2,'otra respuesta',41,512,23,'20:18','2021-01-02',1),(3,'respuesta',59,25,38,'00:19','2021-01-04',0),(4,'comentar :c',41,25,23,'22:29:08','04/01/2021',0),(5,'aver aqui',41,25,22,'22:29:24','04/01/2021',0),(6,'borrese ',41,25,20,'22:31:28','04/01/2021',0),(7,'ahora aqui me gusta como se ve',41,28,22,'23:00','2021/01/04',0),(8,'otra mas',41,28,22,'23:00','2021-01-04',0),(9,'quiero comentar tambien sho',41,584,21,'00:04','2021-01-05',0);
+INSERT INTO `reply` VALUES (1,'prueba responder',41,25,23,'20:10','2021-01-02',0),(2,'otra respuesta',41,512,23,'20:18','2021-01-02',1),(3,'respuesta',59,25,38,'00:19','2021-01-04',0),(4,'comentar :c',41,25,23,'22:29:08','04/01/2021',0),(6,'borrese ',41,25,20,'22:31:28','04/01/2021',0),(9,'quiero comentar tambien sho',41,584,21,'00:04','2021-01-05',0);
 /*!40000 ALTER TABLE `reply` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-05  1:49:10
+-- Dump completed on 2021-01-05 22:27:51

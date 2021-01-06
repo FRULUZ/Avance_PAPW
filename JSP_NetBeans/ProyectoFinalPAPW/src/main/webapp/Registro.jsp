@@ -82,7 +82,6 @@
 
     <form class="col-12"  method="POST" enctype="multipart/form-data" action="SignInController"  name="Form1" onsubmit="return emptyValidation()" required>
             
-    </div>
 
             <div class="form-group">
                 <label for="ingresa un Nombre de Uusuario">Username</label>
@@ -98,7 +97,10 @@
             </div>
        
        
-          
+                  <div class="form-group">
+                           <input type="text" class="form-control"  name="image" value= "profile.png" hidden>
+                      
+                    </div>
             
             <div class="form-group">
                 
@@ -140,13 +142,9 @@
                 <input class="btn btn-primary" type="submit" value="Crear usuario">
    
             </div>
-            
               
         </form> 
-        
-        
-   
-   
+       
         
         
     </div>

@@ -45,11 +45,10 @@ public class SignInController extends HttpServlet {
         String password = request.getParameter("password");
         int tipo = Integer.parseInt(request.getParameter("tipo"), 10);
         String correo = request.getParameter("correo");    
-        String red = request.getParameter("red");
-        String about = "";
+     
         
         
-        Part file = request.getPart("image");
+       Part file = request.getPart("image");
 
 
         String path = request.getServletContext().getRealPath("");
@@ -59,13 +58,15 @@ public class SignInController extends HttpServlet {
         }
         
         String contentType = file.getContentType();
-        String nameImage = + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String nameImage = + System.currentTimeMillis() + FileUtils.GetExtension("image/png");
         String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         file.write(fullPath);
-
+        
+        String red = request.getParameter("red");
+        String about = "";
               
   
-        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" +  "profile.png", red, about); 
+        User user = new User(username, password, tipo, correo, FileUtils.RUTE_USER_IMAGE + "/" + "profile.png", red, about); 
           
         
         

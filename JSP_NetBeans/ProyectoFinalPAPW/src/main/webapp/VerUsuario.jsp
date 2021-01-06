@@ -3,6 +3,11 @@
     Created on : Nov 20, 2020, 1:45:57 AM
     Author     : EDGAR
 --%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Reply"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.ReplyDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.ReplyDAO"%>
+<%@page import="com.mycompany.proyectofinalpapw.models.Commentary"%>
+<%@page import="com.mycompany.proyectofinalpapw.dao.CommentaryDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewsDAO"%>
 <%@page import="com.mycompany.proyectofinalpapw.models.News"%>
 <%@page import="com.mycompany.proyectofinalpapw.dao.NewLikesDAO"%>
@@ -18,6 +23,22 @@
          List<NewsLikes> newslikes = NewLikesDAO.getNewsLike();
          request.setAttribute("Newslikes", newslikes);
         
+%>
+
+
+<%
+      List<Commentary> comentar = CommentaryDAO.getComments();
+          request.setAttribute("comments", comentar);
+
+%>
+
+
+<%
+  
+ List<Reply> responder = ReplyDAO.getReplies();
+     request.setAttribute("replies", responder);
+
+
 %>
 
   
@@ -348,6 +369,56 @@
             </div>
 
 
+                     
+                     
+                       
+                <h2 class="fieldset-title">Notificaciones: </h2>
+
+                     
+                     <%
+                         for (Commentary comentarios : comentar) {
+                     %>  
+                     
+                     
+                      <%
+                         for (Reply respuesta : responder) {
+                     %>  
+                     
+                  
+                     
+                     
+                     <%
+                        if(comentarios.getUser().getId() == (int)session.getAttribute("id")) {
+                     %>  
+ 
+                     
+                        <%
+                        if(comentarios.getId() ==  respuesta.getParent()) {
+                     %>  
+                     
+                     <div class="alert alert-primary" role="alert">
+                         Han respondido un comentario tuyo! ir a ver: <a href="ShowNewsController?id=<%= comentarios.getIdNews()%>" class="alert-link">VER NOTICIA</a>. dando click en el.
+                     </div>
+                     
+                      <%
+                            }
+                     %> 
+                     
+                      <%
+                            }
+                     %>  
+                     
+                       <%
+                            }
+                     %>      
+                     
+                     
+                        <%
+                            }
+                     %>         
+                     
+                     
+                     
         </div>
 
     </body>

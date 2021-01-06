@@ -46,7 +46,7 @@ CREATE TABLE `commentary` (
 
 LOCK TABLES `commentary` WRITE;
 /*!40000 ALTER TABLE `commentary` DISABLE KEYS */;
-INSERT INTO `commentary` VALUES (20,'nota para borrarse xd bye bye',41,1,0,NULL,NULL,1),(21,'otro comentario',41,1,0,NULL,NULL,1),(22,'a ver si jala :\'v',41,25,0,NULL,'2020-12-28',1),(23,'comentario horas',41,25,0,'01:59','2020-12-28',2),(24,'comentarios',41,25,0,'03:30','2020-12-28',1),(25,'Coments 1',40,30,0,'18:13','2020-12-28',0),(26,'comentario 5',40,30,0,'18:13','2020-12-28',0),(29,'otro coment',41,25,0,'02:25','2020-12-29',0),(30,'comentario anti anonimo',41,25,0,'22:56','2020-12-30',1),(34,'primis',56,28,0,'22:50','2021-01-01',1),(35,'nuevo nombre',41,589,0,'00:58','2021-01-02',0),(36,'comentar lolo',41,521,0,'01:17','2021-01-02',0),(37,'responder',41,25,23,'19:17','2021-01-02',0),(38,'comentar',59,25,0,'00:19','2021-01-04',0),(39,'con hiddens',41,25,0,'17:58','2021-01-04',0);
+INSERT INTO `commentary` VALUES (20,'nota para borrarse xd bye bye',41,1,0,NULL,NULL,1),(24,'comentarios',41,25,0,'03:30','2020-12-28',1),(25,'Coments 1',40,30,0,'18:13','2020-12-28',0),(26,'comentario 5',40,30,0,'18:13','2020-12-28',0),(29,'otro coment',41,25,0,'02:25','2020-12-29',0),(30,'comentario anti anonimo',41,25,0,'22:56','2020-12-30',1),(34,'primis',56,28,0,'22:50','2021-01-01',1),(35,'nuevo nombre',41,589,0,'00:58','2021-01-02',0),(36,'comentar lolo',41,521,0,'01:17','2021-01-02',0),(37,'responder',41,25,23,'19:17','2021-01-02',0),(38,'comentar',59,25,0,'00:19','2021-01-04',0),(39,'con hiddens',41,25,0,'17:58','2021-01-04',0);
 /*!40000 ALTER TABLE `commentary` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-05  1:49:09
+-- Dump completed on 2021-01-05 22:27:50
